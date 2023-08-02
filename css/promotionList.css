@@ -1,0 +1,153 @@
+.promotionSelectBtWrap{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+
+.promotionBtWrap{
+    display: flex;
+    flex-direction: row;
+}
+
+#recentSort, #likeSort, #viewSort{
+    font-size: 13px;
+    font-weight: bolder;
+    border-radius: 20px;
+    border: 1px solid #848484;
+    color: #848484;
+    padding: 3px 10px;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+#recentSort.sortButton.active,
+#likeSort.sortButton.active,
+#viewSort.sortButton.active {
+    background-color: #FF9900;
+    border: 0;
+    color: white;
+}
+#filterBt{
+    font-size: 13px;
+    font-weight: bolder;
+    border-radius: 20px;
+    border: 1px solid #848484;
+    color: #848484;
+    padding: 3px 10px;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+#moveWriteProBt{
+    font-size: 13px;
+    font-weight: bolder;
+    border-radius: 20px;
+    color: white;
+    background-color: black;
+    padding: 3px 10px;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.promotionListWrap{
+    flex-wrap: wrap;
+    display: flex;
+    flex-direction: row;
+    margin: 15px auto;
+    justify-content: space-between;
+}
+
+.promotionCard{
+    padding: 15px;
+    border: 0;
+    border-radius: 20px;
+    width: 220px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin: 2px 5px;
+    cursor: pointer;
+}
+
+.promotionCard:hover{
+    box-shadow: 4px 4px 4px 3px rgb(0,0,0,0.03);
+}
+
+.promotionImg{
+    width: 100%;
+    height: auto;
+}
+
+.promotionCard h3{
+    font-size: 15px;
+    margin: 10px 0;
+}
+
+.storeIntro{
+    font-size: 12px;
+    height: 50px;
+}
+
+.promotionInfo{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.storeInfo{
+    display: flex;
+    flex-direction: row;
+}
+
+.storeName{
+    margin-left: 5px;
+    font-size: small;
+}
+
+/* 데스크탑 화면 크기 이상일 때 */
+@media (min-width: 1024px) {
+    .promotionListWrap {
+        justify-content: space-between;
+    }
+    .promotionCard {
+        width: calc(25% - 10px);
+    }
+}
+
+#buttonContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+/* 태블릿 화면 크기일 때 */
+@media (max-width: 1023px) {
+    .promotionListWrap {
+        justify-content: space-between;
+    }
+    .promotionCard {
+        width: calc(33.33% - 10px);
+    }
+}
+
+/* 모바일 화면 크기일 때 */
+@media (max-width: 767px) {
+    .promotionListWrap {
+        justify-content: space-between;
+    }
+    .promotionCard {
+        width: calc(50% - 10px);
+    }
+}
+
+@media(max-width: 450px){
+    .promotionListWrap {
+        flex-direction: column;
+        align-items: center;
+    }
+    .promotionCard {
+        width: 95%;
+        margin-bottom: 10px;
+    }
+}

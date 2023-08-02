@@ -1,0 +1,437 @@
+body{
+    position: absolute;
+    min-width: 768px;
+    width: 1440px;
+    height: 1431px;
+    margin: auto;
+}
+
+a {
+    color: black;
+}
+
+#storePhoto {
+    width: 502px;
+    height: 306px;
+    top: 17%;
+    left: 13%;
+    position: absolute;
+    align-items: center;
+    border: 2px solid #ccc;
+    background-color: #ccc;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#storePhoto img {
+    top: 0;
+    left: 0;
+    position: absolute;
+}
+
+.heartOut {
+    position: absolute;
+    top: 40%;
+    left: 42%;
+    display: flex;
+}
+
+.heartOut h3{
+    font-size: 13px;
+    margin-top: 8px;
+    margin-left: 7px;
+}
+
+
+.homeImage h3 {
+    font-size: 20px;
+}
+
+#home {
+    width: 502px;
+    height: 25px;
+    top: 14%;
+    left: 13%;
+    position: absolute;
+}
+  
+#home img {
+    margin-right: 15px;
+    margin-top: -8px;
+}
+
+#home h3 {
+    font-size: 20px;
+}
+
+.infoBox {
+    position: absolute;
+    top: 19%;
+    left: 50%;
+}
+
+.location {
+    width: 318px;
+    height: 31px;
+    background-color: #F4F4F4;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.location img {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.location h3 {
+    margin-top: -16px;
+    margin-left: 40px;
+    font-size: 12px;
+}
+
+.email {
+    width: 318px;
+    height: 31px;
+    background-color: #F4F4F4;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    text-decoration: underline;
+}
+
+.email img {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.email h3 {
+    margin-top: -16px;
+    margin-left: 40px;
+    font-size: 12px;
+}
+
+.phone {
+    width: 318px;
+    height: 31px;
+    background-color: #F4F4F4;
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+
+.phone img {
+    margin-left: 7px;
+    margin-right: 10px;
+    margin-top: 5px;
+}
+
+.phone h3 {
+    margin-top: -25px;
+    margin-left: 40px;
+    font-size: 12px;
+}
+
+.telephone {
+    width: 318px;
+    height: 31px;
+    background-color: #F4F4F4;
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+
+.telephone img {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.telephone h3 {
+    margin-top: -16px;
+    margin-left: 40px;
+    font-size: 12px;
+}
+
+.number {
+    width: 318px;
+    height: 31px;
+    background-color: #F4F4F4;
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+
+.number img {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.number h3 {
+    margin-top: -16px;
+    margin-left: 40px;
+    font-size: 12px;
+}
+
+
+.rating {
+    position: absolute;
+    top: 20.3%;
+    left: 75%;
+}
+
+.heart {
+    display: flex; 
+    align-items: center; 
+    margin-bottom: 20px;
+}
+  
+.heart img {
+    width: 24px; 
+    height: 24px;
+    margin-right: 5px; 
+}
+  
+.heart h3 {
+    margin: 0;
+    font-size: 16px;
+    margin-right: 10px;
+}
+
+.star {
+    display: flex; 
+    align-items: center; 
+}
+  
+.star img {
+    width: 24px; 
+    height: 24px;
+    margin-right: 5px; 
+}
+  
+.star h3 {
+    margin: 0;
+    font-size: 16px;
+    margin-right: 10px;
+}
+ 
+.Hashtage {
+    display: flex; 
+    margin-top: 30px;
+}
+
+.HashtagBox1 {
+    width: 60.07px;
+    height: 25px;
+    margin-right: 6px;
+    background-color: black;
+    border-radius: 20px;
+}
+
+.HashtagBox1 h3 {
+    font-size: 12px;
+    color: white;
+    position: absolute;
+    margin-top: 5px;
+    margin-left: 7px;
+}
+
+.HashtagBox2 {
+    width: 60.07px;
+    height: 25px;
+    background-color: black;
+    border-radius: 20px;
+}
+
+.HashtagBox2 h3 {
+    color: white;
+    font-size: 12px;
+    position: absolute;
+    margin-top: 5px;
+    margin-left: 6px;
+}
+
+
+
+.introduction {
+    max-width: 526px;
+    position: absolute;
+    top: 35%;
+    left: 51%;
+}
+
+.introduction h2 {
+    font-size: 15px;
+    font-weight: bold;
+}
+  
+.introBox {
+    height: 97px;
+    overflow: auto;
+    background-color: #F4F4F4;
+    border-radius: 10px;
+}
+  
+.introScript {
+    font-size: 12px;
+    margin: 13px;
+    line-height: 1.5;
+}
+  
+
+
+.middleLine {
+    width: 1075px;
+    height: 1.2px;
+    top: 45%;
+    left: 13%;
+    position: absolute;
+    background-color: #CECECE;
+}
+
+
+.menu {
+    position: absolute;
+    top: 47%;
+    left: 12%;
+}
+
+.menu h2 {
+    margin-left: 26px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+  
+.menuShow {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 600px; 
+    margin: 0 auto;
+}
+  
+.menuBox {
+    width: 140px;
+    height: 180px;;
+    margin: 5px;
+    text-align: center;
+    background-color: #F5F5F5;
+    border-radius: 10px;
+}
+  
+.menuBox img {
+    width: 106px;
+    height: 106px; 
+    margin-top: 17px;
+}
+  
+.menuBox h3 {
+    font-size: 14px; 
+    margin: 5px 0;
+    position: relative;
+    right: 20%;
+}
+  
+
+
+.reviews {
+    position: absolute;
+    top: 47%;
+    left: 57.5%;
+}
+
+.reviewsfont {
+    display: flex;
+    margin-bottom: 6px;
+}
+
+.reviews h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-left: 25px;
+}
+
+.viewsMore {
+    font-size: 10px;
+    position: absolute;
+    top: 2.3%;
+    left: 90%;
+}
+
+.review-box {
+    width: 430px;
+    height: 530px;
+    border: 1px solid #ffffff;
+    padding: 10px;
+}
+  
+.review {
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+    width: 400px;
+    height: 153px;
+    margin: 20px;
+}
+  
+.review:last-child {
+    border-bottom: none; 
+}
+  
+.profile-picture {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+  
+.nickname {
+    font-size: 16px;
+    font-weight: bold;
+    position: relative;
+    top: -30%;
+    left: 18%;
+}
+  
+.star-rating {
+    font-size: 18px;
+    color: gold;
+    margin-right: 5px;
+    position: relative;
+    top: -35%;
+    left: 17%;
+}
+  
+.date {
+    font-size: 10px;
+    color: #8F8F8F;
+    position: relative;
+    top: -82%;
+    left: 79%;
+}
+  
+.comment {
+    font-size: 12px;
+    max-width: 230px;
+    position: relative;
+    top: -20px;
+    left: 18%;
+}
+  
+.modify {
+    width: 68px;
+    height: 25px;
+    margin-right: 6px;
+    background-color: black;
+    border-radius: 20px;
+    position: absolute;
+    top: 87%;
+    left: 82%;
+}
+
+.modify h3 {
+    color: white;
+    margin-right: 6px;
+    font-size: 14px;
+    margin-left: 6px;
+    margin-top: 2px;
+}
+
+.modify a:hover {
+        text-decoration: none; 
+}
