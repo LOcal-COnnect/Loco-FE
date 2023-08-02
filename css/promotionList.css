@@ -5,9 +5,17 @@
     margin-top: 15px;
 }
 
-.promotionBtWrap{
+.promotionBtWrap, .promotionFilterBtWrap{
     display: flex;
     flex-direction: row;
+}
+
+.selectedCityBt{
+    display: none;
+    font-size: 13px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    border: 1px solid #848484;
 }
 
 #recentSort, #likeSort, #viewSort{

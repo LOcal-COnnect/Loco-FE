@@ -11,15 +11,16 @@
       <!-- 내브바 -->
       <div class="promotionSelectBtWrap">
           <div class="promotionBtWrap">
-              <div id="recentSort" class="sortButton">최신순</div>
+              <div id="recentSort" class="sortButton active">최신순</div>
               <div id="likeSort" class="sortButton">좋아요순</div>
-              <div id="viewSort" class="sortButton active">조회수순</div>
+              <div id="viewSort" class="sortButton">조회수순</div>
           </div>
 
-          <div class="promotionBtWrap">
+          <div class="promotionFilterBtWrap">
               <div id="filterBt" onclick="searchAddress();">지역 필터</div>
-              <div id="moveWriteProBt" onclick="location.href='createPromotion.html'">작성하기</div>
           </div>
+
+          <div class="selectedCityBt"></div>
       </div>
       <div class="promotionListWrap">
           <div class="promotionCard" onclick="moveDetail(1);">
@@ -133,8 +134,8 @@
       </div>
       <div id="buttonContainer"></div>
   </div>
-  <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-  <script src="js/searchAddress.js"></script>
+  <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="js/promotionList.js"></script>
   <script src="js/pagination.js"></script>
 </body>

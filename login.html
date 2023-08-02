@@ -17,11 +17,13 @@
         </div>
         <div class="loginBody">
             <h3>로그인</h3>
-            <input type="text" placeholder="아이디" />
-            <input type="password" placeholder="비밀번호" />
+            <input id="userId" type="text" placeholder="아이디" />
+            <input id="userPw" type="password" placeholder="비밀번호" />
             <p onclick="location.href='findPw.html'">비밀번호 찾기</p>
-            <button class="loginBt" type="button">LOCO 로그인</button>
+            <button class="loginBt" type="button" onclick="login();">LOCO 로그인</button>
         </div>
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="js/member.js"></script>
 </body>
 </html>

@@ -11,14 +11,12 @@ function searchAddress(){
             if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
                 addr = data.roadAddress;
                 localStorage.setItem('selectedCity', addr);
+                document.getElementById('roadAddress').value = addr;
             } else { // 사용자가 지번 주소를 선택했을 경우(J)
                 addr = data.jibunAddress;
                 localStorage.setItem('selectedCity', addr);
+                document.getElementById('roadAddress').value = addr;
             }
-
-            getNearStores();
-            this.close();
         }
     }).open();
-
 }
