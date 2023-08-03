@@ -2,6 +2,7 @@
     text-align: center;
     font-size: 19px;
     font-weight: bolder;
+    margin-top: 20px;
 }
 
 .myTabNav{
@@ -89,7 +90,7 @@
 }
 
 
-.tab2 {
+.tab2{
     display: none;
     width: 60vw;
     margin: 0 auto;
@@ -153,10 +154,9 @@
 
 /*내가쓴리뷰 tab3*/
 .tab3 {
+    display: none;
     width: 50vw;
     margin: 0 auto;
-    display: flex;
-    justify-content: center;
 }
 
 .reviewListWrap {
