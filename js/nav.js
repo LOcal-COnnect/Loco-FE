@@ -22,11 +22,11 @@ homeBtn.addEventListener('click', function () {
 });
 
 loginBtn.addEventListener('click', function () {
-    window.location.href = 'login.html';
+    window.location.href = '../login.html';
 });
   
 registerBtn.addEventListener('click', function () {
-    window.location.href = 'register.html';
+    window.location.href = '../register.html';
 });
 
 // 카테고리 버튼에 대한 참조를 저장합니다.
@@ -57,7 +57,7 @@ mypageButton.addEventListener('click', function () {
 
     // 사용자가 로그인되지 않았다면 login.html 페이지로 이동합니다.
     if (!isLoggedIn) {
-        window.location.href = 'login.html';
+        window.location.href = '../login.html';
     } else {
         // 사용자가 로그인되었으면, 카테고리 버튼의 이벤트 리스너를 제거합니다.
         categoryBtn.removeEventListener("click", toggleHiddenCategory);
