@@ -11,14 +11,12 @@ body {
     align-items: center;
     height: 100vh;
 }
-
 .box {
     width: 400px;
     padding: 20px;
     position: absolute;
     top: 17%;
 }
-
 input,
 textarea {
     width: 100%;
@@ -27,7 +25,6 @@ textarea {
     border-radius: 20px;
     border: 0.5px solid black;
 }
-
 button {
     width: 100%;
     padding: 10px;
@@ -43,7 +40,6 @@ button {
 .box input::placeholder {
     color: #999;
 }
-
 .box input {
     padding-left: 20px;
 }
@@ -54,7 +50,6 @@ button {
     position: relative;
     border-radius: 20px;
 }
-
 .business-num-container input {
     flex: 1;
     padding-right: 40px;

@@ -223,7 +223,6 @@
     border: 1px solid #ffffff;
     padding: 10px;
 }
-
 .review {
     border-bottom: 1px solid #ccc;
     padding-bottom: 10px;
@@ -242,7 +241,6 @@
     border-radius: 50%;
     margin-right: 10px;
 }
-
 .nickname {
     font-size: 16px;
     font-weight: bold;
@@ -250,7 +248,6 @@
     top: -30%;
     left: 18%;
 }
-
 .star-rating {
     font-size: 18px;
     color: gold;
@@ -267,7 +264,6 @@
     top: -82%;
     left: 79%;
 }
-
 .comment {
     font-size: 12px;
     max-width: 230px;
@@ -275,7 +271,6 @@
     top: -20px;
     left: 18%;
 }
-
 .modify {
     width: 130px;
     height: 25px;

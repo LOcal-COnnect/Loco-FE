@@ -1,219 +1,104 @@
-body {
-    position: absolute;
-    min-width: 768px;
-    width: 1440px;
-    height: 1431px;
-    margin: auto;
-}
-
-a {
-    color: black;
-}
-
-#storePhoto {
-    width: 502px;
-    height: 306px;
-    top: 17%;
-    left: 13%;
-    position: absolute;
-    align-items: center;
-    border: 2px solid #ccc;
-    background-color: #ccc;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-}
-
-#storePhoto img {
-    top: 0;
-    left: 0;
-    position: absolute;
-}
-
-.heartOut {
-    position: absolute;
-    top: 40%;
-    left: 42%;
+.top {
     display: flex;
+    width: 65vw;
+    margin: 0 auto;
+    margin-top: 50px;
 }
 
-.heartOut h3 {
-    font-size: 13px;
-    margin-top: 8px;
-    margin-left: 7px;
-}
+/*
+.parent-container {
+    
+}*/
 
-.homeImage h3 {
-    font-size: 20px;
-}
-
-#home {
-    width: 502px;
-    height: 25px;
-    top: 14%;
-    left: 13%;
-    position: absolute;
-}
-
-#home img {
-    margin-right: 15px;
-    margin-top: -8px;
+.intop {
+    display: flex;
 }
 
 #home h3 {
     font-size: 20px;
 }
 
+#home img {
+    width: 25px;
+    height: 25px;
+    margin-right: 10px;
+}
+
+.storePhoto img {
+    max-width: 502;
+    width: 100%;
+    height: auto;
+}
+
+.heartOut {
+    display: flex;
+    margin-left: 430px;
+    margin-top: 10px;
+}
+
+.heartOut h3 {
+    font-size: 13px;
+    margin-top: 7px;
+    margin-left: 5px;
+}
+
 .infoBox {
-    position: absolute;
-    top: 19%;
-    left: 50%;
+    display: block;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-left: 30px;
+    margin-top: 50px;
+    width: 100%;
+    height: 31px;
 }
 
-.location {
-    width: 318px;
-    height: 31px;
+.boxin {
     background-color: #f4f4f4;
     border-radius: 10px;
     margin-bottom: 10px;
+    display: flex;
+    align-items: center;
 }
 
-.location img {
+.boxin img {
+    width: 15px;
+    height: 15px;
+    margin-top: 0px;
+    margin-left: 8px;
+}
+
+.boxin h3 {
+    font-size: 12px;
     margin-left: 10px;
-    margin-right: 10px;
-}
-
-.location h3 {
-    margin-top: -16px;
-    margin-left: 40px;
-    font-size: 12px;
-}
-
-.email {
-    width: 318px;
-    height: 31px;
-    background-color: #f4f4f4;
-    margin-bottom: 10px;
-    border-radius: 10px;
-    text-decoration: underline;
-}
-
-.email img {
-    margin-left: 10px;
-    margin-right: 10px;
-}
-
-.email h3 {
-    margin-top: -16px;
-    margin-left: 40px;
-    font-size: 12px;
-}
-
-.phone {
-    width: 318px;
-    height: 31px;
-    background-color: #f4f4f4;
-    margin-bottom: 10px;
-    border-radius: 10px;
-}
-
-.phone img {
-    margin-left: 7px;
-    margin-right: 10px;
-    margin-top: 5px;
-}
-
-.phone h3 {
-    margin-top: -25px;
-    margin-left: 40px;
-    font-size: 12px;
-}
-
-.telephone {
-    width: 318px;
-    height: 31px;
-    background-color: #f4f4f4;
-    margin-bottom: 10px;
-    border-radius: 10px;
-}
-
-.telephone img {
-    margin-left: 10px;
-    margin-right: 10px;
-}
-
-.telephone h3 {
-    margin-top: -16px;
-    margin-left: 40px;
-    font-size: 12px;
-}
-
-.number {
-    width: 318px;
-    height: 31px;
-    background-color: #f4f4f4;
-    margin-bottom: 10px;
-    border-radius: 10px;
-}
-
-.number img {
-    margin-left: 10px;
-    margin-right: 10px;
-}
-
-.number h3 {
-    margin-top: -16px;
-    margin-left: 40px;
-    font-size: 12px;
+    margin-top: 8px;
+    padding-left: 5px;
+    padding-right: 100px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .rating {
-    position: absolute;
-    top: 20.3%;
-    left: 75%;
+    margin-top: 80px;
+    margin-left: 50px;
 }
 
-.heart {
+.heartStar {
     display: flex;
-    align-items: center;
-    margin-bottom: 20px;
 }
 
-.heart img {
-    width: 24px;
-    height: 24px;
-    margin-right: 5px;
-}
-
-.heart h3 {
-    margin: 0;
+.heartStar h3 {
     font-size: 16px;
-    margin-right: 10px;
-}
-
-.star {
-    display: flex;
-    align-items: center;
-}
-
-.star img {
-    width: 24px;
-    height: 24px;
-    margin-right: 5px;
-}
-
-.star h3 {
-    margin: 0;
-    font-size: 16px;
-    margin-right: 10px;
+    margin-left: 10px;
 }
 
 .Hashtage {
     display: flex;
-    margin-top: 30px;
+    margin-top: 10px;
 }
 
-.HashtagBox1 {
+.HashtagBox {
     width: 60.07px;
     height: 25px;
     margin-right: 6px;
@@ -221,7 +106,7 @@ a {
     border-radius: 20px;
 }
 
-.HashtagBox1 h3 {
+.HashtagBox h3 {
     font-size: 12px;
     color: white;
     position: absolute;
@@ -229,26 +114,11 @@ a {
     margin-left: 7px;
 }
 
-.HashtagBox2 {
-    width: 60.07px;
-    height: 25px;
-    background-color: black;
-    border-radius: 20px;
-}
-
-.HashtagBox2 h3 {
-    color: white;
-    font-size: 12px;
-    position: absolute;
-    margin-top: 5px;
-    margin-left: 6px;
-}
-
 .introduction {
     max-width: 526px;
-    position: absolute;
-    top: 35%;
-    left: 51%;
+    width: 100%;
+    margin-top: -100px;
+    margin-left: 620px;
 }
 
 .introduction h2 {
@@ -270,22 +140,41 @@ a {
 }
 
 .middleLine {
-    width: 1075px;
-    height: 1.2px;
-    top: 45%;
-    left: 13%;
-    position: absolute;
-    background-color: #cecece;
+    max-width: 1075px;
+    width: 100%;
+    height: 2px;
+    background-color: #000000;
+    margin-top: 20px;
+    margin-left: 70px;
+}
+
+.middleTop {
+    display: flex;
+    margin-top: 10px;
+}
+
+.middleText {
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 80px;
+}
+
+.middle {
+    margin-top: 50px;
+    margin-left: 180px;
+}
+
+.down {
+    margin-top: 20px;
+    display: flex;
 }
 
 .menu {
-    position: absolute;
-    top: 47%;
-    left: 12%;
+    margin-top: 10px;
 }
 
 .menu h2 {
-    margin-left: 26px;
+    margin-left: 80px;
     font-size: 24px;
     font-weight: bold;
 }
@@ -296,6 +185,7 @@ a {
     justify-content: space-between;
     max-width: 600px;
     margin: 0 auto;
+    margin-left: 60px;
 }
 
 .menuBox {
@@ -321,9 +211,7 @@ a {
 }
 
 .reviews {
-    position: absolute;
-    top: 47%;
-    left: 57.5%;
+    margin-top: 10px;
 }
 
 .reviewsfont {
@@ -350,7 +238,6 @@ a {
     border: 1px solid #ffffff;
     padding: 10px;
 }
-
 .review {
     border-bottom: 1px solid #ccc;
     padding-bottom: 10px;
@@ -369,7 +256,6 @@ a {
     border-radius: 50%;
     margin-right: 10px;
 }
-
 .nickname {
     font-size: 16px;
     font-weight: bold;
@@ -377,7 +263,6 @@ a {
     top: -30%;
     left: 18%;
 }
-
 .star-rating {
     font-size: 18px;
     color: gold;
@@ -394,7 +279,6 @@ a {
     top: -82%;
     left: 79%;
 }
-
 .comment {
     font-size: 12px;
     max-width: 230px;
@@ -404,14 +288,11 @@ a {
 }
 
 .modify {
-    width: 68px;
+    width: 110px;
     height: 25px;
-    margin-right: 6px;
+    margin-left: 1006px;
     background-color: black;
     border-radius: 20px;
-    position: absolute;
-    top: 87%;
-    left: 82%;
 }
 
 .modify h3 {
@@ -420,6 +301,8 @@ a {
     font-size: 14px;
     margin-left: 6px;
     margin-top: 2px;
+    padding-top: 5px;
+    padding-left: 20px;
 }
 
 .modify a:hover {
