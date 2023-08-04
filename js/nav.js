@@ -1,18 +1,18 @@
 // nav.js
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     fetch('nav.html')
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById('navbar').innerHTML = data;
+        .then((response) => response.text())
+        .then((data) => {
+            document.getElementById('navbar').innerHTML = data
             // 내비게이션 바가 로드된 후에 이벤트를 설정합니다.
-            setupNavigationEvents();
+            setupNavigationEvents()
         })
-        .catch(error => {
-            console.error('Error fetching navbar:', error);
-        });
-});
+        .catch((error) => {
+            console.error('Error fetching navbar:', error)
+        })
+})
 
-window.addEventListener('load', createNavbar);
+window.addEventListener('load', createNavbar)
 
 //
 // function search() {
@@ -77,89 +77,84 @@ window.addEventListener('load', createNavbar);
 //     }
 // });
 
-
 // 음식 1//
-var smallfood1Btn = document.getElementById('smallfood1Button');
+var smallfood1Btn = document.getElementById('smallfood1Button')
 smallfood1Btn.addEventListener('click', function () {
-    window.location.href = 'smallfood1Btn.html';
-});
+    window.location.href = 'smallfood1Btn.html'
+})
 // 음식 2//
-var smallfood2Btn = document.getElementById('smallfood2Button');
+var smallfood2Btn = document.getElementById('smallfood2Button')
 smallfood2Btn.addEventListener('click', function () {
-    window.location.href = 'smallfood2Btn.html';
-});
+    window.location.href = 'smallfood2Btn.html'
+})
 // 음식 3//
-var smallfood3Btn = document.getElementById('smallfood3Button');
+var smallfood3Btn = document.getElementById('smallfood3Button')
 smallfood3Btn.addEventListener('click', function () {
-    window.location.href = 'smallfood3Btn.html';
+    window.location.href = 'smallfood3Btn.html'
 })
 // 음식 4//
-var smallfood4Btn = document.getElementById('smallfood4Button');
+var smallfood4Btn = document.getElementById('smallfood4Button')
 smallfood4Btn.addEventListener('click', function () {
-    window.location.href = 'smallfood4Btn.html';
+    window.location.href = 'smallfood4Btn.html'
 })
 // 음식 5//
-var smallfood5Btn = document.getElementById('smallfood5Button');
+var smallfood5Btn = document.getElementById('smallfood5Button')
 smallfood5Btn.addEventListener('click', function () {
-    window.location.href = 'smallfood5Btn.html';
+    window.location.href = 'smallfood5Btn.html'
 })
 // 음식 6//
-var smallfood6Btn = document.getElementById('smallfood6Button');
+var smallfood6Btn = document.getElementById('smallfood6Button')
 smallfood6Btn.addEventListener('click', function () {
-    window.location.href = 'smallfood6Btn.html';
+    window.location.href = 'smallfood6Btn.html'
 })
 // 음식 7//
-var smallfood7Btn = document.getElementById('smallfood7Button');
+var smallfood7Btn = document.getElementById('smallfood7Button')
 smallfood7Btn.addEventListener('click', function () {
-    window.location.href = 'smallfood7Btn.html';
+    window.location.href = 'smallfood7Btn.html'
 })
 // 음식 8//
-var smallfood8Btn = document.getElementById('smallfood8Button');
+var smallfood8Btn = document.getElementById('smallfood8Button')
 smallfood8Btn.addEventListener('click', function () {
-    window.location.href = 'smallfood8Btn.html';
+    window.location.href = 'smallfood8Btn.html'
 })
 // 음식 9//
-var smallfood9Btn = document.getElementById('smallfood9Button');
+var smallfood9Btn = document.getElementById('smallfood9Button')
 smallfood9Btn.addEventListener('click', function () {
-    window.location.href = 'smallfood9Btn.html';
+    window.location.href = 'smallfood9Btn.html'
 })
 // 음식 10//
-var smallfood10Btn = document.getElementById('smallfood10Button');
+var smallfood10Btn = document.getElementById('smallfood10Button')
 smallfood10Btn.addEventListener('click', function () {
-    window.location.href = 'smallfood10Btn.html';
+    window.location.href = 'smallfood10Btn.html'
 })
 
 // 비음식 1//
-var smallnonfood1Btn = document.getElementById('smallnonfood1Button');
+var smallnonfood1Btn = document.getElementById('smallnonfood1Button')
 smallnonfood1Btn.addEventListener('click', function () {
-    window.location.href = 'smallnonfood1Btn.html';
+    window.location.href = 'smallnonfood1Btn.html'
 })
 // 비음식 2//
-var smallnonfood2Btn = document.getElementById('smallnonfood2Button');
+var smallnonfood2Btn = document.getElementById('smallnonfood2Button')
 smallnonfood2Btn.addEventListener('click', function () {
-    window.location.href = 'smallnonfood2Btn.html';
+    window.location.href = 'smallnonfood2Btn.html'
 })
 // 비음식 3//
-var smallnonfood3Btn = document.getElementById('smallnonfood3Button');
+var smallnonfood3Btn = document.getElementById('smallnonfood3Button')
 smallnonfood3Btn.addEventListener('click', function () {
-    window.location.href = 'smallnonfood3Btn.html';
+    window.location.href = 'smallnonfood3Btn.html'
 })
 // 비음식 4//
-var smallnonfood4Btn = document.getElementById('smallnonfood4Button');
+var smallnonfood4Btn = document.getElementById('smallnonfood4Button')
 smallnonfood4Btn.addEventListener('click', function () {
-    window.location.href = 'smallnonfood4Btn.html';
+    window.location.href = 'smallnonfood4Btn.html'
 })
 // 비음식 5//
-var smallnonfood5Btn = document.getElementById('smallnonfood5Button');
+var smallnonfood5Btn = document.getElementById('smallnonfood5Button')
 smallnonfood5Btn.addEventListener('click', function () {
-    window.location.href = 'smallnonfood5Btn.html';
+    window.location.href = 'smallnonfood5Btn.html'
 })
 // 비음식 6//
-var smallnonfood6Btn = document.getElementById('smallnonfood6Button');
+var smallnonfood6Btn = document.getElementById('smallnonfood6Button')
 smallnonfood6Btn.addEventListener('click', function () {
-    window.location.href = 'smallnonfood6Btn.html';
+    window.location.href = 'smallnonfood6Btn.html'
 })
-
-
-
-

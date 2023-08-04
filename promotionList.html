@@ -1,143 +1,163 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>가게 홍보 페이지</title>
-    <link rel="stylesheet" href="css/promotionList.css" />
-    <link rel="stylesheet" href="css/index.css" />
-</head>
-<body>
-<nav id="navbar"></nav>
-  <div class="container">
-      <div class="promotionSelectBtWrap">
-          <div class="promotionBtWrap">
-              <div id="recentSort" class="sortButton active">최신순</div>
-              <div id="likeSort" class="sortButton">좋아요순</div>
-              <div id="viewSort" class="sortButton">조회수순</div>
-          </div>
+    <head>
+        <meta charset="UTF-8" />
+        <title>가게 홍보 페이지</title>
+        <link rel="stylesheet" href="css/promotionList.css" />
+        <link rel="stylesheet" href="css/index.css" />
+    </head>
+    <body>
+        <nav id="navbar"></nav>
+        <div class="container">
+            <div class="promotionSelectBtWrap">
+                <div class="promotionBtWrap">
+                    <div id="recentSort" class="sortButton active">최신순</div>
+                    <div id="likeSort" class="sortButton">좋아요순</div>
+                    <div id="viewSort" class="sortButton">조회수순</div>
+                </div>
 
-          <div class="promotionFilterBtWrap">
-              <div id="filterBt" onclick="searchAddress();">지역 필터</div>
-          </div>
+                <div class="promotionFilterBtWrap">
+                    <div id="filterBt" onclick="searchAddress();">
+                        지역 필터
+                    </div>
+                </div>
 
-          <div class="selectedCityBt"></div>
-      </div>
-      <div class="promotionListWrap">
-          <div class="promotionCard" onclick="moveDetail(1);">
-              <img class="promotionImg" src="img/storeImgSample.svg" />
-              <h3>도라에몽이 왔다간 가게</h3>
-              <div class="storeIntro">우리가게는 어떻고 저떻고 그래서 이래서 좋아요</div>
-              <div class="promotionInfo">
-                  <img src="img/good.svg" />
-                  <div class="storeInfo">
-                      <img src="img/store.svg" />
-                      <p class="storeName">도라메옹</p>
-                  </div>
-              </div>
-          </div>
-          <div class="promotionCard">
-              <img class="promotionImg" src="img/storeImgSample.svg" />
-              <h3>도라에몽이 왔다간 가게</h3>
-              <div class="storeIntro">우리가게는 어떻고 저떻고 그래서 이래서 좋아요</div>
-              <div class="promotionInfo">
-                  <img src="img/good.svg" />
-                  <div class="storeInfo">
-                      <img src="img/store.svg" />
-                      <p class="storeName">도라메옹</p>
-                  </div>
-              </div>
-          </div>
-          <div class="promotionCard">
-              <img class="promotionImg" src="img/storeImgSample.svg" />
-              <h3>도라에몽이 왔다간 가게</h3>
-              <div class="storeIntro">우리가게는 어떻고 저떻고 그래서 이래서 좋아요</div>
-              <div class="promotionInfo">
-                  <img src="img/good.svg" />
-                  <div class="storeInfo">
-                      <img src="img/store.svg" />
-                      <p class="storeName">도라메옹</p>
-                  </div>
-              </div>
-          </div>
-          <div class="promotionCard">
-              <img class="promotionImg" src="img/storeImgSample.svg" />
-              <h3>도라에몽이 왔다간 가게</h3>
-              <div class="storeIntro">우리가게는 어떻고 저떻고 그래서 이래서 좋아요</div>
-              <div class="promotionInfo">
-                  <img src="img/good.svg" />
-                  <div class="storeInfo">
-                      <img src="img/store.svg" />
-                      <p class="storeName">도라메옹</p>
-                  </div>
-              </div>
-          </div>
-          <div class="promotionCard">
-              <img class="promotionImg" src="img/storeImgSample.svg" />
-              <h3>도라에몽이 왔다간 가게</h3>
-              <div class="storeIntro">우리가게는 어떻고 저떻고 그래서 이래서 좋아요</div>
-              <div class="promotionInfo">
-                  <img src="img/good.svg" />
-                  <div class="storeInfo">
-                      <img src="img/store.svg" />
-                      <p class="storeName">도라메옹</p>
-                  </div>
-              </div>
-          </div>
-          <div class="promotionCard">
-              <img class="promotionImg" src="img/storeImgSample.svg" />
-              <h3>도라에몽이 왔다간 가게</h3>
-              <div class="storeIntro">우리가게는 어떻고 저떻고 그래서 이래서 좋아요</div>
-              <div class="promotionInfo">
-                  <img src="img/good.svg" />
-                  <div class="storeInfo">
-                      <img src="img/store.svg" />
-                      <p class="storeName">도라메옹</p>
-                  </div>
-              </div>
-          </div>
-          <div class="promotionCard">
-              <img class="promotionImg" src="img/storeImgSample.svg" />
-              <h3>도라에몽이 왔다간 가게</h3>
-              <div class="storeIntro">우리가게는 어떻고 저떻고 그래서 이래서 좋아요</div>
-              <div class="promotionInfo">
-                  <img src="img/good.svg" />
-                  <div class="storeInfo">
-                      <img src="img/store.svg" />
-                      <p class="storeName">도라메옹</p>
-                  </div>
-              </div>
-          </div>
-          <div class="promotionCard">
-              <img class="promotionImg" src="img/storeImgSample.svg" />
-              <h3>도라에몽이 왔다간 가게</h3>
-              <div class="storeIntro">우리가게는 어떻고 저떻고 그래서 이래서 좋아요</div>
-              <div class="promotionInfo">
-                  <img src="img/good.svg" />
-                  <div class="storeInfo">
-                      <img src="img/store.svg" />
-                      <p class="storeName">도라메옹</p>
-                  </div>
-              </div>
-          </div>
-          <div class="promotionCard">
-              <img class="promotionImg" src="img/storeImgSample.svg" />
-              <h3>도라에몽이 왔다간 가게</h3>
-              <div class="storeIntro">우리가게는 어떻고 저떻고 그래서 이래서 좋아요</div>
-              <div class="promotionInfo">
-                  <img src="img/good.svg" />
-                  <div class="storeInfo">
-                      <img src="img/store.svg" />
-                      <p class="storeName">도라메옹</p>
-                  </div>
-              </div>
-          </div>
-      </div>
-      <div id="buttonContainer"></div>
-  </div>
-  <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="js/index.js"></script>
-  <script src="js/promotionList.js"></script>
-  <script src="js/pagination.js"></script>
-</body>
+                <div class="selectedCityBt"></div>
+            </div>
+            <div class="promotionListWrap">
+                <div class="promotionCard" onclick="moveDetail(1);">
+                    <img class="promotionImg" src="img/storeImgSample.svg" />
+                    <h3>도라에몽이 왔다간 가게</h3>
+                    <div class="storeIntro">
+                        우리가게는 어떻고 저떻고 그래서 이래서 좋아요
+                    </div>
+                    <div class="promotionInfo">
+                        <img src="img/good.svg" />
+                        <div class="storeInfo">
+                            <img src="img/store.svg" />
+                            <p class="storeName">도라메옹</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="promotionCard">
+                    <img class="promotionImg" src="img/storeImgSample.svg" />
+                    <h3>도라에몽이 왔다간 가게</h3>
+                    <div class="storeIntro">
+                        우리가게는 어떻고 저떻고 그래서 이래서 좋아요
+                    </div>
+                    <div class="promotionInfo">
+                        <img src="img/good.svg" />
+                        <div class="storeInfo">
+                            <img src="img/store.svg" />
+                            <p class="storeName">도라메옹</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="promotionCard">
+                    <img class="promotionImg" src="img/storeImgSample.svg" />
+                    <h3>도라에몽이 왔다간 가게</h3>
+                    <div class="storeIntro">
+                        우리가게는 어떻고 저떻고 그래서 이래서 좋아요
+                    </div>
+                    <div class="promotionInfo">
+                        <img src="img/good.svg" />
+                        <div class="storeInfo">
+                            <img src="img/store.svg" />
+                            <p class="storeName">도라메옹</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="promotionCard">
+                    <img class="promotionImg" src="img/storeImgSample.svg" />
+                    <h3>도라에몽이 왔다간 가게</h3>
+                    <div class="storeIntro">
+                        우리가게는 어떻고 저떻고 그래서 이래서 좋아요
+                    </div>
+                    <div class="promotionInfo">
+                        <img src="img/good.svg" />
+                        <div class="storeInfo">
+                            <img src="img/store.svg" />
+                            <p class="storeName">도라메옹</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="promotionCard">
+                    <img class="promotionImg" src="img/storeImgSample.svg" />
+                    <h3>도라에몽이 왔다간 가게</h3>
+                    <div class="storeIntro">
+                        우리가게는 어떻고 저떻고 그래서 이래서 좋아요
+                    </div>
+                    <div class="promotionInfo">
+                        <img src="img/good.svg" />
+                        <div class="storeInfo">
+                            <img src="img/store.svg" />
+                            <p class="storeName">도라메옹</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="promotionCard">
+                    <img class="promotionImg" src="img/storeImgSample.svg" />
+                    <h3>도라에몽이 왔다간 가게</h3>
+                    <div class="storeIntro">
+                        우리가게는 어떻고 저떻고 그래서 이래서 좋아요
+                    </div>
+                    <div class="promotionInfo">
+                        <img src="img/good.svg" />
+                        <div class="storeInfo">
+                            <img src="img/store.svg" />
+                            <p class="storeName">도라메옹</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="promotionCard">
+                    <img class="promotionImg" src="img/storeImgSample.svg" />
+                    <h3>도라에몽이 왔다간 가게</h3>
+                    <div class="storeIntro">
+                        우리가게는 어떻고 저떻고 그래서 이래서 좋아요
+                    </div>
+                    <div class="promotionInfo">
+                        <img src="img/good.svg" />
+                        <div class="storeInfo">
+                            <img src="img/store.svg" />
+                            <p class="storeName">도라메옹</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="promotionCard">
+                    <img class="promotionImg" src="img/storeImgSample.svg" />
+                    <h3>도라에몽이 왔다간 가게</h3>
+                    <div class="storeIntro">
+                        우리가게는 어떻고 저떻고 그래서 이래서 좋아요
+                    </div>
+                    <div class="promotionInfo">
+                        <img src="img/good.svg" />
+                        <div class="storeInfo">
+                            <img src="img/store.svg" />
+                            <p class="storeName">도라메옹</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="promotionCard">
+                    <img class="promotionImg" src="img/storeImgSample.svg" />
+                    <h3>도라에몽이 왔다간 가게</h3>
+                    <div class="storeIntro">
+                        우리가게는 어떻고 저떻고 그래서 이래서 좋아요
+                    </div>
+                    <div class="promotionInfo">
+                        <img src="img/good.svg" />
+                        <div class="storeInfo">
+                            <img src="img/store.svg" />
+                            <p class="storeName">도라메옹</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="buttonContainer"></div>
+        </div>
+        <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="js/index.js"></script>
+        <script src="js/promotionList.js"></script>
+        <script src="js/pagination.js"></script>
+    </body>
 </html>

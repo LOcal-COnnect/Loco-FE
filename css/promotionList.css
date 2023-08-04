@@ -1,16 +1,17 @@
-.promotionSelectBtWrap{
+.promotionSelectBtWrap {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     margin-top: 15px;
 }
 
-.promotionBtWrap, .promotionFilterBtWrap{
+.promotionBtWrap,
+.promotionFilterBtWrap {
     display: flex;
     flex-direction: row;
 }
 
-.selectedCityBt{
+.selectedCityBt {
     display: none;
     font-size: 13px;
     padding: 3px 10px;
@@ -18,7 +19,9 @@
     border: 1px solid #848484;
 }
 
-#recentSort, #likeSort, #viewSort{
+#recentSort,
+#likeSort,
+#viewSort {
     font-size: 13px;
     font-weight: bolder;
     border-radius: 20px;
@@ -32,11 +35,11 @@
 #recentSort.sortButton.active,
 #likeSort.sortButton.active,
 #viewSort.sortButton.active {
-    background-color: #FF9900;
+    background-color: #ff9900;
     border: 0;
     color: white;
 }
-#filterBt{
+#filterBt {
     font-size: 13px;
     font-weight: bolder;
     border-radius: 20px;
@@ -47,7 +50,7 @@
     cursor: pointer;
 }
 
-#moveWriteProBt{
+#moveWriteProBt {
     font-size: 13px;
     font-weight: bolder;
     border-radius: 20px;
@@ -58,7 +61,7 @@
     cursor: pointer;
 }
 
-.promotionListWrap{
+.promotionListWrap {
     flex-wrap: wrap;
     display: flex;
     flex-direction: row;
@@ -66,7 +69,7 @@
     justify-content: space-between;
 }
 
-.promotionCard{
+.promotionCard {
     padding: 15px;
     border: 0;
     border-radius: 20px;
@@ -78,37 +81,37 @@
     cursor: pointer;
 }
 
-.promotionCard:hover{
-    box-shadow: 4px 4px 4px 3px rgb(0,0,0,0.03);
+.promotionCard:hover {
+    box-shadow: 4px 4px 4px 3px rgb(0, 0, 0, 0.03);
 }
 
-.promotionImg{
+.promotionImg {
     width: 100%;
     height: auto;
 }
 
-.promotionCard h3{
+.promotionCard h3 {
     font-size: 15px;
     margin: 10px 0;
 }
 
-.storeIntro{
+.storeIntro {
     font-size: 12px;
     height: 50px;
 }
 
-.promotionInfo{
+.promotionInfo {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
 
-.storeInfo{
+.storeInfo {
     display: flex;
     flex-direction: row;
 }
 
-.storeName{
+.storeName {
     margin-left: 5px;
     font-size: small;
 }
@@ -123,7 +126,7 @@
     }
 }
 
-#buttonContainer{
+#buttonContainer {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -149,7 +152,7 @@
     }
 }
 
-@media(max-width: 450px){
+@media (max-width: 450px) {
     .promotionListWrap {
         flex-direction: column;
         align-items: center;

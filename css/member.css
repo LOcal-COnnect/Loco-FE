@@ -1,60 +1,64 @@
-.selectTitle{
+.selectTitle {
     position: relative;
     display: flex;
     justify-content: center;
 }
 
-.backIcon{
+.backIcon {
     position: absolute;
     left: 0;
     top: 40%;
 }
 
-.selectBody{
+.selectBody {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     margin-top: 15px;
 }
 
-.selectStore, .selectMember{
+.selectStore,
+.selectMember {
     width: calc(40% - 10px);
     height: 65vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #FFF4E2;
+    background-color: #fff4e2;
     border-radius: 20px;
     cursor: pointer;
-    box-shadow: 1px 1px 2px rgb(0,0,0,0.03);
+    box-shadow: 1px 1px 2px rgb(0, 0, 0, 0.03);
 }
 
-
-
-.selectStore > p, .selectMember > p{
+.selectStore > p,
+.selectMember > p {
     font-weight: bolder;
     font-size: 18px;
     color: #666666;
 }
 
-.selectStore > img, .selectMember > img{
+.selectStore > img,
+.selectMember > img {
     margin-top: 15px;
 }
 
-.selectStore:hover, .selectMember:hover{
-    background-color: #FF9900;
+.selectStore:hover,
+.selectMember:hover {
+    background-color: #ff9900;
 }
 
-.selectStore:hover img, .selectMember:hover img {
-    content: url("../img/selectedStore.svg");
+.selectStore:hover img,
+.selectMember:hover img {
+    content: url('../img/selectedStore.svg');
 }
 
 .selectMember:hover img {
-      content: url("../img/selectedMember.svg");
-  }
+    content: url('../img/selectedMember.svg');
+}
 
-.selectStore:hover p, .selectMember:hover p {
+.selectStore:hover p,
+.selectMember:hover p {
     color: #000000;
 }
 
@@ -63,7 +67,7 @@ input::placeholder {
 }
 
 /*storeJoin.html*/
-.storeJoinTitle{
+.storeJoinTitle {
     height: 10vh;
     position: relative;
     align-items: flex-end;
@@ -71,14 +75,14 @@ input::placeholder {
     justify-content: center;
 }
 
-.storeJoinTitle > img{
+.storeJoinTitle > img {
     position: absolute;
     left: 0;
     bottom: 0;
     cursor: pointer;
 }
 
-.storeJoinBody{
+.storeJoinBody {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -86,7 +90,7 @@ input::placeholder {
     height: 90vh;
 }
 
-.storeJoinBody > input{
+.storeJoinBody > input {
     width: 40vw;
     padding: 10px;
     border-radius: 20px;
@@ -94,7 +98,8 @@ input::placeholder {
     margin: 5px 0;
 }
 
-.storeNumCheckInput, .selectAddrInput{
+.storeNumCheckInput,
+.selectAddrInput {
     width: 40vw;
     padding: 10px;
     border-radius: 20px;
@@ -105,17 +110,17 @@ input::placeholder {
     justify-content: space-between;
 }
 
-.storeNumCheckInput > input{
+.storeNumCheckInput > input {
     border: 0;
     width: calc(100% - 65px);
 }
 
-.selectAddrInput > input{
+.selectAddrInput > input {
     border: 0;
     width: calc(100% - 30px);
 }
 
-.storeNumCheckInput > button{
+.storeNumCheckInput > button {
     border: 0;
     border-radius: 20px;
     background-color: black;
@@ -125,7 +130,7 @@ input::placeholder {
     cursor: pointer;
 }
 
-.storeJoinBt{
+.storeJoinBt {
     margin-top: 30px;
     background-color: black;
     border: 0;
@@ -136,9 +141,8 @@ input::placeholder {
     cursor: pointer;
 }
 
-
 /*memberJoin.html*/
-.memberJoinTitle{
+.memberJoinTitle {
     height: 10vh;
     position: relative;
     align-items: flex-end;
@@ -146,14 +150,14 @@ input::placeholder {
     justify-content: center;
 }
 
-.memberJoinTitle > img{
+.memberJoinTitle > img {
     position: absolute;
     left: 0;
     bottom: 0;
     cursor: pointer;
 }
 
-.memberJoinBody{
+.memberJoinBody {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -161,15 +165,15 @@ input::placeholder {
     height: 80vh;
 }
 
-.memberJoinText{
+.memberJoinText {
     margin-bottom: 7px;
-    color: #6F6F6F;
+    color: #6f6f6f;
     width: 40vw;
     font-size: 12px;
     text-align: left;
 }
 
-.memberJoinBody > input{
+.memberJoinBody > input {
     width: 40vw;
     padding: 10px;
     border-radius: 20px;
@@ -177,7 +181,7 @@ input::placeholder {
     margin: 5px 0;
 }
 
-.memberJoinBt{
+.memberJoinBt {
     margin-top: 30px;
     background-color: black;
     border: 0;
@@ -189,14 +193,14 @@ input::placeholder {
 }
 
 /*로그인 페이지*/
-.loginTitle{
+.loginTitle {
     margin-top: 30px;
     position: relative;
     display: flex;
     justify-content: center;
 }
 
-.loginBody{
+.loginBody {
     height: calc(50vh);
     display: flex;
     flex-direction: column;
@@ -204,12 +208,12 @@ input::placeholder {
     align-items: center;
 }
 
-.loginBody > h3{
+.loginBody > h3 {
     color: #666666;
     margin-bottom: 20px;
 }
 
-.loginBody > input{
+.loginBody > input {
     width: 40vw;
     padding: 10px;
     border-radius: 20px;
@@ -217,7 +221,7 @@ input::placeholder {
     margin: 5px 0;
 }
 
-.loginBody > p{
+.loginBody > p {
     width: 40vw;
     text-align: end;
     font-size: 12px;
@@ -226,7 +230,7 @@ input::placeholder {
     padding: 5px 10px 0 0;
     color: #666666;
 }
-.loginBt{
+.loginBt {
     margin-top: 30px;
     background-color: black;
     border: 0;
@@ -239,14 +243,14 @@ input::placeholder {
 
 /*비밀번호 찾기 페이지*/
 
-.findTitle{
+.findTitle {
     margin-top: 30px;
     position: relative;
     display: flex;
     justify-content: center;
 }
 
-.findBody{
+.findBody {
     height: calc(50vh);
     display: flex;
     flex-direction: column;
@@ -254,12 +258,12 @@ input::placeholder {
     align-items: center;
 }
 
-.findBody > h3{
+.findBody > h3 {
     color: #666666;
     margin-bottom: 10px;
 }
 
-.findBody > input{
+.findBody > input {
     margin-top: 30px;
     width: 40vw;
     padding: 10px;
@@ -267,12 +271,12 @@ input::placeholder {
     border: 0.5px solid #999999;
 }
 
-.findBody > p{
+.findBody > p {
     font-size: 11px;
     color: #999999;
 }
 
-.sendPwBt{
+.sendPwBt {
     margin-top: 15px;
     background-color: black;
     border: 0;

@@ -1,3 +1,3 @@
-window.onload = function(){
-    var postNum = localStorage.getItem('postNum');
+window.onload = function () {
+    var postNum = localStorage.getItem('postNum')
 }

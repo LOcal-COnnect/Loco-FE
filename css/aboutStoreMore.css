@@ -1,4 +1,4 @@
-body{
+body {
     position: absolute;
     min-width: 768px;
     width: 1440px;
@@ -41,12 +41,11 @@ a:hover {
     display: flex;
 }
 
-.heartOut h3{
+.heartOut h3 {
     font-size: 13px;
     margin-top: 8px;
     margin-left: 7px;
 }
-
 
 .homeImage h3 {
     font-size: 20px;
@@ -59,7 +58,7 @@ a:hover {
     left: 13%;
     position: absolute;
 }
-  
+
 #home img {
     margin-right: 15px;
     margin-top: -8px;
@@ -78,7 +77,7 @@ a:hover {
 .location {
     width: 318px;
     height: 31px;
-    background-color: #F4F4F4;
+    background-color: #f4f4f4;
     border-radius: 10px;
     margin-bottom: 10px;
 }
@@ -97,7 +96,7 @@ a:hover {
 .email {
     width: 318px;
     height: 31px;
-    background-color: #F4F4F4;
+    background-color: #f4f4f4;
     margin-bottom: 10px;
     border-radius: 10px;
     text-decoration: underline;
@@ -117,7 +116,7 @@ a:hover {
 .phone {
     width: 318px;
     height: 31px;
-    background-color: #F4F4F4;
+    background-color: #f4f4f4;
     margin-bottom: 10px;
     border-radius: 10px;
 }
@@ -137,7 +136,7 @@ a:hover {
 .telephone {
     width: 318px;
     height: 31px;
-    background-color: #F4F4F4;
+    background-color: #f4f4f4;
     margin-bottom: 10px;
     border-radius: 10px;
 }
@@ -156,7 +155,7 @@ a:hover {
 .number {
     width: 318px;
     height: 31px;
-    background-color: #F4F4F4;
+    background-color: #f4f4f4;
     margin-bottom: 10px;
     border-radius: 10px;
 }
@@ -172,7 +171,6 @@ a:hover {
     font-size: 12px;
 }
 
-
 .rating {
     position: absolute;
     top: 15%;
@@ -180,17 +178,17 @@ a:hover {
 }
 
 .heart {
-    display: flex; 
-    align-items: center; 
+    display: flex;
+    align-items: center;
     margin-bottom: 20px;
 }
-  
+
 .heart img {
-    width: 24px; 
+    width: 24px;
     height: 24px;
-    margin-right: 5px; 
+    margin-right: 5px;
 }
-  
+
 .heart h3 {
     margin: 0;
     font-size: 16px;
@@ -198,24 +196,24 @@ a:hover {
 }
 
 .star {
-    display: flex; 
-    align-items: center; 
+    display: flex;
+    align-items: center;
 }
-  
+
 .star img {
-    width: 24px; 
+    width: 24px;
     height: 24px;
-    margin-right: 5px; 
+    margin-right: 5px;
 }
-  
+
 .star h3 {
     margin: 0;
     font-size: 16px;
     margin-right: 10px;
 }
- 
+
 .Hashtage {
-    display: flex; 
+    display: flex;
     margin-top: 30px;
 }
 
@@ -250,8 +248,6 @@ a:hover {
     margin-left: 6px;
 }
 
-
-
 .introduction {
     max-width: 526px;
     position: absolute;
@@ -263,20 +259,19 @@ a:hover {
     font-size: 15px;
     font-weight: bold;
 }
-  
+
 .introBox {
     height: 97px;
     overflow: auto;
-    background-color: #F4F4F4;
+    background-color: #f4f4f4;
     border-radius: 10px;
 }
-  
+
 .introScript {
     font-size: 12px;
     margin: 13px;
     line-height: 1.5;
 }
-  
 
 .middle {
     top: 35%;
@@ -297,8 +292,6 @@ a:hover {
     height: 2px;
     background-color: #000000;
 }
-  
-
 
 .reviews {
     position: absolute;
@@ -329,7 +322,7 @@ a:hover {
     border: 1px solid #ffffff;
     padding: 10px;
 }
-  
+
 .review {
     border-bottom: 1px solid #ccc;
     padding-bottom: 10px;
@@ -337,18 +330,18 @@ a:hover {
     height: 210px;
     margin: 20px;
 }
-  
+
 .review:last-child {
-    border-bottom: none; 
+    border-bottom: none;
 }
-  
+
 .profile-picture {
     width: 50px;
     height: 50px;
     border-radius: 50%;
     margin-right: 10px;
 }
-  
+
 .nickname {
     font-size: 16px;
     font-weight: bold;
@@ -356,7 +349,7 @@ a:hover {
     top: -20%;
     left: 7%;
 }
-  
+
 .star-rating {
     font-size: 18px;
     color: gold;
@@ -365,15 +358,15 @@ a:hover {
     top: -25%;
     left: 7%;
 }
-  
+
 .date {
     font-size: 10px;
-    color: #8F8F8F;
+    color: #8f8f8f;
     position: relative;
     bottom: 105%;
     left: 19%;
 }
-  
+
 .comment {
     font-size: 14px;
     max-width: 550px;
@@ -390,7 +383,7 @@ a:hover {
     bottom: 80%;
     left: 70%;
 }
-  
+
 .modify {
     width: 113px;
     height: 25px;
@@ -410,9 +403,6 @@ a:hover {
     margin-top: 3.5px;
 }
 
-
-
-
 .container {
     display: flex;
     justify-content: center;
@@ -423,12 +413,12 @@ a:hover {
     bottom: 5%;
     left: 50%;
 }
-  
+
 .button-container {
     display: flex;
     gap: 32px;
 }
-  
+
 .button {
     display: flex;
     justify-content: center;
@@ -440,7 +430,6 @@ a:hover {
     border-radius: 100%;
 }
 
-
 .button:hover {
     background-color: black;
     color: white;
@@ -450,11 +439,5 @@ a:hover {
     background-color: black;
     color: white;
 }
-  
 
 /*수정 필요함*/
-
-
-
-
-
