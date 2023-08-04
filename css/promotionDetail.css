@@ -1,47 +1,47 @@
-.containerHeader{
+.containerHeader {
     padding: 10px 0;
 }
-.containerHeader > p{
+.containerHeader > p {
     font-size: 14px;
     cursor: pointer;
 }
 
-.containerPostWrap{
+.containerPostWrap {
     margin-top: 10px;
     border-radius: 20px;
     padding: 20px 30px;
-    border: 1px solid #D5D5D5;
+    border: 1px solid #d5d5d5;
 }
 
-.postHeadWrap{
+.postHeadWrap {
     display: flex;
     flex-direction: row;
 }
 
-.postTime{
-    color: #8F8F8F;
+.postTime {
+    color: #8f8f8f;
     margin-left: 10px;
     font-size: 12px;
     padding-top: 5px;
 }
 
-.postContentWrap{
+.postContentWrap {
     font-size: 12px;
     margin-top: 15px;
 }
-.postPictureWrap{
+.postPictureWrap {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
 
-.postPictureWrap > img{
+.postPictureWrap > img {
     width: calc(33.3% - 5px);
     height: auto;
     margin-top: 15px;
 }
 
-.postDetailWrap{
+.postDetailWrap {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -55,87 +55,87 @@
     font-size: 11px;
 }
 
-.postDetailWrap > div > img{
+.postDetailWrap > div > img {
     margin-left: 3px;
     margin-right: 2px;
 }
 
-.postDetailWrap > div > p{
+.postDetailWrap > div > p {
     margin-right: 2px;
 }
 
-.storeInfoWrap{
+.storeInfoWrap {
     cursor: pointer;
 }
 
-.storeInfoWrap > p{
+.storeInfoWrap > p {
     margin-left: 3px;
 }
 
-.postCommentWrap{
+.postCommentWrap {
     padding: 15px 30px;
 }
 
-.commentNumber{
+.commentNumber {
     font-size: 14px;
 }
 
-.commentInput{
+.commentInput {
     margin-top: 10px;
     display: flex;
     flex-direction: row;
 }
 
-.commentInput > img{
+.commentInput > img {
     width: 30px;
     height: 30px;
 }
 
-.commentInput > input{
+.commentInput > input {
     width: calc(100% - 30px);
     margin-left: 5px;
     padding: 2px;
     border-top: 0;
     border-left: 0;
     border-right: 0;
-    border-bottom: 1px solid #CECECE;
+    border-bottom: 1px solid #cecece;
 }
 
-.commentList{
+.commentList {
     padding: 10px 0;
     display: flex;
     flex-direction: row;
     align-items: center;
 }
 
-.commentList > img{
+.commentList > img {
     width: 30px;
     height: 30px;
     margin-right: 10px;
 }
 
-.commentContent{
+.commentContent {
     display: flex;
     flex-direction: column;
 }
 
-.commentContent > div{
+.commentContent > div {
     display: flex;
     flex-direction: row;
 }
 
-.commentTitle{
+.commentTitle {
     font-size: 14px;
 }
 
-.commentTime{
+.commentTime {
     font-size: 10px;
-    color: #8F8F8F;
+    color: #8f8f8f;
     padding-top: 3px;
     margin-left: 10px;
 }
 
-.comment{
+.comment {
     margin-top: 5px;
     font-size: 12px;
     color: black;
