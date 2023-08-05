@@ -8,25 +8,21 @@
 .myTabNav {
     width: 70vw;
     margin: 20px auto;
-}
-
-.myTabNav {
-    width: 70vw;
-    margin: 20px auto;
+    border-bottom: 1px solid #DADADA;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    display: flex;
     flex-direction: row;
     justify-content: space-around;
 }
+
 
 .myTabNav > div {
     cursor: pointer;
     text-align: center;
     width: calc(33.3% - 50px);
     padding: 15px 0;
-    color: #d6d6d6;
-    font-weight: bolder;
-}
-
-.myProfile {
     color: #d6d6d6;
     font-weight: bolder;
 }

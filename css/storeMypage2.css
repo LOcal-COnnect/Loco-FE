@@ -5,7 +5,7 @@
 }
 
 .myTabNav{
-  width: 70vw;
+  width: 60vw;
   margin: 20px auto;
   border-bottom: 1px solid #DADADA;
   border-top: 0;
@@ -355,7 +355,7 @@
   flex-wrap: wrap;
 }
 
-.home {
+.home2 {
   max-width: 483px;
   height: 45px;
   background-color: #ffffff;
@@ -365,7 +365,7 @@
   flex: 1;
 }
 
-.home img {
+.home2 img {
   width: 23px;
   height: 23px;
   margin-left: 15px;
@@ -373,7 +373,7 @@
   top: 6px;
 }
 
-.home h3 {
+.home2 h3 {
   margin-top: -12px;
   margin-left: 50px;
   font-size: 12px;
