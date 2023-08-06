@@ -5,7 +5,7 @@
 }
 
 .myTabNav {
-    width: 60vw;
+    width: 70vw;
     margin: 20px auto;
     border-bottom: 1px solid #dadada;
     border-top: 0;
@@ -47,6 +47,7 @@
     margin: 20px auto;
     width: 50vw;
     margin-top: 78px;
+    margin-left: 140px;
 }
 
 .myInfo > div {
@@ -103,6 +104,7 @@
     padding: 15px 30px;
     border-radius: 20px;
     border: 1px solid #d5d5d5;
+    margin-left: 10px;
 }
 
 .titleInput {
@@ -246,8 +248,8 @@
     max-width: 483px;
     flex-wrap: wrap;
 }
-
-.home2 {
+/*
+.home {
     max-width: 483px;
     height: 45px;
     background-color: #ffffff;
@@ -270,7 +272,7 @@
     margin-left: 50px;
     font-size: 12px;
 }
-
+*/
 .location {
     max-width: 483px;
     height: 45px;
