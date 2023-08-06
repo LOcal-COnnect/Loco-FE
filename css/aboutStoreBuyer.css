@@ -143,20 +143,38 @@
     max-width: 1075px;
     width: 100%;
     height: 2px;
-    background-color: #8c8c8c;
+    background-color: #000000;
     margin-top: 20px;
     margin-left: 70px;
+}
+
+.middleTop {
+    display: flex;
+    margin-top: 10px;
+}
+
+.middleText {
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 80px;
+}
+
+.middle {
+    margin-top: 50px;
+    margin-left: 180px;
+}
+
+.down {
+    margin-top: 20px;
+    display: flex;
 }
 
 .menu {
-    max-width: 950px;
-    width: 100%;
-    margin-top: 20px;
-    margin-left: 70px;
+    margin-top: 10px;
 }
 
 .menu h2 {
-    margin-left: 26px;
+    margin-left: 80px;
     font-size: 24px;
     font-weight: bold;
 }
@@ -166,7 +184,8 @@
     flex-wrap: wrap;
     justify-content: space-between;
     max-width: 600px;
-    margin-left: 0px;
+    margin: 0 auto;
+    margin-left: 60px;
 }
 
 .menuBox {
@@ -191,13 +210,8 @@
     right: 20%;
 }
 
-.down {
-    display: flex;
-}
-
 .reviews {
-    margin-top: 20px;
-    margin-left: 10px;
+    margin-top: 10px;
 }
 
 .reviewsfont {
@@ -208,17 +222,17 @@
 .reviews h2 {
     font-size: 24px;
     font-weight: bold;
+    margin-left: 25px;
 }
 
 .viewsMore {
     font-size: 10px;
-    margin-top: 17px;
-    margin-left: 270px;
+    margin-top: 18px;
+    margin-left: 260px;
 }
 
 .review-box {
-    max-width: 430px;
-    width: 100%;
+    width: 430px;
     height: 530px;
     border: 1px solid #ffffff;
     padding: 10px;
@@ -228,7 +242,7 @@
     padding-bottom: 10px;
     width: 400px;
     height: 153px;
-    margin: 10px;
+    margin: 20px;
 }
 
 .review:last-child {
@@ -271,21 +285,23 @@
     top: -20px;
     left: 18%;
 }
+
 .modify {
-    width: 130px;
+    width: 110px;
     height: 25px;
-    margin-right: 6px;
+    margin-left: 1006px;
     background-color: black;
     border-radius: 20px;
-    margin-top: 10px;
-    margin-left: 970px;
 }
 
 .modify h3 {
     color: white;
     margin-right: 6px;
     font-size: 14px;
-    padding: 4px 33px;
+    margin-left: 6px;
+    margin-top: 2px;
+    padding-top: 5px;
+    padding-left: 20px;
 }
 
 .modify a:hover {

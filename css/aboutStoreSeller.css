@@ -227,9 +227,8 @@
 
 .viewsMore {
     font-size: 10px;
-    position: absolute;
-    top: 2.3%;
-    left: 90%;
+    margin-top: 18px;
+    margin-left: 260px;
 }
 
 .review-box {

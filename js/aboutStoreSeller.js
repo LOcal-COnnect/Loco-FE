@@ -53,14 +53,14 @@ window.addEventListener('load', function () {
 })
 
 // 해시태그 길이 조정
-const hashtagBox1 = document.querySelector('.HashtagBox1 h3')
+const hashtagBox = document.querySelector('.HashtagBox h3')
 const hashtagBox2 = document.querySelector('.HashtagBox2 h3')
 
 function adjustHashtagBoxSize() {
-    const hashtag1Width = hashtagBox1.clientWidth + 14
+    const hashtagWidth = hashtagBox.clientWidth + 14
     const hashtag2Width = hashtagBox2.clientWidth + 14
 
-    document.querySelector('.HashtagBox1').style.width = `${hashtag1Width}px`
+    document.querySelector('.HashtagBox').style.width = `${hashtagWidth}px`
     document.querySelector('.HashtagBox2').style.width = `${hashtag2Width}px`
 }
 
@@ -196,3 +196,10 @@ function addReview(review) {
 for (let i = reviews.length - 1; i >= Math.max(reviews.length - 3, 0); i--) {
     addReview(reviews[i])
 }
+
+// 더보기 이동
+function moveToB() {
+    window.location.href = 'aboutStoreMore.html' // b.html로 이동
+}
+
+document.getElementById('MoreButton').addEventListener('click', moveToB)
