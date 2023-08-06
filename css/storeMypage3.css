@@ -104,7 +104,7 @@
     padding: 15px 30px;
     border-radius: 20px;
     border: 1px solid #d5d5d5;
-    margin-left: 100px;
+    margin-left: 10px;
 }
 
 .titleInput {
@@ -259,7 +259,7 @@
     flex: 1;
 }
 
-.home img {
+.home2 img {
     width: 23px;
     height: 23px;
     margin-left: 15px;
@@ -267,7 +267,7 @@
     top: 6px;
 }
 
-.home h3 {
+.home2 h3 {
     margin-top: -12px;
     margin-left: 50px;
     font-size: 12px;

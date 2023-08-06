@@ -108,7 +108,7 @@
     padding: 15px 30px;
     border-radius: 20px;
     margin: 0 auto;
-    margin-left: 100px;
+    margin-left: 10px;
     border: 1px solid #d5d5d5;
 }
 
@@ -211,9 +211,9 @@
 
 /*내가쓴리뷰 tab3*/
 .tab3 {
-    width: 60vw;
+    width: 100vw;
     margin: 0 auto;
-    display: none;
+    display: flex;
     justify-content: center;
 }
 
@@ -265,7 +265,7 @@
     flex: 1;
 }
 
-.home img {
+.home2 img {
     width: 23px;
     height: 23px;
     margin-left: 15px;
@@ -273,13 +273,12 @@
     top: 6px;
 }
 
-.home h3 {
+.home2 h3 {
     margin-top: -12px;
     margin-left: 50px;
     font-size: 12px;
 }
 */
-
 .location {
     max-width: 483px;
     height: 45px;
@@ -318,7 +317,7 @@
 }
 
 .phone h3 {
-    margin-top: -10px;
+    margin-top: -16px;
     margin-left: 50px;
     font-size: 12px;
 }
@@ -589,6 +588,7 @@
 .register-button {
     display: flex;
     justify-content: center;
+    margin-right: 300px;
 }
 
 .register {
