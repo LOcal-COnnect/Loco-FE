@@ -46,17 +46,17 @@ function toggleHiddenCategory() {
     }
 }
 
-// 초기에 카테고리 버튼에 이벤트 리스너를 추가합니다.
+// 초기에 버튼에 이벤트 리스너를 추가합니다.
 categoryBtn.addEventListener("click", toggleHiddenCategory);
 
 
-// 카테고리 버튼에 대한 참조를 저장합니다.
-var mypageBtn = document.getElementById('mypageButton');
+//버튼에 대한 참조를 저장합니다.
+var mypageBtn = document.getElementById('usermypageButton');
 
-// 숨겨진 카테고리 요소에 대한 참조를 저장합니다.
+// 숨겨진 버튼 요소에 대한 참조를 저장합니다.
 var buttonContainer = document.getElementById("buttonContainer");
 
-// 숨겨진 카테고리를 보여주는 함수를 정의합니다.
+// 숨겨진 버튼을 보여주는 함수를 정의합니다.
 function togglebuttonContainer() {
     if (buttonContainer.style.display === "none") {
         buttonContainer.style.display = "block";
@@ -66,8 +66,9 @@ function togglebuttonContainer() {
 }
 
 // 초기에 카테고리 버튼에 이벤트 리스너를 추가합니다.
-mypageBtn.addEventListener("click", togglebuttonContainer());
-
+mypageBtn.addEventListener("click", function() {
+    togglebuttonContainer(); // 이 부분에서 괄호를 붙이지 않습니다.
+});
 
 var usermypageBtn = document.getElementById('usermypageButton');
 var logoutmypageBtn = document.getElementById('logoutButton');
@@ -75,6 +76,7 @@ var logoutmypageBtn = document.getElementById('logoutButton');
 usermypageBtn.addEventListener('click', function () {
     window.location.href = 'userMypage.html';
 });
+
 
 
 //카테고리 버튼들//

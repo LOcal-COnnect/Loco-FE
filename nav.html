@@ -35,144 +35,16 @@
                     </button>
                 </div>
                 <div class="mypage">
-                    <img class="mypageButton" src="img/MyPageButton.svg" onclick="moveDetail(1);"/>
-                </div>
+                    <img class="mypageButton" id="mypageButton" src="img/MyPageButton.svg" onclick="togglebuttonContainer();"/>
+                </div>                  
             </nav>
-            <div class="button-container">
-                <button class="usermypage-btn" id="usermypageButton">마이페이지</button>
-                <button class="logout-btn" id="logoutButton">로그아웃</button>
-            </div>
             <hr class="navbar-divider" />
-
-            <div id="hiddenCategory" style="display: none">
-                <div class="food">
-                    <div class="main-food">음식</div>
-                    <div class="large-food1">
-                        <button class="small-food1" id="smallfood1Button">
-                            곡물류 >
-                        </button>
-                        <div class="example-food1">쌀/보리/콩 등</div>
-                    </div>
-                    <div class="large-food2">
-                        <button class="small-food2" id="smallfood2Button">
-                            김치류 >
-                        </button>
-                        <div class="example-food2">
-                            배추김치/무김치/깍두기 등
-                        </div>
-                    </div>
-                    <div class="large-food3">
-                        <button class="small-food3" id="smallfood3Button">
-                            발효식품 >
-                        </button>
-                        <div class="example-food3">간장/고추장/된장 등</div>
-                    </div>
-                    <div class="large-food4">
-                        <button class="small-food4" id="smallfood4Button">
-                            면류 >
-                        </button>
-                        <div class="example-food4">국수/라면/우동 등</div>
-                    </div>
-                    <div class="large-food5">
-                        <button class="small-food5" id="smallfood5Button">
-                            떡류 >
-                        </button>
-                        <div class="example-food5">떡볶이/송편/인절미 등</div>
-                    </div>
-                    <div class="large-food6">
-                        <button class="small-food6" id="smallfood6Button">
-                            생선과 해산물 >
-                        </button>
-                        <div class="example-food6">명태/고등어/굴 등</div>
-                    </div>
-                    <div class="large-food7">
-                        <button class="small-food7" id="smallfood7Button">
-                            과일 >
-                        </button>
-                        <div class="example-food7">배/사과/복숭아 등</div>
-                    </div>
-                    <div class="large-food8">
-                        <button class="small-food8" id="smallfood8Button">
-                            차류 >
-                        </button>
-                        <div class="example-food8">녹차/홍차/율무차 등</div>
-                    </div>
-                    <div class="large-food9">
-                        <button class="small-food9" id="smallfood9Button">
-                            과자류 >
-                        </button>
-                        <div class="example-food9">한과/빈대떡/쌀과자 등</div>
-                    </div>
-                    <div class="large-food10">
-                        <button class="small-food10" id="smallfood10Button">
-                            한약류 >
-                        </button>
-                        <div class="example-food10">인삼/홍차/대추 등</div>
-                    </div>
+            <div class="parent-container">
+                <div class="button-container" id="buttonContainer" style="display: none" >
+                    <button class="usermypage-btn" id="usermypageButton">마이페이지</button>
+                    <button class="logout-btn" id="logoutButton">로그아웃</button>
                 </div>
-                <hr class="food-divider" />
-                <div class="non-food">
-                    <div class="main-non-food">비음식</div>
-                    <div class="large-non-food1">
-                        <button
-                            class="small-non-food1"
-                            id="smallnonfood1Button"
-                        >
-                            의류와 직물 >
-                        </button>
-                        <div class="example-non-food1">한복/삼베/비단 등</div>
-                    </div>
-                    <div class="large-non-food2">
-                        <button
-                            class="small-non-food2"
-                            id="smallnonfood2Button"
-                        >
-                            도자기와 세라믹 >
-                        </button>
-                        <div class="example-non-food2">강화도자기/기와 등</div>
-                    </div>
-                    <div class="large-non-food3">
-                        <button
-                            class="small-non-food3"
-                            id="smallnonfood3Button"
-                        >
-                            목공예품 >
-                        </button>
-                        <div class="example-non-food3">원목가구/칠보 등</div>
-                    </div>
-                    <div class="large-non-food4">
-                        <button
-                            class="small-non-food4"
-                            id="smallnonfood4Button"
-                        >
-                            기타 공예품 >
-                        </button>
-                        <div class="example-non-food4">
-                            한지공예/감람공예 등
-                        </div>
-                    </div>
-                    <div class="large-non-food5">
-                        <button
-                            class="small-non-food5"
-                            id="smallnonfood5Button"
-                        >
-                            화장품 >
-                        </button>
-                        <div class="example-non-food5">천연화장품/로션 등</div>
-                    </div>
-                    <div class="large-non-food6">
-                        <button
-                            class="small-non-food6"
-                            id="smallnonfood6Button"
-                        >
-                            금속공예품 >
-                        </button>
-                        <div class="example-non-food6">동상/반지 등</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-            <hr class="navbar-divider" />
+            </div> 
 
             <div id="hiddenCategory" style="display: none">
                 <div class="food">

@@ -46,37 +46,40 @@ function toggleHiddenCategory() {
     }
 }
 
-// 초기에 카테고리 버튼에 이벤트 리스너를 추가합니다.
+// 초기에 버튼에 이벤트 리스너를 추가합니다.
 categoryBtn.addEventListener("click", toggleHiddenCategory);
 
-// // mypageButton 요소 가져오기
-// const mypageButton = document.getElementById('mypageButton');
 
-// // mypageButton에 클릭 이벤트 리스너 추가하기
-// mypageButton.addEventListener('click', function () {
-//      // 사용자가 로그인되었는지 확인합니다. (사용자가 로그인되었다면 여기서 직접 구현할 수 있습니다)
-//     const isLoggedIn = false; // 사용자가 로그인되었을 경우 true로 변경합니다.
+//버튼에 대한 참조를 저장합니다.
+var mypageBtn = document.getElementById('usermypageButton');
 
-//     // 사용자가 로그인되지 않았다면 login.html 페이지로 이동합니다.
-//     if (!isLoggedIn) {
-//         window.location.href = '../login.html';
-//     } else {
-//         // 사용자가 로그인되었으면, 카테고리 버튼의 이벤트 리스너를 제거합니다.
-//         categoryBtn.removeEventListener("click", toggleHiddenCategory);
-//     }
-// });
+// 숨겨진 버튼 요소에 대한 참조를 저장합니다.
+var buttonContainer = document.getElementById("buttonContainer");
+
+// 숨겨진 버튼을 보여주는 함수를 정의합니다.
+function togglebuttonContainer() {
+    if (buttonContainer.style.display === "none") {
+        buttonContainer.style.display = "block";
+    } else {
+        buttonContainer.style.display = "none";
+    }
+}
+
+// 초기에 카테고리 버튼에 이벤트 리스너를 추가합니다.
+mypageBtn.addEventListener("click", function() {
+    togglebuttonContainer(); // 이 부분에서 괄호를 붙이지 않습니다.
+});
 
 var usermypageBtn = document.getElementById('usermypageButton');
-var logoutmypagetBtn = document.getElementById('logoutButton');
+var logoutmypageBtn = document.getElementById('logoutButton');
 
 usermypageBtn.addEventListener('click', function () {
     window.location.href = 'userMypage.html';
 });
 
-//임시//
-logoutmypageBtn.addEventListener('click', function () {
-    window.location.href = 'logout.html';
-});
+
+
+//카테고리 버튼들//
 
 // 음식 1//
 var smallfood1Btn = document.getElementById('smallfood1Button')
