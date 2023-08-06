@@ -19,7 +19,7 @@
                 <input id="storeId" type="text" placeholder="아이디" />
                 <input id="storePw" type="password" placeholder="비밀번호" />
                 <input id="storeEmail" type="text" placeholder="이메일" />
-                <input id="phoneNum" type="text" placeholder="휴대폰 번호" />
+                <input id="phoneNum" type="text" placeholder="가게전화번호" />
                 <label class="selectAddrInput" onclick="searchAddress();">
                     <input
                         type="text"
@@ -34,7 +34,7 @@
                 <input
                     id="storeNumber"
                     type="text"
-                    placeholder="가게 전화번호 (선택)"
+                    placeholder="전화번호 (선택)"
                 />
                 <label class="storeNumCheckInput">
                     <input
@@ -42,12 +42,14 @@
                         type="text"
                         placeholder="사업자 번호"
                     />
-                    <button>인증하기</button>
+                    <button onclick="checkBusinessNum();">인증하기</button>
                 </label>
                 <button
-                    type="button"
-                    class="storeJoinBt"
-                    onclick="storeJoin();"
+                        type="button"
+                        class="storeJoinBt"
+                        id="joinButton"
+                        onclick="storeJoin();"
+                        disabled
                 >
                     LOCO 회원가입
                 </button>

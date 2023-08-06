@@ -66,7 +66,7 @@
     display: flex;
     flex-direction: row;
     margin: 15px auto;
-    justify-content: space-between;
+    justify-content: flex-start;
 }
 
 .promotionCard {
@@ -119,7 +119,7 @@
 /* 데스크탑 화면 크기 이상일 때 */
 @media (min-width: 1024px) {
     .promotionListWrap {
-        justify-content: space-between;
+        justify-content: flex-start;
     }
     .promotionCard {
         width: calc(25% - 10px);
