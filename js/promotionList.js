@@ -1,3 +1,9 @@
+var host = 'localhost:3000';
+
+window.onload = function(){
+    showData('createdAt,desc');
+}
+
 const sortButtons = Array.from(document.querySelectorAll('.sortButton'))
 
 sortButtons.forEach((button) => {
@@ -69,4 +75,103 @@ function showNearPlace() {
         selectedCityBt.style.display = 'none'
         promotionBtWrap.style.display = 'block'
     }
+}
+
+function showData(sort){
+    // $.ajax({
+    //     url: host + '/stores?page=0&size=8&sort=' + sort,
+    //     method: 'GET',
+    //     success: function(data){
+    //
+    //     }
+    // })
+    var data = {
+        "promotionList":[
+            {
+                "promotionIdx":1,
+                "promotionTitle":"제목입니다.",
+                "promotionContent":"게시글내용입니다.",
+                "viewCount":234
+            },
+            {
+                "promotionIdx":2,
+                "promotionTitle":"제목입니다.",
+                "promotionContent":"게시글내용입니다.",
+                "viewCount":234
+            },
+            {
+                "promotionIdx":3,
+                "promotionTitle":"제목입니다.",
+                "promotionContent":"게시글내용입니다.",
+                "viewCount":234
+            },
+            {
+                "promotionIdx":3,
+                "promotionTitle":"제목입니다.",
+                "promotionContent":"게시글내용입니다.",
+                "viewCount":234
+            },
+            {
+                "promotionIdx":3,
+                "promotionTitle":"제목입니다.",
+                "promotionContent":"게시글내용입니다.",
+                "viewCount":234
+            },
+            {
+                "promotionIdx":3,
+                "promotionTitle":"제목입니다.",
+                "promotionContent":"게시글내용입니다.",
+                "viewCount":234
+            }
+        ]
+    }
+
+    var container = document.querySelector('.promotionListWrap');
+    var length = data.promotionList.length;
+
+    container.innerHTML = '';
+    for (var i = 0; i < length; i++) {
+        var card = document.createElement('div');
+        card.className = "promotionCard";
+        card.id = data.promotionList[i].promotionIdx;
+        card.setAttribute("onclick", "moveDetail(" + data.promotionList[i].promotionIdx + ");");
+
+        card.innerHTML = `
+            <img class="promotionImg" src="img/storeImgSample.svg"/>
+            <h3>${data.promotionList[i].promotionTitle}</h3>
+            <div class="storeIntro">
+                ${data.promotionList[i].promotionContent}
+            </div>
+            <div class="promotionInfo">
+                <img src="img/good.svg"/>
+                <div class="storeInfo">
+                    <img src="img/store.svg"/>
+                    <p class="storeName">도라메옹</p>
+                </div>
+            </div>
+        `;
+        container.appendChild(card);
+    }
+    cardEffect();
+}
+
+function cardEffect(){
+    var promotionCards = document.querySelectorAll('.promotionCard');
+
+    promotionCards.forEach(function(card) {
+        card.addEventListener('mouseenter', function() {
+            this.style.transform = 'scale(1.05)';
+            this.style.transition = 'transform 0.2s ease';
+        });
+
+        card.addEventListener('mouseleave', function() {
+            this.style.transform = 'scale(1)';
+            this.style.transition = 'transform 0.2s ease';
+        });
+    });
+}
+
+function moveDetail(num) {
+    localStorage.setItem('postNum', num);
+    window.location.href = 'promotionDetail.html?id=' + num;
 }

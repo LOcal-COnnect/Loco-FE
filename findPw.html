@@ -15,11 +15,13 @@
             <div class="findBody">
                 <h3>비밀번호 찾기</h3>
                 <p>이메일로 임시 비밀번호가 전송됩니다.</p>
-                <input type="text" placeholder="이메일" />
-                <button class="sendPwBt" type="button">
+                <input type="text" placeholder="이메일" id="findPwEmail"/>
+                <button class="sendPwBt" type="button" onclick="sendFindEmail();">
                     임시 비밀번호 전송
                 </button>
             </div>
         </div>
     </body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="js/member.js"></script>
 </html>
