@@ -307,3 +307,282 @@
 .modify a:hover {
     text-decoration: none;
 }
+
+/* 태블릿 화면 크기일 때 */
+@media (max-width: 1023px) {
+}
+
+/* 모바일 화면 크기일 때 */
+@media (max-width: 767px) {
+    .top {
+        display: flex;
+        flex-direction: column;
+        margin: 0 auto;
+        margin-top: 30px;
+        align-items: center;
+    }
+
+    .intop {
+        display: block;
+    }
+
+    #storePhoto img {
+        max-width: 500px;
+        width: 100%;
+    }
+
+    .heartOut {
+        margin-left: 420px;
+        padding-right: 2px;
+    }
+
+    .infoBox {
+        margin: 0 auto;
+        margin-top: 100px;
+    }
+
+    .boxin {
+        background-color: white;
+        border: 0.5px solid #999999;
+        border-radius: 30px;
+    }
+
+    .rating {
+        display: flex;
+        text-align: center;
+        margin: 0 auto;
+        margin-top: -110px;
+        margin-left: 60px;
+    }
+
+    .heartStar h3 {
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    .heartStar img {
+        margin-left: 30px;
+    }
+
+    .HashtagBox {
+        display: none;
+    }
+
+    .introduction {
+        margin: 0 auto;
+        margin-top: 300px;
+        font-size: 18px;
+        max-width: 495px;
+        width: 100%;
+    }
+
+    .introduction h2 {
+        font-size: 18px;
+    }
+
+    .middleLine {
+        margin: 0 auto;
+        margin-top: 20px;
+        display: none;
+    }
+
+    .down {
+        display: flex;
+        flex-direction: column;
+        margin: 0 auto;
+        margin-top: 30px;
+        align-items: center;
+    }
+
+    .menu {
+        margin: 0 auto;
+        margin-top: 50px;
+        font-size: 18px;
+    }
+
+    .menu h2 {
+        margin-left: 5px;
+        font-size: 18px;
+    }
+
+    .menuShow {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    .menuBox {
+        margin-right: 20px;
+    }
+
+    .reviews {
+        margin-top: 60px;
+        justify-content: center;
+    }
+    .reviewsfont h2 {
+        font-size: 18px;
+    }
+
+    .reviews h2 {
+        margin-left: 0px;
+    }
+
+    .viewsMore {
+        margin-left: 350px;
+    }
+
+    .review-box {
+        padding: 0px;
+        width: 0px;
+    }
+
+    .review {
+        padding: 0px;
+        width: 490px;
+        margin-left: 0px;
+        justify-content: center;
+    }
+
+    .modify {
+        margin-left: 0px;
+        display: flex;
+        align-items: center;
+    }
+}
+
+@media (max-width: 450px) {
+    .top {
+        display: flex;
+        flex-direction: column;
+        margin: 0 auto;
+        margin-top: 30px;
+        align-items: center;
+    }
+
+    .intop {
+        display: block;
+    }
+
+    #storePhoto img {
+        max-width: 320px;
+        width: 100%;
+    }
+
+    .heartOut {
+        margin-left: 220px;
+        padding-right: 2px;
+    }
+
+    .infoBox {
+        margin: 0 auto;
+        margin-top: 100px;
+    }
+
+    .boxin {
+        background-color: white;
+        border: 0.5px solid #999999;
+        border-radius: 30px;
+    }
+
+    .rating {
+        display: flex;
+        text-align: center;
+        margin: 0 auto;
+        margin-top: -110px;
+        margin-left: 10px;
+    }
+
+    .heartStar h3 {
+        font-weight: bold;
+        font-size: 15px;
+    }
+
+    .heartStar img {
+        margin-left: 20px;
+    }
+
+    .HashtagBox {
+        display: none;
+    }
+
+    .introduction {
+        margin: 0 auto;
+        margin-top: 300px;
+        font-size: 18px;
+        max-width: 295px;
+        width: 100%;
+    }
+
+    .introduction h2 {
+        font-size: 18px;
+    }
+
+    .middleLine {
+        margin: 0 auto;
+        margin-top: 20px;
+        display: none;
+    }
+
+    .down {
+        display: flex;
+        flex-direction: column;
+        margin: 0 auto;
+        margin-top: 30px;
+        align-items: center;
+    }
+
+    .menu {
+        margin: 0 auto;
+        margin-top: 50px;
+        font-size: 18px;
+    }
+
+    .menu h2 {
+        margin-left: 65px;
+        font-size: 18px;
+    }
+
+    .menuShow {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    .reviews {
+        margin-top: 60px;
+        justify-content: center;
+    }
+    .reviewsfont h2 {
+        font-size: 18px;
+    }
+
+    .reviews h2 {
+        margin-left: 0px;
+    }
+
+    .viewsMore {
+        margin-left: 150px;
+    }
+
+    .review-box {
+        padding: 0px;
+        width: 0px;
+    }
+
+    .review {
+        padding: 0px;
+        width: 300px;
+        margin-left: 0px;
+        justify-content: center;
+    }
+
+    .modify {
+        margin-left: 0px;
+        display: flex;
+        align-items: center;
+    }
+}
