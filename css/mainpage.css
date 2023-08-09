@@ -395,7 +395,6 @@ body {
   overflow-y: auto;
   max-height: 500px;
   overflow-x: hidden; /* 가로 스크롤바를 숨깁니다 */
-  cursor: pointer;
 }
 
 .scroll::-webkit-scrollbar {
