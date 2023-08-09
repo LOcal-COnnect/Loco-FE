@@ -162,3 +162,27 @@
         margin-bottom: 10px;
     }
 }
+
+.promotionSearchBtWrap{
+    display: none;
+    margin-top: 15px;
+}
+
+.searchBt{
+    display: flex;
+    align-items: center;
+}
+
+.searchTitle{
+    margin-left: 17px;
+    margin-right: 10px;
+}
+
+.searchName{
+    color: white;
+    font-size: 14px;
+    background-color: #FF9900;
+    border-radius: 20px;
+    border: 0;
+    padding: 4px 7px;
+}

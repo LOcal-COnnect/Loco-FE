@@ -1,7 +1,11 @@
 var host = 'localhost:3000';
 
 window.onload = function(){
-    showData('createdAt,desc');
+    if(localStorage.getItem('category') != null){
+        showCategory(localStorage.getItem('category'));
+    }else{
+        showData(0, 'createdAt,desc');
+    }
 }
 
 const sortButtons = Array.from(document.querySelectorAll('.sortButton'))
@@ -23,11 +27,11 @@ function handleSortButtonClick(event) {
     })
 
     if (clickedButton.id === 'recentSort') {
-        // 최신순 api
+        showData(0, 'createdAt,desc');
     } else if (clickedButton.id === 'likeSort') {
-        // 좋아요순 api
+        showData(0, 'like,desc');
     } else if (clickedButton.id === 'viewSort') {
-        // 조회수순 api
+        showData(0, 'viewCount,desc');
     }
 }
 
@@ -77,14 +81,64 @@ function showNearPlace() {
     }
 }
 
-function showData(sort){
-    // $.ajax({
-    //     url: host + '/stores?page=0&size=8&sort=' + sort,
-    //     method: 'GET',
-    //     success: function(data){
-    //
-    //     }
-    // })
+function showCategory(name){
+    var promotionSelectWrap = document.querySelector('.promotionSelectBtWrap');
+    var promotionSearchWrap = document.querySelector('.promotionSearchBtWrap');
+    var searchTitle = document.querySelector('.searchTitle');
+    var searchName = document.querySelector('.searchName');
+
+    promotionSelectWrap.style.display = 'none';
+    promotionSearchWrap.style.display = 'block';
+
+    searchTitle.innerText = '카테고리 >';
+    searchName.innerText = name;
+
+    $.ajax({
+        url: host + '/stores/' + name,
+        method: 'GET',
+        success: function (data) {
+            var container = document.querySelector('.promotionListWrap');
+            var length = data.promotionList.length;
+
+            container.innerHTML = '';
+            for (var i = 0; i < length; i++) {
+                var card = document.createElement('div');
+                card.className = "promotionCard";
+                card.id = data.promotionList[i].promotionIdx;
+                card.setAttribute("onclick", "moveDetail(" + data.promotionList[i].promotionIdx + ");");
+
+                card.innerHTML = `
+                    <img class="promotionImg" src="img/storeImgSample.svg"/>
+                    <h3>${data.promotionList[i].promotionTitle}</h3>
+                    <div class="storeIntro">
+                        ${data.promotionList[i].promotionContent}
+                    </div>
+                    <div class="promotionInfo">
+                        <img src="img/good.svg"/>
+                        <div class="storeInfo">
+                            <img src="img/store.svg"/>
+                            <p class="storeName">도라메옹</p>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(card);
+            }
+            cardEffect();
+        }, error: function() {
+            alert('카테고리에 해당하는 내용을 가져올 수 없습니다.');
+        }
+    })
+}
+
+function showData(pagenum, sort){
+    localStorage.setItem('sort', sort);
+    $.ajax({
+        url: host + '/stores?page=' + pagenum + '&size=8&sort=' + sort,
+        method: 'GET',
+        success: function(data){
+
+        }
+    })
     var data = {
         "promotionList":[
             {
@@ -175,3 +229,64 @@ function moveDetail(num) {
     localStorage.setItem('postNum', num);
     window.location.href = 'promotionDetail.html?id=' + num;
 }
+
+window.addEventListener('DOMContentLoaded', (event) => {
+    const buttonContainer = document.getElementById('buttonContainer')
+
+    // buttonCount는 추후 백엔드에서 넘겨주는 페이지 수
+    // totalPages : 10/4 = 2 보여줘야 하는 총 페이지수 (현재 페이지가 1이라 -1 해줌)
+    const buttonCount = 5
+    const buttonSize = 10
+
+    let currentPage = 1
+    let totalPages = buttonCount / 4
+
+    function renderButton() {
+        buttonContainer.innerHTML = ''
+
+        if (currentPage > 1) {
+            const prevButton = createButton('<')
+            prevButton.addEventListener('click', () => {
+                currentPage--
+                renderButton()
+            })
+            buttonContainer.appendChild(prevButton)
+        }
+
+        const startButton = (currentPage - 1) * 4
+        let endButton = startButton + 4
+        if (endButton > buttonCount) {
+            endButton = buttonCount
+        }
+
+        for (let i = startButton; i < endButton; i++) {
+            const button = createButton(i + 1)
+            button.setAttribute('onclick', 'showData(' + (i+1) + ',"' + localStorage.getItem('sort') + '")')
+            buttonContainer.appendChild(button)
+        }
+
+        if (currentPage < totalPages) {
+            const nextButton = createButton('>')
+            nextButton.addEventListener('click', () => {
+                currentPage++
+                renderButton()
+            })
+            buttonContainer.appendChild(nextButton)
+        }
+    }
+
+    function createButton(number) {
+        const button = document.createElement('div')
+        button.classList.add('button')
+        button.id = number
+        button.style.cursor = 'pointer'
+        button.style.width = buttonSize + 'px'
+        button.style.height = buttonSize + 'px'
+        button.style.margin = '0 10px'
+        button.innerText = number
+        return button
+    }
+
+    renderButton()
+})
+
