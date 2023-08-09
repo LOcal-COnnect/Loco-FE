@@ -101,73 +101,48 @@ function getSearchResult(name){
         }
     })
     var data = {
-        "promotionList":[
+        "storeList" : [
             {
-                "promotionIdx":1,
-                "promotionTitle":"검색결과1입니다.",
-                "promotionContent":"게시글내용입니다.",
-                "viewCount":234
+                "storeIdx" : "스토어아이디",
+                "storeName" :"가게명검색결과",
+                "storeLocation":"서울시 한국구 한국동 12번지"
             },
             {
-                "promotionIdx":2,
-                "promotionTitle":"검색결과2입니다.",
-                "promotionContent":"게시글내용입니다.",
-                "viewCount":234
+                "storeIdx" : "스토어아이디",
+                "storeName" :"가게명검색결과",
+                "storeLocation":"서울시 한국구 한국동 12번지"
             },
             {
-                "promotionIdx":3,
-                "promotionTitle":"검색결과3입니다.",
-                "promotionContent":"게시글내용입니다.",
-                "viewCount":234
-            },
-            {
-                "promotionIdx":3,
-                "promotionTitle":"검색결과4입니다.",
-                "promotionContent":"게시글내용입니다.",
-                "viewCount":234
-            },
-            {
-                "promotionIdx":3,
-                "promotionTitle":"검색결과5입니다.",
-                "promotionContent":"게시글내용입니다.",
-                "viewCount":234
-            },
-            {
-                "promotionIdx":3,
-                "promotionTitle":"제목ㄴ입니다.",
-                "promotionContent":"게시글내용입니다.",
-                "viewCount":234
+                "storeIdx" : "스토어아이디",
+                "storeName" :"가게명검색결과",
+                "storeLocation":"서울시 한국구 한국동 12번지"
             }
         ]
     }
 
     var container = document.querySelector('.promotionListWrap');
-    var length = data.promotionList.length;
+    var length = data.storeList.length;
 
     container.innerHTML = '';
     for (var i = 0; i < length; i++) {
         var card = document.createElement('div');
         card.className = "promotionCard";
-        card.id = data.promotionList[i].promotionIdx;
-        card.setAttribute("onclick", "moveDetail(" + data.promotionList[i].promotionIdx + ");");
+        card.id = data.storeList[i].storeIdx;
+        card.setAttribute("onclick", "moveIntroDetail(" + data.storeList[i].storeIdx + ");");
 
         card.innerHTML = `
-            <img class="promotionImg" src="img/storeImgSample.svg"/>
-            <h3>${data.promotionList[i].promotionTitle}</h3>
-            <div class="storeIntro">
-                ${data.promotionList[i].promotionContent}
-            </div>
-            <div class="promotionInfo">
-                <img src="img/good.svg"/>
-                <div class="storeInfo">
-                    <img src="img/store.svg"/>
-                    <p class="storeName">도라메옹</p>
-                </div>
-            </div>
-        `;
+                    <img class="promotionImg" src="img/storeImgSample.svg"/>
+                    <h3>${data.storeList[i].storeName}</h3>
+                    <div class="storeIntro">
+                        ${data.storeList[i].storeLocation}
+                    </div>
+                `;
         container.appendChild(card);
     }
     cardEffect();
 }
 
-
+function gotopromotionList(category) {
+    localStorage.setItem('category', category);
+    window.location.href = 'promotionList.html?id=' + category;
+}
