@@ -1,3 +1,5 @@
+var host = 'localhost:3000';
+
 document.addEventListener('DOMContentLoaded', function () {
     // 내비게이션 바를 생성하는 함수를 호출합니다.
     createNavbar()
@@ -52,10 +54,120 @@ function createNavbar() {
 }
 
 function search() {
-    var searchText = document.getElementById('searchInput').value
-    // 여기에 검색 기능을 구현하는 코드를 작성합니다.
-    // 검색할 단어(searchText)를 활용하여 검색 동작을 수행합니다.
-    // 예를 들어, 검색 결과를 보여주거나 검색 페이지로 이동하는 등의 동작을 수행할 수 있습니다.
-    // 이 예제에서는 검색어를 콘솔에 출력하는 것으로 대체합니다.
-    console.log('검색어: ' + searchText)
+
+    var searchText = document.getElementById('searchInput').value;
+    console.log('검색어: ' + searchText);
+
+    localStorage.setItem('search', toString(searchText));
+    getSearchResult(searchText);
+
 }
+
+function cardEffect(){
+    var promotionCards = document.querySelectorAll('.promotionCard');
+
+    promotionCards.forEach(function(card) {
+        card.addEventListener('mouseenter', function() {
+            this.style.transform = 'scale(1.05)';
+            this.style.transition = 'transform 0.2s ease';
+        });
+
+        card.addEventListener('mouseleave', function() {
+            this.style.transform = 'scale(1)';
+            this.style.transition = 'transform 0.2s ease';
+        });
+    });
+}
+
+function getSearchResult(name){
+    var promotionSelectWrap = document.querySelector('.promotionSelectBtWrap');
+    var promotionSearchWrap = document.querySelector('.promotionSearchBtWrap');
+    var searchTitle = document.querySelector('.searchTitle');
+    var searchName = document.querySelector('.searchName');
+
+    promotionSelectWrap.style.display = 'none';
+    promotionSearchWrap.style.display = 'block';
+
+    searchTitle.innerText = '검색어';
+    searchName.innerText = name;
+
+    $.ajax({
+        url: host + '/stores/' + name,
+        method: 'GET',
+        success:function(data){
+
+        },error: function(){
+            alert('검색 결과 못가져왔지롱 ㅋㅋ');
+        }
+    })
+    var data = {
+        "promotionList":[
+            {
+                "promotionIdx":1,
+                "promotionTitle":"검색결과1입니다.",
+                "promotionContent":"게시글내용입니다.",
+                "viewCount":234
+            },
+            {
+                "promotionIdx":2,
+                "promotionTitle":"검색결과2입니다.",
+                "promotionContent":"게시글내용입니다.",
+                "viewCount":234
+            },
+            {
+                "promotionIdx":3,
+                "promotionTitle":"검색결과3입니다.",
+                "promotionContent":"게시글내용입니다.",
+                "viewCount":234
+            },
+            {
+                "promotionIdx":3,
+                "promotionTitle":"검색결과4입니다.",
+                "promotionContent":"게시글내용입니다.",
+                "viewCount":234
+            },
+            {
+                "promotionIdx":3,
+                "promotionTitle":"검색결과5입니다.",
+                "promotionContent":"게시글내용입니다.",
+                "viewCount":234
+            },
+            {
+                "promotionIdx":3,
+                "promotionTitle":"제목ㄴ입니다.",
+                "promotionContent":"게시글내용입니다.",
+                "viewCount":234
+            }
+        ]
+    }
+
+    var container = document.querySelector('.promotionListWrap');
+    var length = data.promotionList.length;
+
+    container.innerHTML = '';
+    for (var i = 0; i < length; i++) {
+        var card = document.createElement('div');
+        card.className = "promotionCard";
+        card.id = data.promotionList[i].promotionIdx;
+        card.setAttribute("onclick", "moveDetail(" + data.promotionList[i].promotionIdx + ");");
+
+        card.innerHTML = `
+            <img class="promotionImg" src="img/storeImgSample.svg"/>
+            <h3>${data.promotionList[i].promotionTitle}</h3>
+            <div class="storeIntro">
+                ${data.promotionList[i].promotionContent}
+            </div>
+            <div class="promotionInfo">
+                <img src="img/good.svg"/>
+                <div class="storeInfo">
+                    <img src="img/store.svg"/>
+                    <p class="storeName">도라메옹</p>
+                </div>
+            </div>
+        `;
+        container.appendChild(card);
+    }
+    cardEffect();
+}
+
+
