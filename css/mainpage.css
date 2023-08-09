@@ -395,6 +395,7 @@ body {
   overflow-y: auto;
   max-height: 500px;
   overflow-x: hidden; /* 가로 스크롤바를 숨깁니다 */
+  cursor: pointer;
 }
 
 .scroll::-webkit-scrollbar {
@@ -443,12 +444,13 @@ body {
 }
 
 .hot-section img {
+  cursor: pointer;
   width: 45px;
   height: 25px;
 }
 
 .hot-bar {
-  width:60vw; /* 막대기의 가로 크기 */
+  width:50vw; /* 막대기의 가로 크기 */
   height: 1px; /* 막대기의 세로 크기 */
   background-color: #FFD493; /* 막대기의 배경색 */
   margin-left: 5px; /* 이미지 오른쪽과 막대기 사이 간격 조절 */
