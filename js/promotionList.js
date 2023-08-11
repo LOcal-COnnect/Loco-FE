@@ -1,12 +1,22 @@
 var host = 'localhost:3000';
 
 window.onload = function(){
-    if(localStorage.getItem('category') != null){
-        showCategory(localStorage.getItem('category'));
+
+    var urlParams = new URLSearchParams(window.location.search);
+    var postId = urlParams.get('id');
+
+    // console.log(postId);
+    if(postId != null){
+        showCategory(postId);
     }else{
         showData(0, 'createdAt,desc');
     }
 }
+// 페이지가 언로드되기 전에 실행되는 이벤트
+window.onbeforeunload = function () {
+    var newUrl = window.location.href.split('?')[0];
+    history.replaceState({}, document.title, newUrl);
+};
 
 const sortButtons = Array.from(document.querySelectorAll('.sortButton'))
 
@@ -93,41 +103,74 @@ function showCategory(name){
     searchTitle.innerText = '카테고리 >';
     searchName.innerText = name;
 
-    $.ajax({
-        url: host + '/stores/' + name,
-        method: 'GET',
-        success: function (data) {
-            var container = document.querySelector('.promotionListWrap');
-            var length = data.promotionList.length;
+    var data = {
+        "storeList" : [
+            {
+                "storeIdx" : "스토어아이디",
+                "storeName" :"가게명",
+                "storeLocation":"서울시 한국구 한국동 12번지"
+            },
+            {
+                "storeIdx" : "스토어아이디",
+                "storeName" :"가게명",
+                "storeLocation":"서울시 한국구 한국동 12번지"
+            },
+            {
+                "storeIdx" : "스토어아이디",
+                "storeName" :"가게명",
+                "storeLocation":"서울시 한국구 한국동 12번지"
+            }
+        ]
+    }
 
-            container.innerHTML = '';
-            for (var i = 0; i < length; i++) {
-                var card = document.createElement('div');
-                card.className = "promotionCard";
-                card.id = data.promotionList[i].promotionIdx;
-                card.setAttribute("onclick", "moveDetail(" + data.promotionList[i].promotionIdx + ");");
+    var container = document.querySelector('.promotionListWrap');
+    var length = data.storeList.length;
 
-                card.innerHTML = `
+    container.innerHTML = '';
+    for (var i = 0; i < length; i++) {
+        var card = document.createElement('div');
+        card.className = "promotionCard";
+        card.id = data.storeList[i].storeIdx;
+        card.setAttribute("onclick", "moveIntroDetail(" + data.storeList[i].storeIdx + ");");
+
+        card.innerHTML = `
                     <img class="promotionImg" src="img/storeImgSample.svg"/>
-                    <h3>${data.promotionList[i].promotionTitle}</h3>
+                    <h3>${data.storeList[i].storeName}</h3>
                     <div class="storeIntro">
-                        ${data.promotionList[i].promotionContent}
-                    </div>
-                    <div class="promotionInfo">
-                        <img src="img/good.svg"/>
-                        <div class="storeInfo">
-                            <img src="img/store.svg"/>
-                            <p class="storeName">도라메옹</p>
-                        </div>
+                        ${data.storeList[i].storeLocation}
                     </div>
                 `;
-                container.appendChild(card);
-            }
-            cardEffect();
-        }, error: function() {
-            alert('카테고리에 해당하는 내용을 가져올 수 없습니다.');
-        }
-    })
+        container.appendChild(card);
+    }
+    cardEffect();
+    // $.ajax({
+    //     url: host + '/stores/' + name,
+    //     method: 'GET',
+    //     success: function (data) {
+    //         var container = document.querySelector('.promotionListWrap');
+    //         var length = data.length;
+    //
+    //         container.innerHTML = '';
+    //         for (var i = 0; i < length; i++) {
+    //             var card = document.createElement('div');
+    //             card.className = "promotionCard";
+    //             card.id = data.storeList[i].storeIdx;
+    //             card.setAttribute("onclick", "moveIntroDetail(" + data.storeList[i].storeIdx + ");");
+    //
+    //             card.innerHTML = `
+    //                 <img class="promotionImg" src="img/storeImgSample.svg"/>
+    //                 <h3>${data.storeList[i].storeName}</h3>
+    //                 <div class="storeIntro">
+    //                     ${data.storeList[i].storeLocation}
+    //                 </div>
+    //             `;
+    //             container.appendChild(card);
+    //         }
+    //         cardEffect();
+    //     }, error: function() {
+    //         alert('카테고리에 해당하는 내용을 가져올 수 없습니다.');
+    //     }
+    // })
 }
 
 function showData(pagenum, sort){
@@ -230,6 +273,11 @@ function moveDetail(num) {
     window.location.href = 'promotionDetail.html?id=' + num;
 }
 
+function moveIntroDetail(num){
+    localStorage.setItem('storeNum', num);
+    window.location.href = 'aboutStoreBuyer.html?id=' + num;
+}
+
 window.addEventListener('DOMContentLoaded', (event) => {
     const buttonContainer = document.getElementById('buttonContainer')
 
@@ -261,6 +309,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
         for (let i = startButton; i < endButton; i++) {
             const button = createButton(i + 1)
+            // if(postId)
             button.setAttribute('onclick', 'showData(' + (i+1) + ',"' + localStorage.getItem('sort') + '")')
             buttonContainer.appendChild(button)
         }
