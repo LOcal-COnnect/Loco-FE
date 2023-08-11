@@ -157,8 +157,7 @@
     flex-wrap: wrap;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    margin-left: 100px;
+    margin-left: 50px;
 }
 
 .promotionListWrap {
@@ -168,6 +167,7 @@
     justify-content: space-between;
     max-width: 350px;
     width: 100%;
+    margin-left: 20px;
 }
 
 .promotionCard {

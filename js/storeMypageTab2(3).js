@@ -33,6 +33,10 @@ function handleSortButtonClick(event) {
         tab3.style.display = 'block'
     }
 }
+document.addEventListener('DOMContentLoaded', function () {
+    // tab2를 처음에 활성화
+    handleSortButtonClick({ target: document.getElementById('tab2') })
+})
 
 // Function to update character count for contentInput
 function updateCharCount() {
@@ -61,8 +65,7 @@ introductionText.addEventListener('input', function () {
         introductionText.value = introductionText.value.slice(0, maxChars)
         charCount.textContent = `${maxChars} / ${maxChars} characters`
     }
-})
-*/
+}) */
 
 const photoInput = document.getElementById('photoInput')
 const photoLabel = document.querySelector('.photo')
@@ -110,16 +113,34 @@ introText.addEventListener('input', function () {
 })
 
 // 홍보글 새 페이지
-/*
+// Get a reference to the "작성하기" button
 const writeButton = document.getElementById('writeButton')
-const tab2 = document.getElementById('tab2')
-writeButton.addEventListener('click', function () {
-    tab2.style.display = 'none'
-}) */
 
+// Get a reference to the "tab2" element
+const tab2 = document.getElementById('tab2')
+
+/*
+// Add an event listener to the "작성하기" button
+writeButton.addEventListener('click', function () {
+    // Hide the entire tab2 element
+    tab2.style.display = 'none'
+})*/
+
+// 페이지 이동 (수정 완료 버튼)
 function completeCreatePromotion() {
+    window.location.href = 'storeMypageTab2(4).html' // b.html로 이동
+}
+/*
+document
+    .getElementById('moveEditMyBt')
+    .addEventListener('click', completeCreatePromotion)
+*/
+// 게시물 삭제 버튼
+function deletePromotion() {
     window.location.href = 'storeMypageTab2(2).html' // b.html로 이동
 }
+
+document.getElementById('deleteBt').addEventListener('click', deletePromotion)
 
 // 내 정보 수정하기
 document.addEventListener('DOMContentLoaded', function () {

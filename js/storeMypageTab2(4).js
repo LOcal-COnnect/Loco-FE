@@ -33,6 +33,10 @@ function handleSortButtonClick(event) {
         tab3.style.display = 'block'
     }
 }
+document.addEventListener('DOMContentLoaded', function () {
+    // tab2를 처음에 활성화
+    handleSortButtonClick({ target: document.getElementById('tab2') })
+})
 
 // Function to update character count for contentInput
 function updateCharCount() {
@@ -110,16 +114,46 @@ introText.addEventListener('input', function () {
 })
 
 // 홍보글 새 페이지
-/*
+// Get a reference to the "작성하기" button
 const writeButton = document.getElementById('writeButton')
+
+// Get a reference to the "tab2" element
 const tab2 = document.getElementById('tab2')
+
+/*
+// Add an event listener to the "작성하기" button
 writeButton.addEventListener('click', function () {
+    // Hide the entire tab2 element
     tab2.style.display = 'none'
 }) */
 
-function completeCreatePromotion() {
-    window.location.href = 'storeMypageTab2(2).html' // b.html로 이동
+// 사진 첨부
+function handleImageSelection(event) {
+    const selectedFile = event.target.files[0]
+
+    if (selectedFile) {
+        const reader = new FileReader()
+
+        reader.onload = function () {
+            const imgDataUrl = reader.result
+            const pictureDiv = event.target.parentElement
+            pictureDiv.style.backgroundImage = `url(${imgDataUrl})`
+            pictureDiv.textContent = ''
+            pictureDiv.backgroundColor = 'white'
+        }
+
+        reader.readAsDataURL(selectedFile)
+    }
 }
+
+// 페이지 이동 (수정 완료 버튼)
+function completeCreatePromotion() {
+    window.location.href = 'storeMypageTab2(3).html' // b.html로 이동
+}
+/*
+document
+    .getElementById('moveEditMyBt')
+    .addEventListener('click', completeCreatePromotion) */
 
 // 내 정보 수정하기
 document.addEventListener('DOMContentLoaded', function () {

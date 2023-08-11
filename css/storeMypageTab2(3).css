@@ -80,8 +80,6 @@
     padding: 10px 0;
     margin-top: 10%;
     margin-bottom: 20%;
-    align-items: center;
-    margin-left: 200px;
 }
 
 #tab1.tab.active,
@@ -92,26 +90,21 @@
     border-left: 0;
     border-right: 0;
     color: black;
-    justify-content: center;
 }
 
 .tab2 {
     display: none;
     width: 60vw;
     margin: 0 auto;
-    justify-content: center;
 }
 
 .containerInputWrap {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
     flex-direction: column;
     padding: 15px 30px;
     border-radius: 20px;
-    margin: 0 auto;
-    margin-left: 10px;
     border: 1px solid #d5d5d5;
+    margin-left: 10px;
 }
 
 .titleInput {
@@ -137,7 +130,10 @@
     margin-top: 5px;
     font-size: 12px;
     color: #7b7b7b;
-    margin-left: 10px;
+}
+
+.buttonTwo {
+    display: flex;
 }
 
 .completeBt {
@@ -150,7 +146,22 @@
     cursor: pointer;
     display: flex;
     justify-content: center;
-    margin-left: 33%;
+    margin-left: 15%;
+    margin-top: 20%;
+    margin-bottom: 20%;
+}
+
+.deleteBt {
+    color: white;
+    background-color: black;
+    border-radius: 20px;
+    padding: 10px 0px;
+    width: 20vw;
+    font-size: 15px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    margin-left: 3%;
     margin-top: 20%;
     margin-bottom: 20%;
 }
@@ -602,4 +613,125 @@
     font-size: 15px;
     cursor: pointer;
     padding: 10px 0;
+}
+
+/*
+<div class="infoAndMenuContainer">
+            <div class="infoBox">
+              <div class="home"><img src="../svg/Home filled.svg" alt="Home Image"><h3>경상북도 경주</h3></div>
+              <div class="location"><img src="../svg/Location.svg" alt="Location Image"><h3>breadTop1@abc.com</h3></div>
+              <div class="phone"><img src="../svg/SmartPhone.svg" alt="Phone Image"><h3>010-1234-5678</h3></div>
+              <div class="telephone"><img src="../svg/Telephone.svg" alt="Telephone Image"><h3>031-031-031</h3></div>
+            </div>
+
+
+            <div class="registPhoto">
+              <h2>가게 사진 등록하기</h2>
+              <label for="photoInput" class="photo">
+                <h3 class="photoMent">사진 첨부를 위해 클릭해주세요.</h3>
+              </label>
+              <input type="file" id="photoInput" style="display: none;">
+            </div> 
+            
+            <div class="category-container">
+              <h2>카테고리 선택</h2>
+              <div class="category-selection" onclick="toggleOptions()">분류
+                <span class="arrow-down"></span>
+              </div>
+              <div class="category-options" id="categoryOptions">
+                <div class="category-option" onclick="selectCategory('곡물류')">곡식류</div>
+                <div class="category-option" onclick="selectCategory('면류')">면류</div>
+                <div class="category-option" onclick="selectCategory('과일')">과일</div>
+                <div class="category-option" onclick="selectCategory('한약재')">한약재</div>
+                <div class="category-option" onclick="selectCategory('김치류')">김치류</div>
+                <div class="category-option" onclick="selectCategory('떡류')">떡류</div>
+                <div class="category-option" onclick="selectCategory('차류')">차류</div>
+                <div class="category-option" onclick="selectCategory('발효식품')">발효식품</div>
+                <div class="category-option" onclick="selectCategory('생선과 해산물')">생선과 해산물</div>
+                <div class="category-option" onclick="selectCategory('과자류')">과자류</div>
+              </div>
+            </div>
+          </div>
+
+*/
+/*
+
+.reviewListWrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.yesReviewCard {
+  display: flex;
+  flex-direction: row;
+  padding: 15px;
+  border: 1px solid #A0A0A0;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.noReviewCard {
+  padding: 15px;
+  border: 1px solid #A0A0A0;
+  margin-bottom: 15px;
+  border-radius: 10px;
+}
+
+.reviewCardTop {
+  display: flex;
+  flex-direction: column;
+}
+
+.reviewStoreName {
+  display: flex;
+  align-items: center;
+}
+
+.reviewStoreName > h3 {
+  cursor: pointer;
+}
+
+.reviewStoreName > img {
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.reviewStarWrap {
+  display: flex;
+  margin-top: 10px;
+}
+
+.reviewStar {
+  display: flex;
+}
+
+.reviewStarDate {
+  display: flex;
+  margin-left: 15px;
+  font-size: 12px;
+  padding-top: 5px;
+}
+
+.reviewContent {
+  margin-top: 15px;
+}
+
+#storeImg {
+  width: 100%;
+  height: auto; 
+}*/
+
+.new-page {
+    max-width: 600px;
+    margin: 50px auto;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.tab2Two {
+    width: 1000px;
+    height: 1000px;
 }

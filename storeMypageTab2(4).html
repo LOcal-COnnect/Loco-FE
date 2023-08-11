@@ -11,9 +11,13 @@
             integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
             crossorigin="anonymous"
         />
-        <link type="text/css" rel="stylesheet" href="css/storeMypage.css" />
-        <link rel="stylesheet" href="css/index.css" />
-        <title>가게 마이페이지</title>
+        <link
+            type="text/css"
+            rel="stylesheet"
+            href="css/storeMypageTab2(4).css"
+        />
+        <!--    <link rel="stylesheet" href="css/index.css" />-->
+        <title>가게 마이페이지(3)</title>
     </head>
 
     <body>
@@ -21,11 +25,11 @@
         <div class="container" id="myTabContent">
             <div class="myTitle">마이 페이지</div>
             <div class="myTabNav">
-                <div id="tab1" class="tab active">내 정보</div>
-                <div id="tab2" class="tab">가게 홍보</div>
+                <div id="tab1" class="tab">내 정보</div>
+                <div id="tab2" class="tab active">가게 홍보</div>
                 <div id="tab3" class="tab">가게 등록</div>
             </div>
-            <div class="tab1 active">
+            <div class="tab1">
                 <div class="myInfo">
                     <div>
                         <img src="..\svg\Location.svg" />
@@ -66,32 +70,24 @@
                     </div>
                 </div>
                 <div class="myBtWrap">
-                    <button
-                        class="moveEditMyBt"
-                        id="moveEditMyBt"
-                        type="button"
-                    >
+                    <button class="moveEditMyBt" type="button">
                         내 정보 수정하기
                     </button>
                 </div>
             </div>
 
-            <div class="tab2" id="tab2">
+            <div class="tab2 active" id="tab2 active">
                 <div class="tab2One">
                     <div class="containerInputWrap">
                         <input
                             class="titleInput"
                             type="text"
-                            maxlength="20"
                             placeholder="제목을 입력하세요 (최대 20자)"
+                            maxlength="20"
                         />
-                        <textarea
-                            class="contentInput"
-                            type="text"
-                            maxlength="500"
-                            placeholder="내용을 입력하세요 (최대 500자)"
-                        ></textarea>
-                        <div id="charCount">0 / 500</div>
+                        <textarea class="contentInput">
+우리 가게 최고 OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOo </textarea
+                        >
 
                         <div class="pictureInputWrap">
                             <div class="pictureInputBox">
@@ -120,15 +116,11 @@
                             </div>
                         </div>
                     </div>
-                    <div class="additionalMent">
-                        사진은 최대 3장까지 첨부가능합니다.
-                    </div>
                     <div
-                        id="completeButton"
                         class="completeBt"
                         onclick="completeCreatePromotion();"
                     >
-                        작성완료
+                        수정 완료
                     </div>
                 </div>
             </div>
@@ -455,6 +447,6 @@
         </div>
 
         <script src="js\index.js"></script>
-        <script src="js\storeMypage.js"></script>
+        <script src="js\storeMypageTab2(4).js"></script>
     </body>
 </html>
