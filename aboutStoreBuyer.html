@@ -8,13 +8,31 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link type="text/css" rel="stylesheet" href="css/aboutStoreBuyer.css" />
-    <!--<link rel="stylesheet" href="index.css" />-->
-</script> 
+    <link rel="stylesheet" href="css/index.css" />
     <title>가게 소개 페이지(리뷰 포함)</title>
 </head>
 
 <body>
-    <!--<nav id="navbar"></nav>-->
+    <div class="mainNav">
+    <div class="mainNavIcon">
+        <img class="categoryBtn" id="categoryButton" src="img/hamburger.svg" onClick="toggleHiddenCategory();" />
+        <img class="mainLogo" src="img/mainLoco.svg" onclick="location.href='main.html'" />
+    </div>
+    <div class="mainProfile">
+        <p class="loginBtn" onclick="location.href='login.html'">로그인</p>
+        <p class="signupBtn" onclick="location.href='selectJoin.html'">회원가입</p>
+        <p class="mainProfileName">감미로운 옹징어</p>
+        <p class="mainProfileText">님</p>
+        <div class="profileContainer">
+            <img class="mainProfileImg" src="img/MyPageButton.svg" />
+            <div class="myProfileMore">
+                <p onClick="location.href='userMypage.html'">마이페이지</p>
+                <hr />
+                <p>로그아웃</p>
+            </div>
+        </div>
+    </div>
+</div>
     <div class="container">
 
         <div class="backg"></div>

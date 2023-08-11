@@ -1,17 +1,20 @@
 var host = 'localhost:3000';
 
 window.onload = function(){
-
     var urlParams = new URLSearchParams(window.location.search);
     var postId = urlParams.get('id');
-
+    var searchText = urlParams.get('search');
     // console.log(postId);
-    if(postId != null){
+    if(postId != null) {
         showCategory(postId);
-    }else{
+    }
+    if(searchText != null) {
+        getSearchResult(searchText);
+    }else {
         showData(0, 'createdAt,desc');
     }
 }
+
 // 페이지가 언로드되기 전에 실행되는 이벤트
 window.onbeforeunload = function () {
     var newUrl = window.location.href.split('?')[0];
@@ -227,6 +230,7 @@ function showData(pagenum, sort){
     var length = data.promotionList.length;
 
     container.innerHTML = '';
+
     for (var i = 0; i < length; i++) {
         var card = document.createElement('div');
         card.className = "promotionCard";
@@ -339,3 +343,66 @@ window.addEventListener('DOMContentLoaded', (event) => {
     renderButton()
 })
 
+
+function getSearchResult(name){
+    var promotionSelectWrap = document.querySelector('.promotionSelectBtWrap');
+    var promotionSearchWrap = document.querySelector('.promotionSearchBtWrap');
+    var searchTitle = document.querySelector('.searchTitle');
+    var searchName = document.querySelector('.searchName');
+
+    promotionSelectWrap.style.display = 'none';
+    promotionSearchWrap.style.display = 'block';
+
+    searchTitle.innerText = '검색어';
+    searchName.innerText = name;
+
+    $.ajax({
+        url: host + '/stores/' + name,
+        method: 'GET',
+        success:function(data){
+
+        },error: function(){
+            alert('검색 결과 못가져왔지롱 ㅋㅋ');
+        }
+    })
+    var data = {
+        "storeList" : [
+            {
+                "storeIdx" : "스토어아이디",
+                "storeName" :"가게명검색결과",
+                "storeLocation":"서울시 한국구 한국동 12번지"
+            },
+            {
+                "storeIdx" : "스토어아이디",
+                "storeName" :"가게명검색결과",
+                "storeLocation":"서울시 한국구 한국동 12번지"
+            },
+            {
+                "storeIdx" : "스토어아이디",
+                "storeName" :"가게명검색결과",
+                "storeLocation":"서울시 한국구 한국동 12번지"
+            }
+        ]
+    }
+
+    var container = document.querySelector('.promotionListWrap');
+    var length = data.storeList.length;
+
+    container.innerHTML = '';
+    for (var i = 0; i < length; i++) {
+        var card = document.createElement('div');
+        card.className = "promotionCard";
+        card.id = data.storeList[i].storeIdx;
+        card.setAttribute("onclick", "moveIntroDetail(" + data.storeList[i].storeIdx + ");");
+
+        card.innerHTML = `
+                    <img class="promotionImg" src="img/storeImgSample.svg"/>
+                    <h3>${data.storeList[i].storeName}</h3>
+                    <div class="storeIntro">
+                        ${data.storeList[i].storeLocation}
+                    </div>
+                `;
+        container.appendChild(card);
+    }
+    cardEffect();
+}
