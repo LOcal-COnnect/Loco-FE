@@ -17,18 +17,6 @@ body{
     font-family: 'GmarketSansMedium';
 }
 
-.container {
-    margin: 0 auto 20px auto;
-    padding: 0 10vw;
-    font-family: 'GmarketSansMedium';
-}
-
-@media (max-width: 1000px) {
-    .container {
-        padding: 0 8vw;
-    }
-}
-
 /*내브바*/
 .mainNav {
     display: flex;
@@ -351,7 +339,7 @@ body{
     border-top: 1px solid #999999;
     display: flex;
     justify-content: space-between;
-    padding: 20px 50px;
+    padding: 10px 50px;
 }
 
 .footerLeft{
