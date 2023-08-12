@@ -229,52 +229,74 @@ window.addEventListener('DOMContentLoaded', (event) => {
     renderButton()
 })
 
-window.addEventListener('load', function () {
-    function fetchComments(promotionIdx) {
-        $.ajax({
-            url: `/comment/promotion/${promotionIdx}`,
-            type: 'GET',
-            success: function (response) {
-                if (response.commentList) {
-                    console.log('댓글 조회 성공:', response.commentList)
-                    // 여기서 댓글 리스트를 처리하는 로직을 추가하세요.
-                } else {
-                    console.error('댓글 조회 실패:', response.message)
-                }
-            },
-            error: function (xhr, status, error) {
-                console.error('댓글 조회 오류:', error)
-            },
-        })
-    }
+// 리뷰 전체 보기 ajax
+const storeIdx = 123
 
-    function fetchReviews() {
-        $.ajax({
-            url: '/comment/promotion/{promotionIdx}', // 실제 API 경로로 수정해야 함
-            type: 'GET',
-            success: function (response) {
-                if (response.commentList) {
-                    console.log('리뷰 조회 성공:', response.commentList)
-                    // 리뷰 데이터를 화면에 표시하는 로직 추가
-                    for (const review of response.commentList) {
-                        addReview({
-                            profilePictureUrl: '../svg/profile.svg', // 프로필 사진 URL
-                            nickname: 'User', // 닉네임
-                            rating: 5, // 평점 (임의로 5점으로 설정)
-                            date: review.createdAt, // 작성일자
-                            comment: review.commentContent, // 리뷰 내용
-                            photo: '../svg/storePhoto.svg', // 리뷰 사진 URL
-                        })
-                    }
-                } else {
-                    console.error('리뷰 조회 실패:', response.message)
-                }
-            },
-            error: function (xhr, status, error) {
-                console.error('리뷰 조회 오류:', error)
-            },
-        })
-    }
+function fetchAndDisplayReviews() {
+    const reviewBox = document.querySelector('.review-box')
 
-    fetchReviews()
-})
+    reviewBox.innerHTML = ''
+
+    $.ajax({
+        url: `/reviews/stores/${storeIdx}`,
+        type: 'GET',
+        success: function (response) {
+            if (response.code === 200) {
+                const reviewList = response.reviewList
+
+                reviewList.forEach((review) => {
+                    const reviewElement = document.createElement('div')
+                    reviewElement.classList.add('review')
+
+                    const profilePicture = document.createElement('img')
+                    profilePicture.src = review.profilePictureUrl
+                    profilePicture.alt = 'Profile Picture'
+                    profilePicture.classList.add('profile-picture')
+
+                    const nicknameElement = document.createElement('h3')
+                    nicknameElement.textContent = review.nickname
+                    nicknameElement.classList.add('nickname')
+
+                    const ratingElement = generateStarRating(review.reviewStar)
+                    ratingElement.classList.add('star-rating')
+
+                    const commentElement = document.createElement('p')
+                    commentElement.textContent = review.reviewContent
+                    commentElement.classList.add('comment')
+
+                    const dateElement = document.createElement('span')
+                    dateElement.textContent = formatDate(review.createdAt)
+                    dateElement.classList.add('date')
+
+                    const photoElement = document.createElement('img')
+                    photoElement.src = review.photo
+                    photoElement.alt = 'Review Photo'
+                    photoElement.classList.add('photo')
+
+                    reviewElement.appendChild(profilePicture)
+                    reviewElement.appendChild(nicknameElement)
+                    reviewElement.appendChild(ratingElement)
+                    reviewElement.appendChild(commentElement)
+                    reviewElement.appendChild(dateElement)
+                    reviewElement.appendChild(photoElement)
+
+                    reviewBox.appendChild(reviewElement)
+                })
+            } else {
+                console.error('Failed to fetch reviews:', response.message)
+            }
+        },
+        error: function (xhr, status, error) {
+            console.error('Failed to fetch reviews:', error)
+        },
+    })
+}
+
+function generateStarRating(rating) {}
+
+function formatDate(isoDate) {
+    const date = new Date(isoDate)
+    return `${date.getFullYear()}.${date.getMonth() + 1}.${date.getDate()}`
+}
+
+window.addEventListener('load', fetchAndDisplayReviews)

@@ -228,66 +228,29 @@
 }
 
 .buttonReview {
-    display: flex;
+    align-items: flex-end;
 }
 
 .modify {
     font-size: 10px;
     margin-top: 20px;
-    padding: 5px 10px;
     background-color: #f2f2f2;
     color: #333;
     text-decoration: none;
 }
 
 .modify h2 {
-    font-size: 15px;
+    font-size: 12px;
 }
 
 .delete {
     font-size: 10px;
     margin-top: 20px;
-    padding: 5px 10px;
     background-color: #f2f2f2;
     color: #333;
     text-decoration: none;
 }
 
 .delete h2 {
-    font-size: 15px;
-}
-
-.imgBlock {
-    display: block;
-}
-
-.buttonReview2 {
-    display: flex;
-    margin-left: 562px;
-}
-
-.modify2 {
-    font-size: 10px;
-    margin-top: 20px;
-    padding: 5px 10px;
-    background-color: #f2f2f2;
-    color: #333;
-    text-decoration: none;
-}
-
-.modify2 h2 {
-    font-size: 15px;
-}
-
-.delete2 {
-    font-size: 10px;
-    margin-top: 20px;
-    padding: 5px 10px;
-    background-color: #f2f2f2;
-    color: #333;
-    text-decoration: none;
-}
-
-.delete2 h2 {
-    font-size: 15px;
+    font-size: 12px;
 }
