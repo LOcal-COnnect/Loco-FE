@@ -2,8 +2,8 @@ var host = 'localhost:3000';
 
 window.onload = function () {
     var urlParams = new URLSearchParams(window.location.search);
-    var postId = urlParams.get('id');
-    getPromotionDetail(postId);
+    window.postId = urlParams.get('id');
+    getPromotionDetail(window.postId);
     console.log(postId);
 }
 
@@ -25,7 +25,7 @@ $('#goodnum').click(function() {
 
     if (!isClicked) {
         $.ajax({
-            url: host + '/stores/Promotion',
+            url: host + '/like/{userIdx}/promotion/' + window.postId,
             method: 'POST',
             contentType: 'application/json',
             data: JSON.stringify({
@@ -59,6 +59,7 @@ function getPromotionDetail(postId){
 
         }
     })
+
     var data = {
         "promotionTitle":"제목입니다.",
         "promotionContent":"내용입니다.",
