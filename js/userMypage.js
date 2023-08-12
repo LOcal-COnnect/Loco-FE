@@ -70,6 +70,7 @@ document
     .getElementById('moveEditMyBt')
     .addEventListener('click', completeCreatePromotion)
 */
+
 // 리뷰 삭제 버튼
 function deleteReview() {
     window.location.href = 'userMypage.html' // mypage.html로 이동

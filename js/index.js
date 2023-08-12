@@ -1,8 +1,6 @@
-var host = 'localhost:3000';
+var host = 'http://localhost:8080';
 
 document.addEventListener('DOMContentLoaded', function () {
-    // 내비게이션 바를 생성하는 함수를 호출합니다.
-    createNavbar()
 
     // 홈, 로그인, 회원가입 버튼의 이벤트 위임
     document.addEventListener('click', function (event) {
@@ -48,17 +46,6 @@ function toggleHiddenCategory(hiddenCategory) {
     }
 }
 
-function createNavbar() {
-    fetch('nav.html')
-        .then((response) => response.text())
-        .then((data) => {
-            document.getElementById('navbar').innerHTML = data
-        })
-        .catch((error) => {
-            console.error('Error fetching navbar:', error)
-        })
-}
-
 function search() {
     var searchText = document.getElementById('searchInput').value;
     console.log('검색어: ' + searchText);
@@ -87,3 +74,34 @@ function gotopromotionList(category) {
     localStorage.setItem('category', category);
     window.location.href = 'promotionList.html?id=' + category;
 }
+
+function logout(){
+    $.ajax({
+        url: host + '/users/logout',
+        method: 'POST',
+        success: function(data){
+            if(data.code === 200){
+                alert('로그아웃 되었습니다.');
+                window.location.href = 'main.html';
+            }else{
+                alert('다시 시도해주세요.')
+            }
+        },error: function(){
+            alert('서버 에러 !!!!');
+        }
+    })
+}
+
+const logoImages = [
+    "img/mainlogo1.svg",
+    "img/mainlogo2.svg"
+]
+const footerLogo = document.getElementById("footerLogo");
+let imageIndex = 0;
+
+function changeLogo() {
+    footerLogo.src = logoImages[imageIndex];
+    imageIndex = (imageIndex + 1) % logoImages.length;
+}
+
+setInterval(changeLogo, 1500);

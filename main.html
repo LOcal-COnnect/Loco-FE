@@ -24,7 +24,7 @@
           <div class="myProfileMore">
             <p onClick="location.href='userMypage.html'">마이페이지</p>
             <hr />
-            <p>로그아웃</p>
+            <p onClick="logout();">로그아웃</p>
           </div>
         </div>
       </div>
@@ -253,7 +253,7 @@
       <div class="mainSearchBox2">
         <div class="mainSearchBoxTitle">
           <img src="img/mainHeartIcon.svg"/>
-          <p>오늘의 인기 가게</p>
+          <p>오늘의 랜덤 가게</p>
         </div>
         <div class="mainSearchWordWrap">
           <div class="mainSearchButton"># 이혜린의 가게</div>
@@ -286,22 +286,8 @@
       </div>
     </div>
     </div>
-  <script>
-    const logoImages = [
-            "img/mainlogo1.svg",
-            "img/mainlogo2.svg"
-    ]
-    const footerLogo = document.getElementById("footerLogo");
-    let imageIndex = 0;
-
-    function changeLogo() {
-      footerLogo.src = logoImages[imageIndex];
-      imageIndex = (imageIndex + 1) % logoImages.length;
-    }
-
-    setInterval(changeLogo, 2000);
-  </script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="js/index.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>
