@@ -89,7 +89,7 @@
 }
 
 .heartStar h3 {
-    font-size: 16px;
+    font-size: 15px;
     margin-left: 10px;
 }
 
@@ -115,10 +115,10 @@
 }
 
 .introduction {
-    max-width: 526px;
+    max-width: 460px;
     width: 100%;
     margin-top: -100px;
-    margin-left: 800px;
+    margin-left: 790px;
 }
 
 .introduction h2 {
@@ -140,7 +140,7 @@
 }
 
 .middleLine {
-    max-width: 1075px;
+    max-width: 1005px;
     width: 100%;
     height: 2px;
     background-color: #000000;
@@ -246,8 +246,8 @@
     height: 183px;
     object-fit: cover;
     position: relative;
-    bottom: 80%;
-    left: 70%;
+    bottom: 76%;
+    left: 66%;
 }
 
 .modify {
@@ -256,7 +256,7 @@
     margin-right: 6px;
     background-color: black;
     border-radius: 20px;
-    margin-left: 850px;
+    margin-left: 780px;
     margin-top: 10px;
 }
 

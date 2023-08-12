@@ -79,6 +79,10 @@
     text-overflow: ellipsis;
 }
 
+.infoTop {
+    display: flex;
+}
+
 .rating {
     margin-top: 80px;
     margin-left: 50px;
@@ -89,7 +93,7 @@
 }
 
 .heartStar h3 {
-    font-size: 16px;
+    font-size: 15px;
     margin-left: 10px;
 }
 
@@ -115,10 +119,10 @@
 }
 
 .introduction {
-    max-width: 526px;
+    max-width: 430px;
     width: 100%;
-    margin-top: -100px;
-    margin-left: 620px;
+    margin-top: 110px;
+    margin-left: 30px;
 }
 
 .introduction h2 {
@@ -140,12 +144,11 @@
 }
 
 .middleLine {
-    max-width: 1075px;
-    width: 100%;
+    width: 65vw;
     height: 2px;
     background-color: #000000;
-    margin-top: 20px;
-    margin-left: 70px;
+    margin-top: 10px;
+    margin-left: 0px;
 }
 
 .middleTop {
@@ -167,6 +170,7 @@
 .down {
     margin-top: 20px;
     display: flex;
+    width: 65vw;
 }
 
 .menu {
@@ -174,7 +178,7 @@
 }
 
 .menu h2 {
-    margin-left: 80px;
+    margin-left: 0px;
     font-size: 24px;
     font-weight: bold;
 }
@@ -182,14 +186,13 @@
 .menuShow {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
-    max-width: 600px;
+    max-width: 800px;
     margin: 0 auto;
-    margin-left: 60px;
+    margin-left: 0px;
 }
 
 .menuBox {
-    width: 140px;
+    width: 120px;
     height: 180px;
     margin: 5px;
     text-align: center;
@@ -228,7 +231,7 @@
 .viewsMore {
     font-size: 10px;
     margin-top: 18px;
-    margin-left: 260px;
+    margin-left: 250px;
 }
 
 .review-box {
@@ -289,7 +292,9 @@
 .modify {
     width: 110px;
     height: 25px;
-    margin-left: 1006px;
+    align-items: center;
+    display: flex;
+    margin-left: 50%;
     background-color: black;
     border-radius: 20px;
 }
@@ -334,6 +339,10 @@
     .heartOut {
         margin-left: 420px;
         padding-right: 2px;
+    }
+
+    .info {
+        display: block;
     }
 
     .infoBox {
@@ -449,11 +458,6 @@
         margin-left: 0px;
         display: flex;
         align-items: center;
-    }
-
-    .modify {
-        margin-left: 0px;
-        margin: 0 auto;
     }
 }
 
@@ -586,9 +590,22 @@
     }
 
     .modify {
+        margin-left: 0px;
         display: flex;
         align-items: center;
-        margin-left: 0px;
-        margin: 0 auto;
     }
 }
+
+/*내 정보 수정 (O), 가게 홍보글 수정하기(O), 가게 홍보글 삭제하기(O), 가게 등록 수정하기(O)*/
+
+/*
+body 있는 것부터
+onclick누르면 다음 페이지로 넘어가게
+id로 val()
+consol에서 확인
+
+get ---> 조회 function(data) / data.promotionList[0]
+patch는 get에서 patch로만 바꾸면 됨
+받아올 필요없으면 data: 필요없음
+window.location으로 옮기기 ---> 댓글 등록
+*/
