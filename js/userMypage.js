@@ -161,6 +161,50 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 */
+
+// 리뷰 목록 ajax
+window.addEventListener('load', function () {
+    $.ajax({
+        url: `/reviews/users/{userIdx}`,
+        type: 'GET',
+        success: function (response) {
+            if (response.code === 200) {
+                const reviews = response.data
+                displayReviews(reviews)
+            } else {
+                console.error('리뷰 목록 가져오기 실패:', response.message)
+            }
+        },
+        error: function (xhr, status, error) {
+            console.error('리뷰 목록 가져오기 오류:', error)
+        },
+    })
+})
+
+function displayReviews(reviews) {
+    const reviewListWrap = document.querySelector('.reviewListWrap')
+
+    reviews.forEach((review) => {
+        const reviewCard = document.createElement('div')
+        reviewCard.classList.add('yesReviewCard')
+
+        const deleteButton = document.createElement('button')
+        deleteButton.classList.add('deleteBt')
+        const deleteLink = document.createElement('a')
+        deleteLink.href = '#'
+        deleteLink.classList.add('delete')
+        deleteLink.innerHTML = '<h2>삭제하기</h2>'
+        deleteLink.addEventListener('click', function () {
+            deleteReview(review.id)
+        })
+        deleteButton.appendChild(deleteLink)
+
+        reviewCard.querySelector('.buttonReview').appendChild(deleteButton)
+
+        reviewListWrap.appendChild(reviewCard)
+    })
+}
+
 // 리뷰 삭제 ajax
 function deleteReview(reviewIdx) {
     $.ajax({
