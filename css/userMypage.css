@@ -8,7 +8,7 @@
 .myTabNav {
     width: 70vw;
     margin: 20px auto;
-    border-bottom: 1px solid #DADADA;
+    border-bottom: 1px solid #dadada;
     border-top: 0;
     border-left: 0;
     border-right: 0;
@@ -16,7 +16,6 @@
     flex-direction: row;
     justify-content: space-around;
 }
-
 
 .myTabNav > div {
     cursor: pointer;
@@ -172,6 +171,7 @@
     border: 1px solid #a0a0a0;
     border-radius: 10px;
     margin-bottom: 15px;
+    position: relative;
 }
 
 .noReviewCard {
@@ -179,11 +179,13 @@
     border: 1px solid #a0a0a0;
     margin-bottom: 15px;
     border-radius: 10px;
+    position: relative;
 }
 
 .reviewCardTop {
     display: flex;
     flex-direction: column;
+    position: relative;
 }
 
 .reviewStoreName {
@@ -218,9 +220,75 @@
 
 .reviewContent {
     margin-top: 15px;
+    margin-bottom: 25px;
 }
 
 #storeImg {
     width: 100%;
     height: auto; /* Make the height adjust automatically to maintain aspect ratio */
+}
+
+.buttonReview {
+    display: flex;
+}
+
+.modify {
+    font-size: 10px;
+    margin-top: 20px;
+    padding: 5px 10px;
+    background-color: #f2f2f2;
+    color: #333;
+    text-decoration: none;
+}
+
+.modify h2 {
+    font-size: 15px;
+}
+
+.delete {
+    font-size: 10px;
+    margin-top: 20px;
+    padding: 5px 10px;
+    background-color: #f2f2f2;
+    color: #333;
+    text-decoration: none;
+}
+
+.delete h2 {
+    font-size: 15px;
+}
+
+.imgBlock {
+    display: block;
+}
+
+.buttonReview2 {
+    display: flex;
+    margin-left: 562px;
+}
+
+.modify2 {
+    font-size: 10px;
+    margin-top: 20px;
+    padding: 5px 10px;
+    background-color: #f2f2f2;
+    color: #333;
+    text-decoration: none;
+}
+
+.modify2 h2 {
+    font-size: 15px;
+}
+
+.delete2 {
+    font-size: 10px;
+    margin-top: 20px;
+    padding: 5px 10px;
+    background-color: #f2f2f2;
+    color: #333;
+    text-decoration: none;
+}
+
+.delete2 h2 {
+    font-size: 15px;
 }

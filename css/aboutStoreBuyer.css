@@ -586,3 +586,17 @@
         align-items: center;
     }
 }
+
+/*내 정보 수정 (O), 가게 홍보글 수정하기(O), 가게 홍보글 삭제하기(O), 가게 등록 수정하기(O)*/
+
+/*
+body 있는 것부터
+onclick누르면 다음 페이지로 넘어가게
+id로 val()
+consol에서 확인
+
+get ---> 조회 function(data) / data.promotionList[0]
+patch는 get에서 patch로만 바꾸면 됨
+받아올 필요없으면 data: 필요없음
+window.location으로 옮기기 ---> 댓글 등록
+*/

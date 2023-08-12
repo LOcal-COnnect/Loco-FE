@@ -34,6 +34,11 @@ function handleSortButtonClick(event) {
     }
 }
 
+document.addEventListener('DOMContentLoaded', function () {
+    // tab2를 처음에 활성화
+    handleSortButtonClick({ target: document.getElementById('tab2') })
+})
+
 // Function to update character count for contentInput
 function updateCharCount() {
     const contentInput = document.querySelector('.contentInput')
@@ -43,11 +48,11 @@ function updateCharCount() {
     charCount.textContent = `${currentLength} / ${maxLength}`
 }
 
+/*
 // Attach event listener to the contentInput to update the character count on input
 const contentInput = document.querySelector('.contentInput')
-contentInput.addEventListener('input', updateCharCount)
+contentInput.addEventListener('input', updateCharCount) 
 
-/*
 // 500자 글자 제한
 const introductionText = document.getElementById('introductionText')
 const charCount = document.getElementById('charCount')
@@ -61,8 +66,7 @@ introductionText.addEventListener('input', function () {
         introductionText.value = introductionText.value.slice(0, maxChars)
         charCount.textContent = `${maxChars} / ${maxChars} characters`
     }
-})
-*/
+}) */
 
 const photoInput = document.getElementById('photoInput')
 const photoLabel = document.querySelector('.photo')
@@ -110,15 +114,21 @@ introText.addEventListener('input', function () {
 })
 
 // 홍보글 새 페이지
-/*
+// Get a reference to the "작성하기" button
 const writeButton = document.getElementById('writeButton')
+
+// Get a reference to the "tab2" element
 const tab2 = document.getElementById('tab2')
+
+/*
+// Add an event listener to the "작성하기" button
 writeButton.addEventListener('click', function () {
+    // Hide the entire tab2 element
     tab2.style.display = 'none'
 }) */
 
-function completeCreatePromotion() {
-    window.location.href = 'storeMypageTab2(2).html' // b.html로 이동
+function moveDetail(num) {
+    window.location.href = 'storeMypageTab2(3).html' // b.html로 이동
 }
 
 // 내 정보 수정하기
