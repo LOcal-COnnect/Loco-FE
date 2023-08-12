@@ -76,7 +76,7 @@ function completeCreatePromotion(promotionIdx, userIdx) {
         }
 
         $.ajax({
-            url: '/comment/{promotionIdx}/users/{userIdx}',
+            url: `/comment/{promotionIdx}/users/{userIdx}`,
             type: 'POST',
             data: formData,
             processData: false,
@@ -106,7 +106,7 @@ completeCreatePromotion(promotionIdx, userIdx)
 // 댓글 수정 ajax
 function modifyComment(commentIdx, newCommentContent) {
     $.ajax({
-        url: '/comment/${commentIdx}',
+        url: `/comment/${commentIdx}`,
         type: 'PATCH',
         data: JSON.stringify({
             commentContent: newCommentContent,

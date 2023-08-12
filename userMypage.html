@@ -9,7 +9,26 @@
         <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
     </head>
     <body>
-        <nav id="navbar"></nav>
+        <div class="mainNav">
+        <div class="mainNavIcon">
+            <img class="categoryBtn" id="categoryButton" src="img/hamburger.svg" onClick="toggleHiddenCategory();" />
+            <img class="mainLogo" src="img/mainLoco.svg" onclick="location.href='main.html'" />
+        </div>
+        <div class="mainProfile">
+            <p class="loginBtn" onclick="location.href='login.html'">로그인</p>
+            <p class="signupBtn" onclick="location.href='selectJoin.html'">회원가입</p>
+            <p class="mainProfileName">감미로운 옹징어</p>
+            <p class="mainProfileText">님</p>
+            <div class="profileContainer">
+                <img class="mainProfileImg" src="img/MyPageButton.svg" />
+                <div class="myProfileMore">
+                    <p onClick="location.href='userMypage.html'">마이페이지</p>
+                    <hr />
+                    <p>로그아웃</p>
+                </div>
+            </div>
+        </div>
+    </div>
         <div class="container">
             <div class="myTitle">마이 페이지</div>
             <div class="myTabNav">
@@ -254,6 +273,30 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+        <div class="footer">
+            <div class="footerLeft">
+                <img id="footerLogo" src="img/mainLogo1.svg" />
+                <div>
+                    <div>
+                        <p class="department">PM</p>
+                        <p class="peopleList">이혜미</p>
+                    </div>
+                    <div>
+                        <p class="department">FE</p>
+                        <p class="peopleListFE">이혜린, 이윤호, 장수진</p>
+                    </div>
+                    <div>
+                        <p class="department">BE</p>
+                        <p class="peopleListBE">김현우, 박선균</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footerRight">
+                <img src="img/lioiin.png"/>
+                <p>상명대학교 멋쟁이 사자처럼 11기<br/>
+                    Instagram @likelion_smu</p>
             </div>
         </div>
         <script src="js/userMypage.js"></script>

@@ -185,7 +185,7 @@ h3, p{
     position: absolute;
     width: 150px;
     height: 150px;
-    bottom: 85px;
+    bottom: 100px;
     right: 30px;
     animation: moveUpDown 2s infinite linear;
 }

@@ -21,6 +21,8 @@ window.onbeforeunload = function () {
     history.replaceState({}, document.title, newUrl);
 };
 
+
+// 최신순, 조회수순, 좋아요순 버튼
 const sortButtons = Array.from(document.querySelectorAll('.sortButton'))
 
 sortButtons.forEach((button) => {

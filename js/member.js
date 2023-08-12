@@ -1,4 +1,4 @@
-var host = ',,'
+var host = 'http://localhost:8080'
 
 function storeJoin() {
     var storeId = $('#storeId').val()
@@ -108,17 +108,18 @@ function checkBusinessNum() {
 function sendFindEmail(){
     var userEmail = $('#findPwEmail').val();
     $.ajax({
-        url: host + '/users/password',
+        url: host + '/users/password?email=' + userEmail,
         method: 'POST',
-        data: JSON.stringify({
-            'userEmail': userEmail
-        }),
         success: function(data){
             alert('입력한 이메일로 임시 비밀번호가 전송되었습니다.');
             window.location.href='login.html';
         },
         error: function(){
-            alert('이메일로 비밀번호를 전송할 수 없습니다.');
+            if(userEmail === '') {
+                alert('이메일을 입력하세요');
+            }else{
+                alert('이메일을 다시 입력하세요');
+            }
         }
     })
 }
