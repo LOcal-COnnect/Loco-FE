@@ -49,6 +49,11 @@ function updateRatingValue() {
     ratingValue.textContent = selectedRating
 }
 
+// 페이지 이동 (수정 완료 버튼)
+function completeCreateReview() {
+    window.location.href = 'userMypage.html';
+}
+
 // 댓글 달기 ajax
 function completeCreatePromotion(promotionIdx, userIdx) {
     const content = document.querySelector('.contentInput').value
