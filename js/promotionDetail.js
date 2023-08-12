@@ -7,14 +7,19 @@ window.onload = function () {
     console.log(postId);
 }
 
+
 const image = document.getElementById('goodnum');
 let isClicked = false;
+
+var imgElement = document.getElementById("goodnum");
 
 image.addEventListener('click', () => {
     if (isClicked) {
         image.classList.remove('active');
+        imgElement.src = "img/goodinversion.svg";
     } else {
         image.classList.add('active');
+        imgElement.src = "img/good.svg";
     }
     isClicked = !isClicked;
 });
