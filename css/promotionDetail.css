@@ -140,3 +140,11 @@
     font-size: 12px;
     color: black;
 }
+
+
+#goodnum {
+            cursor: pointer;
+        }
+        .active {
+            background-color: red;
+        }
