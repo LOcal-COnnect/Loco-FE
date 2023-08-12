@@ -1,3 +1,16 @@
+.container {
+    margin: 0 auto 20px auto;
+    padding: 0 17vw;
+    font-family: 'GmarketSansMedium';
+}
+
+@media (max-width: 1000px) {
+    .container {
+        padding: 0 8vw;
+    }
+}
+
+
 .promotionSelectBtWrap {
     display: flex;
     flex-direction: row;
