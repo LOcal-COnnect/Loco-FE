@@ -51,7 +51,7 @@ function updateRatingValue() {
 
 // 페이지 이동 (수정 완료 버튼)
 function completeCreateReview() {
-    window.location.href = 'userMypage.html';
+    window.location.href = 'userMypage.html'
 }
 
 // 댓글 달기 ajax

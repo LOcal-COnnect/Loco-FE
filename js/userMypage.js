@@ -34,32 +34,30 @@ function handleSortButtonClick(event) {
     }
 }
 
-
 //리뷰수정완료 누르면 바로 tab3으로 이동하기 위한 함수
 function activateTab(tabId) {
-    const tabToActivate = document.getElementById(tabId);
+    const tabToActivate = document.getElementById(tabId)
     if (tabToActivate) {
-        handleSortButtonClick({ target: tabToActivate });
+        handleSortButtonClick({ target: tabToActivate })
     }
 }
 
 // URL에서 쿼리 파라미터 추출하는 함수
 function getQueryParam(name) {
-    const urlSearchParams = new URLSearchParams(window.location.search);
-    return urlSearchParams.get(name);
+    const urlSearchParams = new URLSearchParams(window.location.search)
+    return urlSearchParams.get(name)
 }
 
 // 페이지가 로드될 때 실행되는 이벤트 리스너
-window.addEventListener('load', function() {
+window.addEventListener('load', function () {
     // completeCreateReview 함수에서 넘어온 URL 파라미터를 확인
-    const sourcePage = getQueryParam('source');
-    
+    const sourcePage = getQueryParam('source')
+
     if (sourcePage === 'completeCreateReview') {
         // 이전 페이지가 completeCreateReview일 경우 함수 a 실행
-        handleSortButtonClick(tab3);
+        handleSortButtonClick(tab3)
     }
-});
-
+})
 
 // 수정 및 삭제 storemypage에서 가져옴
 
@@ -86,12 +84,11 @@ document.addEventListener('DOMContentLoaded', function () {
     const moveEditMyBt = document.querySelector('.moveEditMyBt')
     const tab1 = document.querySelector('#tab1')
     const myInfo = document.querySelector('.myInfo')
-    let editing = false // To track whether user is editing or not
+    let editing = false
 
     moveEditMyBt.addEventListener('click', function () {
         if (!editing) {
-            // 내 정보 수정하기 버튼을 클릭하여 편집 모드로 전환
-            tab1.classList.add('active') // tab1 활성화
+            tab1.classList.add('active')
 
             const infoItems = myInfo.querySelectorAll('div')
 
@@ -111,7 +108,6 @@ document.addEventListener('DOMContentLoaded', function () {
             moveEditMyBt.textContent = '수정 완료'
             editing = true
         } else {
-            // 수정 완료 버튼을 클릭하여 저장하고 편집 모드 종료
             const infoItems = myInfo.querySelectorAll('div')
 
             infoItems.forEach((item) => {
@@ -126,12 +122,32 @@ document.addEventListener('DOMContentLoaded', function () {
 
             moveEditMyBt.textContent = '내 정보 수정하기'
             editing = false
-
-            // 변경된 내용을 서버에 저장하는 로직 추가
-            // ...
-
-            // 저장 완료 후의 처리 로직
-            // ...
         }
     })
+})
+
+// 댓글 삭제 ajax
+
+// 댓글 삭제 ajax
+function deleteComment(commentIdx) {
+    $.ajax({
+        url: '/comment/${commentIdx}',
+        type: 'DELETE',
+        success: function (response) {
+            if (response.code === 200) {
+                console.log('댓글 삭제 성공:', response.message)
+            } else {
+                console.error('댓글 삭제 실패:', response.message)
+            }
+        },
+        error: function (xhr, status, error) {
+            console.error('댓글 삭제 오류:', error)
+        },
+    })
+}
+
+document.querySelector('.deleteBt').addEventListener('click', function () {
+    const commentIdx = 123
+
+    deleteComment(commentIdx)
 })
