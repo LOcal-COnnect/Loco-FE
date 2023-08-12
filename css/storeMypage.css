@@ -46,8 +46,6 @@
     flex-direction: column;
     margin: 20px auto;
     width: 50vw;
-    margin-top: 78px;
-    margin-left: 140px;
 }
 
 .myInfo > div {
@@ -78,10 +76,7 @@
     font-size: 15px;
     cursor: pointer;
     padding: 10px 0;
-    margin-top: 10%;
-    margin-bottom: 20%;
     align-items: center;
-    margin-left: 200px;
 }
 
 #tab1.tab.active,
@@ -215,8 +210,10 @@
 .tab3 {
     width: 100vw;
     margin: 0 auto;
+    display: none;
+    /*
     display: flex;
-    justify-content: center;
+    justify-content: center; */
 }
 
 .firstBox {
@@ -224,8 +221,6 @@
     flex-direction: row;
     margin: 20px auto;
     width: 100vw;
-    margin-top: 78px;
-    margin-right: 1000px;
 }
 
 .right {

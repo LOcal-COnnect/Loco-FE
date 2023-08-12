@@ -1,3 +1,9 @@
+.container {
+    margin: 0 auto 20px auto;
+    padding: 0 17vw;
+    font-family: 'GmarketSansMedium';
+}
+
 .containerHeader {
     padding: 10px 0;
 }

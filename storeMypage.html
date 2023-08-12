@@ -12,12 +12,31 @@
             crossorigin="anonymous"
         />
         <link type="text/css" rel="stylesheet" href="css/storeMypage.css" />
-        <!--    <link rel="stylesheet" href="css/index.css" />-->
+        <link rel="stylesheet" href="css/index.css" />
         <title>가게 마이페이지</title>
     </head>
 
     <body>
-        <nav id="navbar"></nav>
+        <div class="mainNav">
+        <div class="mainNavIcon">
+            <img class="categoryBtn" id="categoryButton" src="img/hamburger.svg" onClick="toggleHiddenCategory();" />
+            <img class="mainLogo" src="img/mainLoco.svg" onclick="location.href='main.html'" />
+        </div>
+        <div class="mainProfile">
+            <p class="loginBtn" onclick="location.href='login.html'">로그인</p>
+            <p class="signupBtn" onclick="location.href='selectJoin.html'">회원가입</p>
+            <p class="mainProfileName">감미로운 옹징어</p>
+            <p class="mainProfileText">님</p>
+            <div class="profileContainer">
+                <img class="mainProfileImg" src="img/MyPageButton.svg" />
+                <div class="myProfileMore">
+                    <p onClick="location.href='userMypage.html'">마이페이지</p>
+                    <hr />
+                    <p onClick="logout();">로그아웃</p>
+                </div>
+            </div>
+        </div>
+    </div>
         <div class="container" id="myTabContent">
             <div class="myTitle">마이 페이지</div>
             <div class="myTabNav">
