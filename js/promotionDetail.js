@@ -10,6 +10,8 @@ window.onload = function () {
 const image = document.getElementById('goodnum')
 let isClicked = false
 
+var imgElement = document.getElementById('goodnum')
+
 image.addEventListener('click', () => {
     if (isClicked) {
         image.classList.remove('active')
