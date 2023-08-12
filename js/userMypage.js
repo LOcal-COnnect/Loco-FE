@@ -34,6 +34,53 @@ function handleSortButtonClick(event) {
     }
 }
 
+
+//리뷰수정완료 누르면 바로 tab3으로 이동하기 위한 함수
+function activateTab(tabId) {
+    const tabToActivate = document.getElementById(tabId);
+    if (tabToActivate) {
+        handleSortButtonClick({ target: tabToActivate });
+    }
+}
+
+// URL에서 쿼리 파라미터 추출하는 함수
+function getQueryParam(name) {
+    const urlSearchParams = new URLSearchParams(window.location.search);
+    return urlSearchParams.get(name);
+}
+
+// 페이지가 로드될 때 실행되는 이벤트 리스너
+window.addEventListener('load', function() {
+    // completeCreateReview 함수에서 넘어온 URL 파라미터를 확인
+    const sourcePage = getQueryParam('source');
+    
+    if (sourcePage === 'completeCreateReview') {
+        // 이전 페이지가 completeCreateReview일 경우 함수 a 실행
+        handleSortButtonClick(tab3);
+    }
+});
+
+
+// 수정 및 삭제 storemypage에서 가져옴
+
+// 페이지 이동 (수정 완료 버튼)
+function completeCreateReview() {
+    window.location.href = 'makeReivewmodify.html' // 리뷰수정.html로 이동
+}
+/*
+document
+    .getElementById('moveEditMyBt')
+    .addEventListener('click', completeCreatePromotion)
+*/
+// 리뷰 삭제 버튼
+function deleteReview() {
+    window.location.href = 'userMypage.html' // mypage.html로 이동
+}
+
+document.getElementById('delete').addEventListener('click', deleteReview)
+
+//
+
 // 내 정보 수정하기
 document.addEventListener('DOMContentLoaded', function () {
     const moveEditMyBt = document.querySelector('.moveEditMyBt')
