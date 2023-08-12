@@ -1,3 +1,4 @@
+/*
 // 가게 대표사진
 window.addEventListener('load', function () {
     const storePhotoElement = document.querySelector('#storePhoto img')
@@ -13,6 +14,7 @@ window.addEventListener('load', function () {
             console.error('Failed to fetch the image:', error)
         })
 })
+*/
 
 // 가게 소개 박스
 const introBox = document.querySelector('.introBox')
@@ -53,15 +55,12 @@ window.addEventListener('load', function () {
 })
 
 // 해시태그 길이 조정
-const hashtagBox1 = document.querySelector('.HashtagBox1 h3')
-const hashtagBox2 = document.querySelector('.HashtagBox2 h3')
+const hashtagBox = document.querySelector('.HashtagBox h3')
 
 function adjustHashtagBoxSize() {
-    const hashtag1Width = hashtagBox1.clientWidth + 14
-    const hashtag2Width = hashtagBox2.clientWidth + 14
+    const hashtagWidth = hashtagBox.clientWidth + 14
 
-    document.querySelector('.HashtagBox1').style.width = `${hashtag1Width}px`
-    document.querySelector('.HashtagBox2').style.width = `${hashtag2Width}px`
+    document.querySelector('.HashtagBox').style.width = `${hashtagWidth}px`
 }
 
 window.addEventListener('load', adjustHashtagBoxSize)
@@ -230,4 +229,52 @@ window.addEventListener('DOMContentLoaded', (event) => {
     renderButton()
 })
 
-// https://nohack.tistory.com/125
+window.addEventListener('load', function () {
+    function fetchComments(promotionIdx) {
+        $.ajax({
+            url: `/comment/promotion/${promotionIdx}`,
+            type: 'GET',
+            success: function (response) {
+                if (response.commentList) {
+                    console.log('댓글 조회 성공:', response.commentList)
+                    // 여기서 댓글 리스트를 처리하는 로직을 추가하세요.
+                } else {
+                    console.error('댓글 조회 실패:', response.message)
+                }
+            },
+            error: function (xhr, status, error) {
+                console.error('댓글 조회 오류:', error)
+            },
+        })
+    }
+
+    function fetchReviews() {
+        $.ajax({
+            url: '/comment/promotion/{promotionIdx}', // 실제 API 경로로 수정해야 함
+            type: 'GET',
+            success: function (response) {
+                if (response.commentList) {
+                    console.log('리뷰 조회 성공:', response.commentList)
+                    // 리뷰 데이터를 화면에 표시하는 로직 추가
+                    for (const review of response.commentList) {
+                        addReview({
+                            profilePictureUrl: '../svg/profile.svg', // 프로필 사진 URL
+                            nickname: 'User', // 닉네임
+                            rating: 5, // 평점 (임의로 5점으로 설정)
+                            date: review.createdAt, // 작성일자
+                            comment: review.commentContent, // 리뷰 내용
+                            photo: '../svg/storePhoto.svg', // 리뷰 사진 URL
+                        })
+                    }
+                } else {
+                    console.error('리뷰 조회 실패:', response.message)
+                }
+            },
+            error: function (xhr, status, error) {
+                console.error('리뷰 조회 오류:', error)
+            },
+        })
+    }
+
+    fetchReviews()
+})

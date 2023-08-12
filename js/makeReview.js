@@ -50,48 +50,79 @@ function updateRatingValue() {
 }
 
 // 댓글 달기 ajax
-// makeReview.js
+function completeCreatePromotion(promotionIdx, userIdx) {
+    const content = document.querySelector('.contentInput').value
+    const rating = document.querySelector('.rating-value').textContent
+    const selectedFileInput = document.querySelector(
+        '.pictureInputBox input[type="file"]'
+    )
+    if (
+        selectedFileInput &&
+        selectedFileInput.files &&
+        selectedFileInput.files.length > 0
+    ) {
+        const selectedFile = selectedFileInput.files[0]
 
-function completeCreatePromotion() {
-    const contentInput = document.querySelector('.contentInput')
-    const commentContent = contentInput.value
+        const formData = new FormData()
+        formData.append('content', content)
+        formData.append('rating', rating)
+        if (selectedFile) {
+            formData.append('image', selectedFile)
+        }
 
-    const ratingValue = document.querySelector('.rating-value').textContent
-    const stars = Array.from(document.querySelectorAll('.star'))
+        $.ajax({
+            url: '/comment/{promotionIdx}/users/{userIdx}',
+            type: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function (response) {
+                if (response.code === 200) {
+                    console.log('댓글 등록 성공:', response.message)
+                } else {
+                    console.error('댓글 등록 실패:', response.message)
+                }
+            },
+            error: function (xhr, status, error) {
+                console.error('댓글 등록 오류:', error)
+            },
+        })
+    } /*
+    else {
+        console.error('선택된 파일이 없습니다.')
+    } */
+}
 
-    let imageFile = null
-    const pictureInput = document.querySelector('.pictureInputBox input')
-    if (pictureInput.files.length > 0) {
-        imageFile = pictureInput.files[0]
-    }
+const promotionIdx = 123
+const userIdx = 456
 
-    // Create FormData object
-    const formData = new FormData()
-    formData.append('commentContent', commentContent)
-    formData.append('rating', ratingValue)
-    if (imageFile) {
-        formData.append('image', imageFile)
-    }
+completeCreatePromotion(promotionIdx, userIdx)
 
-    // AJAX request
+// 댓글 수정 ajax
+function modifyComment(commentIdx, newCommentContent) {
     $.ajax({
-        url: '/comment', // 실제 서버 URL로 변경해야 함
-        type: 'POST',
-        data: formData,
-        processData: false,
-        contentType: false,
+        url: '/comment/${commentIdx}',
+        type: 'PATCH',
+        data: JSON.stringify({
+            commentContent: newCommentContent,
+        }),
+        contentType: 'application/json',
         success: function (response) {
             if (response.code === 200) {
-                console.log('댓글 등록 성공:', response.message)
-                // 댓글 등록 성공 시 처리할 내용 추가
+                console.log('댓글 수정 성공:', response.message)
             } else {
-                console.error('댓글 등록 실패:', response.message)
-                // 댓글 등록 실패 시 처리할 내용 추가
+                console.error('댓글 수정 실패:', response.message)
             }
         },
         error: function (xhr, status, error) {
-            console.error('댓글 등록 오류:', error)
-            // 오류 처리
+            console.error('댓글 수정 오류:', error)
         },
     })
 }
+
+document.querySelector('.completeBt').addEventListener('click', function () {
+    const commentIdx = 123
+    const newCommentContent = '수정된 댓글 내용입니다.'
+
+    modifyComment(commentIdx, newCommentContent)
+})
