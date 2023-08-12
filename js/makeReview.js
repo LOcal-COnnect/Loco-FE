@@ -54,80 +54,57 @@ function completeCreateReview() {
     window.location.href = 'userMypage.html'
 }
 
-// 댓글 달기 ajax
-function completeCreatePromotion(promotionIdx, userIdx) {
+// 리뷰 작성 ajax
+function completeCreateReview(storeIdx, userIdx) {
     const content = document.querySelector('.contentInput').value
-    const rating = document.querySelector('.rating-value').textContent
+    const rating = parseFloat(
+        document.querySelector('.rating-value').textContent
+    )
     const selectedFileInput = document.querySelector(
         '.pictureInputBox input[type="file"]'
     )
+
+    if (!content || !rating) {
+        console.error('내용과 별점을 모두 입력해주세요.')
+        return
+    }
+
+    const formData = new FormData()
+    formData.append('reviewContent', content)
+    formData.append('reviewStar', rating.toFixed(1))
+
     if (
         selectedFileInput &&
         selectedFileInput.files &&
         selectedFileInput.files.length > 0
     ) {
         const selectedFile = selectedFileInput.files[0]
+        formData.append('reviewImage', selectedFile)
+    }
 
-        const formData = new FormData()
-        formData.append('content', content)
-        formData.append('rating', rating)
-        if (selectedFile) {
-            formData.append('image', selectedFile)
-        }
-
-        $.ajax({
-            url: `/comment/{promotionIdx}/users/{userIdx}`,
-            type: 'POST',
-            data: formData,
-            processData: false,
-            contentType: false,
-            success: function (response) {
-                if (response.code === 200) {
-                    console.log('댓글 등록 성공:', response.message)
-                } else {
-                    console.error('댓글 등록 실패:', response.message)
-                }
-            },
-            error: function (xhr, status, error) {
-                console.error('댓글 등록 오류:', error)
-            },
-        })
-    } /*
-    else {
-        console.error('선택된 파일이 없습니다.')
-    } */
-}
-
-const promotionIdx = 123
-const userIdx = 456
-
-completeCreatePromotion(promotionIdx, userIdx)
-
-// 리뷰 수정 ajax
-function modifyComment(commentIdx, newCommentContent) {
     $.ajax({
-        url: '/comment/${commentIdx}',
-        type: 'PATCH',
-        data: JSON.stringify({
-            commentContent: newCommentContent,
-        }),
-        contentType: 'application/json',
+        url: `/reviews/${storeIdx}/users/${userIdx}`,
+        type: 'POST',
+        data: formData,
+        processData: false,
+        contentType: false,
         success: function (response) {
             if (response.code === 200) {
-                console.log('댓글 수정 성공:', response.message)
+                console.log('리뷰 등록 성공:', response.message)
+                // 리뷰 등록 성공 시 처리 로직 추가
             } else {
-                console.error('댓글 수정 실패:', response.message)
+                console.error('리뷰 등록 실패:', response.message)
             }
         },
         error: function (xhr, status, error) {
-            console.error('댓글 수정 오류:', error)
+            console.error('리뷰 등록 오류:', error)
         },
     })
 }
 
-document.querySelector('.completeBt').addEventListener('click', function () {
-    const commentIdx = 123
-    const newCommentContent = '수정된 댓글 내용입니다.'
+const storeIdx = 789
+const userIdx = 456
 
-    modifyComment(commentIdx, newCommentContent)
+document.querySelector('.completeBt').addEventListener('click', function () {
+    completeCreateReview(storeIdx, userIdx)
 })

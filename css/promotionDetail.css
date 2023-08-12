@@ -109,9 +109,13 @@
 
 .commentList {
     padding: 10px 0;
-    display: flex;
+    display: block;
     flex-direction: row;
     align-items: center;
+}
+
+.commentItem {
+    margin-top: 20px;
 }
 
 .commentList > img {
@@ -147,10 +151,9 @@
     color: black;
 }
 
-
 #goodnum {
-            cursor: pointer;
-        }
-        .active {
-            background-color: red;
-        }
+    cursor: pointer;
+}
+.active {
+    background-color: red;
+}
