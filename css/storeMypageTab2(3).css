@@ -42,12 +42,11 @@
 }
 
 .myInfo {
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
     margin: 20px auto;
     width: 50vw;
-    margin-top: 78px;
-    margin-left: 140px;
 }
 
 .myInfo > div {
@@ -70,6 +69,7 @@
     justify-content: center;
 }
 .moveEditMyBt {
+    margin: 0 auto;
     width: 20vw;
     background-color: black;
     color: white;
@@ -78,8 +78,6 @@
     font-size: 15px;
     cursor: pointer;
     padding: 10px 0;
-    margin-top: 10%;
-    margin-bottom: 20%;
 }
 
 #tab1.tab.active,
@@ -226,8 +224,7 @@
 .tab3 {
     width: 100vw;
     margin: 0 auto;
-    display: flex;
-    justify-content: center;
+    display: none;
 }
 
 .firstBox {
