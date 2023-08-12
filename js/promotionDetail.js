@@ -7,7 +7,6 @@ window.onload = function () {
     console.log(postId);
 }
 
-<<<<<<< HEAD
 const image = document.getElementById('goodnum');
 let isClicked = false;
 
@@ -19,7 +18,6 @@ image.addEventListener('click', () => {
     }
     isClicked = !isClicked;
 });
-
 
 $('#goodnum').click(function() {
     const likeCountElement = $('#likeCount');
@@ -53,16 +51,6 @@ $('#goodnum').click(function() {
 });
 
 
-
-function getPromotionDetail(){
-    // $.ajax({
-    //     url: host + '/stores/Promotion/' + postId,
-    //     method: 'GET',
-    //     success: function(data){
-    //
-    //     }
-    // })
-=======
 function getPromotionDetail(postId){
     $.ajax({
         url: host + '/stores/promotion/' + postId,
@@ -71,7 +59,6 @@ function getPromotionDetail(postId){
 
         }
     })
->>>>>>> 892cb888e5063f86a6546fbe2f5db9138ef052e9
     var data = {
         "promotionTitle":"제목입니다.",
         "promotionContent":"내용입니다.",
