@@ -143,8 +143,7 @@
 
 
 #goodnum {
-            cursor: pointer;
-        }
-        .active {
-            background-color: red;
-        }
+     cursor: pointer;
+     width: 15px;
+     height: 15px;
+}
