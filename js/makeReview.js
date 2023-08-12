@@ -103,10 +103,10 @@ const userIdx = 456
 
 completeCreatePromotion(promotionIdx, userIdx)
 
-// 댓글 수정 ajax
+// 리뷰 수정 ajax
 function modifyComment(commentIdx, newCommentContent) {
     $.ajax({
-        url: `/comment/${commentIdx}`,
+        url: '/comment/${commentIdx}',
         type: 'PATCH',
         data: JSON.stringify({
             commentContent: newCommentContent,

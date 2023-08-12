@@ -1,3 +1,7 @@
+.container {
+    padding: 0px;
+}
+
 .top {
     display: flex;
     width: 65vw;
@@ -144,11 +148,11 @@
 }
 
 .middleLine {
+    margin: 0 auto;
     width: 65vw;
     height: 2px;
     background-color: #000000;
-    margin-top: 10px;
-    margin-left: 0px;
+    margin-top: 20px;
 }
 
 .middleTop {
@@ -168,6 +172,7 @@
 }
 
 .down {
+    margin: 0 auto;
     margin-top: 20px;
     display: flex;
     width: 65vw;

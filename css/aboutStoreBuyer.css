@@ -147,8 +147,8 @@
     width: 65vw;
     height: 2px;
     background-color: #000000;
-    margin-top: 10px;
-    margin-left: 0px;
+    margin: 0 auto;
+    margin-top: 20px;
 }
 
 .middleTop {
@@ -168,6 +168,7 @@
 }
 
 .down {
+    margin: 0 auto;
     margin-top: 20px;
     display: flex;
     width: 65vw;
@@ -604,4 +605,9 @@ get ---> 조회 function(data) / data.promotionList[0]
 patch는 get에서 patch로만 바꾸면 됨
 받아올 필요없으면 data: 필요없음
 window.location으로 옮기기 ---> 댓글 등록
+
+-----------------------------------------------------------
+
+postList 삭제, 수정 기능
+정보 수정 기능 ---> 다시
 */
