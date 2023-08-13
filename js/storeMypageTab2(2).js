@@ -154,7 +154,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 input.value = text
 
                 item.innerHTML = ''
-                item.appendChild(img.cloneNode(true))
+                item.append(img)
                 item.appendChild(input)
             })
 
@@ -170,18 +170,12 @@ document.addEventListener('DOMContentLoaded', function () {
                 const text = input.value
 
                 item.innerHTML = ''
-                item.appendChild(img.cloneNode(true))
+                item.append(img)
                 item.appendChild(document.createTextNode(text))
             })
 
             moveEditMyBt.textContent = '내 정보 수정하기'
             editing = false
-
-            // 변경된 내용을 서버에 저장하는 로직 추가
-            // ...
-
-            // 저장 완료 후의 처리 로직
-            // ...
         }
     })
 })
