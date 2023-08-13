@@ -161,6 +161,12 @@
 }
 
 #goodnum {
+<<<<<<< HEAD
+     cursor: pointer;
+     width: 15px;
+     height: 15px;
+}
+=======
     cursor: pointer;
 }
 .active {
@@ -174,3 +180,4 @@
 .deleteButton {
     width: 100px;
 }
+>>>>>>> 4af4f7b71ceeda00f864c4ee18a3658aa5843c1a
