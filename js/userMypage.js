@@ -206,26 +206,46 @@ function displayReviews(reviews) {
 }
 
 // 리뷰 삭제 ajax
-function deleteReview(reviewIdx) {
-    $.ajax({
-        url: `/reviews/${reviewIdx}`,
-        type: 'DELETE',
-        success: function (response) {
-            if (response.code === 200) {
-                console.log('리뷰 삭제 성공:', response.message)
-            } else {
-                console.error('리뷰 삭제 실패:', response.message)
-            }
-        },
-        error: function (xhr, status, error) {
-            console.error('리뷰 삭제 오류:', error)
-        },
-    })
-}
+// 리뷰 삭제 버튼 클릭 이벤트 처리
+document.addEventListener('DOMContentLoaded', function () {
+    const reviewListWrap = document.querySelector('.reviewListWrap')
 
-document.querySelectorAll('.deleteBt').forEach(function (button) {
-    button.addEventListener('click', function () {
-        const reviewIdx = 123
-        deleteReview(reviewIdx)
+    reviewListWrap.addEventListener('click', function (event) {
+        const deleteButton = event.target.closest('.deleteBt')
+        if (deleteButton) {
+            const reviewCard = deleteButton.closest('.yesReviewCard')
+            const reviewIdx = reviewCard.dataset.reviewIdx
+
+            deleteReview(reviewIdx)
+                .then(() => {
+                    reviewCard.parentNode.removeChild(reviewCard)
+                })
+                .catch((error) => {
+                    console.error('리뷰 삭제 실패:', error)
+                })
+        }
     })
 })
+
+// 리뷰 삭제 ajax
+function deleteReview(reviewIdx) {
+    return new Promise((resolve, reject) => {
+        $.ajax({
+            url: `/reviews/${reviewIdx}`,
+            type: 'DELETE',
+            success: function (response) {
+                if (response.code === 200) {
+                    console.log('리뷰 삭제 성공:', response.message)
+                    resolve()
+                } else {
+                    console.error('리뷰 삭제 실패:', response.message)
+                    reject(new Error('리뷰 삭제 실패'))
+                }
+            },
+            error: function (xhr, status, error) {
+                console.error('리뷰 삭제 오류:', error)
+                reject(error)
+            },
+        })
+    })
+}
