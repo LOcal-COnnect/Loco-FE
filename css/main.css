@@ -123,7 +123,6 @@ h3, p{
 
 .promotionCard {
     display: flex;
-    justify-content: center;
     align-items: center;
     border: 1px solid #DCDCDC;
     padding: 30px 10px;
@@ -161,12 +160,25 @@ h3, p{
 }
 
 .promotionStoreInfo > p{
-    width: 90%;
+    width: 80%;
+    font-size: 13px;
     margin-top: 15px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
 }
 
 .promotionStoreInfoName{
     display: flex;
+}
+
+.promotionStoreInfoName > p{
+    width: 100px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
 }
 
 .storeScore{

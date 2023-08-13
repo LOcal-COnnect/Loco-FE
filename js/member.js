@@ -4,11 +4,12 @@ function storeJoin() {
     var storeId = $('#storeId').val()
     var storePw = $('#storePw').val()
     var storeEmail = $('#storeEmail').val()
-    var phoneNum = $('#phoneNum').val()
+    var storeNum = $('#storeNum').val()
     var address = $('#roadAddress').val()
     var addressDetail = $('#addressDetail').val()
+    var storeSellerName = $('#storeSellerName').val()
     var storeName = $('#storeName').val()
-    var storeNumber = $('#storeNumber').val()
+    var sellerNumber = $('#sellerNumber').val()
     var businessNum = $('#businessNum').val()
     $.ajax({
         url: host + '/users/sellers/join',
@@ -17,12 +18,13 @@ function storeJoin() {
             'sellerId': storeId,
             'sellerPassword' : storePw,
             'sellerEmail': storeEmail,
-            'sellerPhone': phoneNum, //가게전화번호
-            'sellerName': storeName,
-            storeNumber: storeNumber, //주인전화번호
-            'sellerAddress': address,
+            'sellerPhone': sellerNumber, //주인전화번호
+            'sellerName': storeSellerName,
+            'storeName': storeName,
+            'storeTel': storeNum, //가게전화번호
+            'storeAddress': address,
             'sellerDetailAddress': addressDetail,
-            businessNumber: businessNum,
+            'businessNumber': businessNum,
         }),
         success: function () {
             alert('회원가입에 성공하였습니다.')

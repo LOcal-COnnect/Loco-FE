@@ -3,13 +3,16 @@ var host = 'localhost:3000';
 window.onload = function(){
     var urlParams = new URLSearchParams(window.location.search);
     var postId = urlParams.get('id');
-    var searchText = urlParams.get('search');
-    // console.log(postId);
-    if(postId != null) {
-        showCategory(postId);
+    window.searchText = urlParams.get('search');
+
+    if(window.postId != null) {
+        console.log(window.postId);
+        showCategory(0, postId);
+
     }
-    if(searchText != null) {
-        getSearchResult(searchText);
+    else if(window.searchText != null) {
+        console.log(window.searchText);
+        getSearchResult(0, searchText);
     }else {
         showData(0, 'createdAt,desc');
     }
@@ -96,7 +99,7 @@ function showNearPlace() {
     }
 }
 
-function showCategory(name){
+function showCategory(pagenum, name){
     var promotionSelectWrap = document.querySelector('.promotionSelectBtWrap');
     var promotionSearchWrap = document.querySelector('.promotionSearchBtWrap');
     var searchTitle = document.querySelector('.searchTitle');
@@ -112,8 +115,8 @@ function showCategory(name){
         "storeList" : [
             {
                 "storeIdx" : "스토어아이디",
-                "storeName" :"가게명",
-                "storeLocation":"서울시 한국구 한국동 12번지"
+                "storeName" :"가게명가게명가게명가게명가게명가게명가게명가게명가게명가게명가게명가게명가게명가게명가게명가게명",
+                "storeLocation":"서울시 한국구 한국동 12번지 한국구 한국동 12번지 한국 한국구 한국동 12번지구 한국동 12번지"
             },
             {
                 "storeIdx" : "스토어아이디",
@@ -128,10 +131,10 @@ function showCategory(name){
         ]
     }
 
-    var container = document.querySelector('.promotionListWrap');
+    var newcontainer = document.querySelector('.promotionListWrap');
     var length = data.storeList.length;
 
-    container.innerHTML = '';
+    newcontainer.innerHTML = '';
     for (var i = 0; i < length; i++) {
         var card = document.createElement('div');
         card.className = "promotionCard";
@@ -142,40 +145,21 @@ function showCategory(name){
                     <img class="promotionImg" src="img/storeImgSample.svg"/>
                     <h3>${data.storeList[i].storeName}</h3>
                     <div class="storeIntro">
-                        ${data.storeList[i].storeLocation}
+                        <p>${data.storeList[i].storeLocation}</p>
                     </div>
                 `;
-        container.appendChild(card);
+        newcontainer.appendChild(card);
+        console.log(card);
     }
     cardEffect();
-    // $.ajax({
-    //     url: host + '/stores/' + name,
-    //     method: 'GET',
-    //     success: function (data) {
-    //         var container = document.querySelector('.promotionListWrap');
-    //         var length = data.length;
-    //
-    //         container.innerHTML = '';
-    //         for (var i = 0; i < length; i++) {
-    //             var card = document.createElement('div');
-    //             card.className = "promotionCard";
-    //             card.id = data.storeList[i].storeIdx;
-    //             card.setAttribute("onclick", "moveIntroDetail(" + data.storeList[i].storeIdx + ");");
-    //
-    //             card.innerHTML = `
-    //                 <img class="promotionImg" src="img/storeImgSample.svg"/>
-    //                 <h3>${data.storeList[i].storeName}</h3>
-    //                 <div class="storeIntro">
-    //                     ${data.storeList[i].storeLocation}
-    //                 </div>
-    //             `;
-    //             container.appendChild(card);
-    //         }
-    //         cardEffect();
-    //     }, error: function() {
-    //         alert('카테고리에 해당하는 내용을 가져올 수 없습니다.');
-    //     }
-    // })
+    $.ajax({
+        url: host + '/stores/' + name + '/page=' + num + '&size=8',
+        method: 'GET',
+        success: function (data) {
+        }, error: function() {
+            alert('카테고리에 해당하는 내용을 가져올 수 없습니다.');
+        }
+    })
 }
 
 function showData(pagenum, sort){
@@ -191,8 +175,8 @@ function showData(pagenum, sort){
         "promotionList":[
             {
                 "promotionIdx":1,
-                "promotionTitle":"제목입니다.",
-                "promotionContent":"게시글내용입니다.",
+                "promotionTitle":"제목입니다.제목입니다제목입니다제목입니다제목입니다제목입니다제목입니다제목입니다제목입니다제목입니다제목입니다제목입니다제목입니다",
+                "promotionContent":"게시글내용입니다.제목입니다제목입니다제목입니다제목입니다제목입니다제목입니다제목입니다제목입니다제목입니다",
                 "viewCount":234
             },
             {
@@ -243,7 +227,7 @@ function showData(pagenum, sort){
             <img class="promotionImg" src="img/storeImgSample.svg"/>
             <h3>${data.promotionList[i].promotionTitle}</h3>
             <div class="storeIntro">
-                ${data.promotionList[i].promotionContent}
+                <p>${data.promotionList[i].promotionContent}</p>
             </div>
             <div class="promotionInfo">
                 <img src="img/good.svg"/>
@@ -285,6 +269,11 @@ function moveIntroDetail(num){
 }
 
 window.addEventListener('DOMContentLoaded', (event) => {
+    var urlParams = new URLSearchParams(window.location.search);
+    window.postId = urlParams.get('id');
+    window.searchText = urlParams.get('search');
+
+    console.log('포스트아이디' + postId);
     const buttonContainer = document.getElementById('buttonContainer')
 
     // buttonCount는 추후 백엔드에서 넘겨주는 페이지 수
@@ -315,8 +304,16 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
         for (let i = startButton; i < endButton; i++) {
             const button = createButton(i + 1)
-            // if(postId)
-            button.setAttribute('onclick', 'showData(' + (i+1) + ',"' + localStorage.getItem('sort') + '")')
+            if(window.postId != null){
+                console.log('postId 페이지네이션 실행')
+                button.setAttribute('onclick', 'showCategory(' + (i+1) + ',' + window.postId + ')')
+            } else if (window.searchText != null){
+                console.log('검색어 페이지네이션 실행')
+                button.setAttribute('onclick', 'getSearchResult(' + (i+1) + ',' + window.searchText + ')')
+            }else{
+                console.log(window.postId, window.searchText, '그냥 페이지네이션 실행')
+                button.setAttribute('onclick', 'showData(' + (i+1) + ',' + localStorage.getItem('sort') + ')')
+            }
             buttonContainer.appendChild(button)
         }
 
@@ -346,7 +343,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 })
 
 
-function getSearchResult(name){
+function getSearchResult(num, name){
     var promotionSelectWrap = document.querySelector('.promotionSelectBtWrap');
     var promotionSearchWrap = document.querySelector('.promotionSearchBtWrap');
     var searchTitle = document.querySelector('.searchTitle');
@@ -359,7 +356,7 @@ function getSearchResult(name){
     searchName.innerText = name;
 
     $.ajax({
-        url: host + '/stores/' + name,
+        url: host + '/stores/' + name + '/page=' + num + '&size=8',
         method: 'GET',
         success:function(data){
 
