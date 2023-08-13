@@ -47,6 +47,10 @@
     margin-top: 15px;
 }
 
+.buttonTwo {
+    display: flex;
+}
+
 .postDetailWrap {
     display: flex;
     flex-direction: row;
@@ -107,6 +111,11 @@
     border-bottom: 1px solid #cecece;
 }
 
+.commentProfile {
+    width: 30px;
+    height: 30px;
+}
+
 .commentList {
     padding: 10px 0;
     display: block;
@@ -156,4 +165,12 @@
 }
 .active {
     background-color: red;
+}
+
+.editButton {
+    width: 100px;
+}
+
+.deleteButton {
+    width: 100px;
 }

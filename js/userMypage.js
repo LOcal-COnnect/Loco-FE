@@ -96,7 +96,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 input.value = text
 
                 item.innerHTML = ''
-                item.appendChild(img.cloneNode(true))
+                item.append(img)
                 item.appendChild(input)
             })
 
@@ -113,7 +113,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 const text = input.value
 
                 item.innerHTML = ''
-                item.appendChild(img.cloneNode(true))
+                item.append(img)
                 item.appendChild(document.createTextNode(text))
             })
 
