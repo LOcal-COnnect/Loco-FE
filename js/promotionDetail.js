@@ -152,7 +152,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (event.key === 'Enter') {
             const commentContent = commentInput.value
             if (commentContent.trim() !== '') {
-                const url = host + `/comment/${window.postId}/users/{userIdx}`
+                const url = `/comment/${window.postId}/users/{userIdx}`
                 const requestData = {
                     content: commentContent,
                 }
@@ -219,7 +219,7 @@ document.addEventListener('DOMContentLoaded', function () {
 // 댓글 조회 ajax
 function getComments(promotionIdx) {
     return new Promise((resolve, reject) => {
-        const url = host + `/comment/promotion/${promotionIdx}`
+        const url = `/comment/promotion/${promotionIdx}`
 
         $.ajax({
             url: url,
@@ -239,7 +239,7 @@ document.addEventListener('DOMContentLoaded', function () {})
 // 댓글 수정 ajax
 function updateComment(commentIdx, content) {
     return new Promise((resolve, reject) => {
-        const url = host + `/comment/${commentIdx}`
+        const url = `/comment/${commentIdx}`
         const requestData = {
             content: content,
         }
@@ -289,6 +289,7 @@ document.addEventListener('DOMContentLoaded', function () {
             saveButton.addEventListener('click', function () {
                 const updatedContent = inputField.value
                 const commentIdx = commentItem.dataset.commentId
+
                 updateComment(commentIdx, updatedContent)
                     .then(() => {
                         commentText.textContent = updatedContent
@@ -305,30 +306,26 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     })
 })
-
 /*
 // 댓글 수정 API 호출 함수 (가정)
 function updateComment(commentId, content) {
     return new Promise((resolve, reject) => {
-        // 실제 API 호출 및 응답 처리를 구현해야 합니다.
-        // 아래는 가상의 비동기 함수로 가정한 예시입니다.
         setTimeout(() => {
-            const isSuccess = true // 댓글 수정이 성공적으로 이루어졌는지 여부
+            const isSuccess = true
             if (isSuccess) {
                 resolve()
             } else {
                 reject(new Error('댓글 수정 실패'))
             }
-        }, 1000) // 가상의 응답 시간 (1초)
+        }, 1000)
     })
 }
-
 */
 
 // 댓글 삭제 ajax
 function deleteComment(commentIdx) {
     return new Promise((resolve, reject) => {
-        const url = host + `/comment/${commentIdx}`
+        const url = `/comment/${commentIdx}`
 
         $.ajax({
             url: url,
