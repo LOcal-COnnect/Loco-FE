@@ -106,11 +106,23 @@
 .promotionCard h3 {
     font-size: 15px;
     margin: 10px 0;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
 }
 
 .storeIntro {
     font-size: 12px;
     height: 50px;
+}
+
+.storeIntro > p{
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    color: #555454;
 }
 
 .promotionInfo {
@@ -127,6 +139,10 @@
 .storeName {
     margin-left: 5px;
     font-size: small;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
 }
 
 /* 데스크탑 화면 크기 이상일 때 */

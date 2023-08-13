@@ -17,14 +17,14 @@ window.onload = function() {
             },
             {
                 "promotionIdx": 2,
-                "promotionTitle": "제목입니다.",
-                "promotionContent": "게시글내용입니다.",
+                "promotionTitle": "제목입니다.게시글내용입니다게시글내용입니다게시글내용입니다게시글내용입니다게시글내용입니다게시글내용입니다게시글내용입니다",
+                "promotionContent": "게시글내용입니다.제목입니다제목입니다제목입니다제목입니다제목입니다제목입니다제목입니다",
                 "viewCount": 234
 
             },
             {
                 "promotionIdx": 3,
-                "promotionTitle": "제목입니다.",
+                "promotionTitle": "제목입니다.제목입니다.제목입니다.제목입니다.제목입니다.",
                 "promotionContent": "게시글내용입니다.",
                 "viewCount": 234
 
