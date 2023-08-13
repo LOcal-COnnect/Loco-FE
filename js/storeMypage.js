@@ -126,12 +126,11 @@ document.addEventListener('DOMContentLoaded', function () {
     const moveEditMyBt = document.querySelector('.moveEditMyBt')
     const tab1 = document.querySelector('#tab1')
     const myInfo = document.querySelector('.myInfo')
-    let editing = false // To track whether user is editing or not
+    let editing = false
 
     moveEditMyBt.addEventListener('click', function () {
         if (!editing) {
-            // 내 정보 수정하기 버튼을 클릭하여 편집 모드로 전환
-            tab1.classList.add('active') // tab1 활성화
+            tab1.classList.add('active')
 
             const infoItems = myInfo.querySelectorAll('div')
 
@@ -144,14 +143,13 @@ document.addEventListener('DOMContentLoaded', function () {
                 input.value = text
 
                 item.innerHTML = ''
-                item.appendChild(img.cloneNode(true))
+                item.append(img)
                 item.appendChild(input)
             })
 
             moveEditMyBt.textContent = '수정 완료'
             editing = true
         } else {
-            // 수정 완료 버튼을 클릭하여 저장하고 편집 모드 종료
             const infoItems = myInfo.querySelectorAll('div')
 
             infoItems.forEach((item) => {
@@ -160,18 +158,12 @@ document.addEventListener('DOMContentLoaded', function () {
                 const text = input.value
 
                 item.innerHTML = ''
-                item.appendChild(img.cloneNode(true))
+                item.append(img)
                 item.appendChild(document.createTextNode(text))
             })
 
             moveEditMyBt.textContent = '내 정보 수정하기'
             editing = false
-
-            // 변경된 내용을 서버에 저장하는 로직 추가
-            // ...
-
-            // 저장 완료 후의 처리 로직
-            // ...
         }
     })
 })
