@@ -10,25 +10,40 @@
     </head>
     <body>
         <div class="mainNav">
-        <div class="mainNavIcon">
-            <img class="categoryBtn" id="categoryButton" src="img/hamburger.svg" onClick="toggleHiddenCategory();" />
-            <img class="mainLogo" src="img/mainLoco.svg" onclick="location.href='main.html'" />
-        </div>
-        <div class="mainProfile">
-            <p class="loginBtn" onclick="location.href='login.html'">로그인</p>
-            <p class="signupBtn" onclick="location.href='selectJoin.html'">회원가입</p>
-            <p class="mainProfileName">감미로운 옹징어</p>
-            <p class="mainProfileText">님</p>
-            <div class="profileContainer">
-                <img class="mainProfileImg" src="img/MyPageButton.svg" />
-                <div class="myProfileMore">
-                    <p onClick="location.href='userMypage.html'">마이페이지</p>
-                    <hr />
-                    <p>로그아웃</p>
+            <div class="mainNavIcon">
+                <img
+                    class="categoryBtn"
+                    id="categoryButton"
+                    src="img/hamburger.svg"
+                    onClick="toggleHiddenCategory();"
+                />
+                <img
+                    class="mainLogo"
+                    src="img/mainLoco.svg"
+                    onclick="location.href='main.html'"
+                />
+            </div>
+            <div class="mainProfile">
+                <p class="loginBtn" onclick="location.href='login.html'">
+                    로그인
+                </p>
+                <p class="signupBtn" onclick="location.href='selectJoin.html'">
+                    회원가입
+                </p>
+                <p class="mainProfileName">감미로운 옹징어</p>
+                <p class="mainProfileText">님</p>
+                <div class="profileContainer">
+                    <img class="mainProfileImg" src="img/MyPageButton.svg" />
+                    <div class="myProfileMore">
+                        <p onClick="location.href='userMypage.html'">
+                            마이페이지
+                        </p>
+                        <hr />
+                        <p>로그아웃</p>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
         <div class="container">
             <div class="myTitle">마이 페이지</div>
             <div class="myTabNav">
@@ -184,7 +199,7 @@
             </div>
             <div class="tab3">
                 <div class="reviewListWrap">
-                    <div class="yesReviewCard">
+                    <div class="yesReviewCard" data-review-idx="123">
                         <div class="img"></div>
                         <div class="reviewCardTop">
                             <div class="reviewStoreName">
@@ -206,6 +221,24 @@
                                 리뷰작성하고싶은데요 리뷰작성하고싶은데요
                                 리뷰작성하고싶은데요 리뷰작성하고싶은데요
                             </div>
+
+                            <div class="buttonReview">
+                                
+                                <!-- 임시 추가 -->
+                                <button class="modifyBt">
+                                    <a href="#" class="modify2"
+                                        onclick="completeCreateReview();"
+                                        ><h2>수정하기</h2></a
+                                    >
+                                <!-- 임시 추가 -->
+                                
+                                <button class="deleteBt">
+                                    <a href="#" class="delete"
+                                        onclick="deleteReview();"
+                                        ><h2>삭제하기</h2></a
+                                    >
+                                </button>
+                            </div>
                         </div>
                         <div class="imgBlock">
                             <div>
@@ -213,26 +246,6 @@
                                     id="storeImg"
                                     src="img/storeImgSample.svg"
                                 />
-                            </div>
-                            <div class="buttonReview">
-                                <button class="modifyBt">
-                                    <a
-                                        href="#"
-                                        class="modify"
-                                        id="modify"
-                                        onclick="completeCreateReview();"
-                                        ><h2>수정하기</h2></a
-                                    >
-                                </button>
-                                <button class="deleteBt">
-                                    <a
-                                        href="#"
-                                        class="delete"
-                                        id="delete"
-                                        onclick="deleteReview();"
-                                        ><h2>삭제하기</h2></a
-                                    >
-                                </button>
                             </div>
                         </div>
                     </div>
@@ -243,29 +256,34 @@
                                 <h3>김치천국</h3>
                                 <img src="img/titleMore.svg" />
                             </div>
-                            <div class="reviewStarWrap">
-                                <div class="reviewStar">
-                                    <img src="img/notStar.svg" />
-                                    <img src="img/yesStar.svg" />
-                                    <img src="img/yesStar.svg" />
-                                    <img src="img/yesStar.svg" />
-                                    <img src="img/yesStar.svg" />
+                            <div class="reviewPhotoNReview">
+                                <div class="reviewStarWrap">
+                                    <div class="reviewStar">
+                                        <img src="img/notStar.svg" />
+                                        <img src="img/yesStar.svg" />
+                                        <img src="img/yesStar.svg" />
+                                        <img src="img/yesStar.svg" />
+                                        <img src="img/yesStar.svg" />
+                                    </div>
+                                    <div class="reviewStarDate">2022-02-02</div>
                                 </div>
-                                <div class="reviewStarDate">2022-02-02</div>
+                                <div class="reviewContent">
+                                    리뷰작성하고싶은데요 리뷰작성하고싶은데요
+                                    리뷰작성하고싶은데요 리뷰작성하고싶은데요
+                                    리뷰작성하고싶은데요 리뷰작성하고싶은데요
+                                </div>
                             </div>
-                            <div class="reviewContent">
-                                리뷰작성하고싶은데요 리뷰작성하고싶은데요
-                                리뷰작성하고싶은데요 리뷰작성하고싶은데요
-                                리뷰작성하고싶은데요 리뷰작성하고싶은데요
-                            </div>
-                            <div class="buttonReview2">
+                            <div class="buttonReview">
+
+                                <!-- 임시 추가 -->
                                 <button class="modifyBt">
                                     <a href="#" class="modify2"
                                         ><h2>수정하기</h2></a
                                     >
-                                </button>
+                                <!-- 임시 추가 -->
+
                                 <button class="deleteBt">
-                                    <a href="#" class="delete2"
+                                    <a href="#" class="delete"
                                         ><h2>삭제하기</h2></a
                                     >
                                 </button>
@@ -294,9 +312,11 @@
                 </div>
             </div>
             <div class="footerRight">
-                <img src="img/lioiin.png"/>
-                <p>상명대학교 멋쟁이 사자처럼 11기<br/>
-                    Instagram @likelion_smu</p>
+                <img src="img/lioiin.png" />
+                <p>
+                    상명대학교 멋쟁이 사자처럼 11기<br />
+                    Instagram @likelion_smu
+                </p>
             </div>
         </div>
         <script src="js/userMypage.js"></script>
