@@ -34,13 +34,6 @@ function handleSortButtonClick(event) {
     }
 }
 
-//리뷰수정완료 누르면 바로 tab3으로 이동하기 위한 함수
-function activateTab(tabId) {
-    const tabToActivate = document.getElementById(tabId)
-    if (tabToActivate) {
-        handleSortButtonClick({ target: tabToActivate })
-    }
-}
 
 // URL에서 쿼리 파라미터 추출하는 함수
 function getQueryParam(name) {
