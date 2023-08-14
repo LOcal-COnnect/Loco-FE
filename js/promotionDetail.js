@@ -7,35 +7,21 @@ window.onload = function () {
     console.log(postId)
 }
 
-<<<<<<< HEAD
-
 const image = document.getElementById('goodnum');
 let isClicked = false;
-=======
-const image = document.getElementById('goodnum')
-let isClicked = false
-
-var imgElement = document.getElementById('goodnum')
->>>>>>> 4af4f7b71ceeda00f864c4ee18a3658aa5843c1a
 
 var imgElement = document.getElementById("goodnum");
 
 image.addEventListener('click', () => {
     if (isClicked) {
-<<<<<<< HEAD
         image.classList.remove('active');
         imgElement.src = "img/goodinversion.svg";
     } else {
         image.classList.add('active');
         imgElement.src = "img/good.svg";
-=======
-        image.classList.remove('active')
-    } else {
-        image.classList.add('active')
->>>>>>> 4af4f7b71ceeda00f864c4ee18a3658aa5843c1a
     }
-    isClicked = !isClicked
-})
+    isClicked = !isClicked;
+});
 
 $('#goodnum').click(function () {
     const likeCountElement = $('#likeCount')
