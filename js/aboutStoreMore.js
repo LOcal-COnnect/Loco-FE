@@ -229,6 +229,71 @@ window.addEventListener('DOMContentLoaded', (event) => {
     renderButton()
 })
 
+/*
+// 리뷰 불러오기 ajax
+const storeIdx = 123
+let currentPage = 1 // 현재 페이지 번호
+const reviewsPerPage = 3 // 한 페이지당 보여줄 리뷰 개수
+
+function fetchAndDisplayReviews() {
+    const reviewBox = document.querySelector('.review-box')
+
+    reviewBox.innerHTML = ''
+
+    $.ajax({
+        url: `/reviews/stores/${storeIdx}?page=${currentPage}&limit=${reviewsPerPage}`,
+        type: 'GET',
+        success: function (response) {
+            if (response.code === 200) {
+                const reviewList = response.reviewList
+
+                reviewList.forEach((review) => {
+                    reviewBox.appendChild(reviewElement)
+                })
+
+                updatePagination(response.totalPages)
+            } else {
+                console.error('Failed to fetch reviews:', response.message)
+            }
+        },
+        error: function (xhr, status, error) {
+            console.error('Failed to fetch reviews:', error)
+        },
+    })
+}
+*/
+
+// 게시판 페이지 번호 업데이트 함수
+function updatePagination(totalPages) {
+    const buttonContainer = document.getElementById('buttonContainer')
+    buttonContainer.innerHTML = ''
+
+    for (let i = 1; i <= totalPages; i++) {
+        const button = createButton(i)
+        buttonContainer.appendChild(button)
+    }
+}
+
+// 페이지 버튼 생성 함수
+function createButton(number) {
+    const button = document.createElement('div')
+    button.classList.add('button')
+    button.id = number
+    button.innerText = number
+
+    button.addEventListener('click', () => {
+        currentPage = number
+        fetchAndDisplayReviews()
+    })
+
+    return button
+}
+
+window.addEventListener('load', function () {
+    fetchAndDisplayReviews()
+})
+
+/*
 // 리뷰 전체 보기 ajax
 const storeIdx = 123
 
@@ -300,3 +365,9 @@ function formatDate(isoDate) {
 }
 
 window.addEventListener('load', fetchAndDisplayReviews)
+*/
+
+// 페이지 이동
+function modifyButton() {
+    window.location.href = 'makeReivew.html'
+}
