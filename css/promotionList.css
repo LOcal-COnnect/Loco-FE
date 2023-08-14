@@ -10,7 +10,6 @@
     }
 }
 
-
 .promotionSelectBtWrap {
     display: flex;
     flex-direction: row;
@@ -117,7 +116,7 @@
     height: 50px;
 }
 
-.storeIntro > p{
+.storeIntro > p {
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
@@ -192,25 +191,25 @@
     }
 }
 
-.promotionSearchBtWrap{
+.promotionSearchBtWrap {
     display: none;
     margin-top: 15px;
 }
 
-.searchBt{
+.searchBt {
     display: flex;
     align-items: center;
 }
 
-.searchTitle{
+.searchTitle {
     margin-left: 17px;
     margin-right: 10px;
 }
 
-.searchName{
+.searchName {
     color: white;
     font-size: 14px;
-    background-color: #FF9900;
+    background-color: #ff9900;
     border-radius: 20px;
     border: 0;
     padding: 4px 7px;

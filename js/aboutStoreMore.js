@@ -55,12 +55,12 @@ window.addEventListener('load', function () {
 })
 
 // 해시태그 길이 조정
-const hashtagBox = document.querySelector('.HashtagBox h3')
-
 function adjustHashtagBoxSize() {
-    const hashtagWidth = hashtagBox.clientWidth + 14
+    const hashtagBox = document.querySelector('.HashtagBox')
+    const hashtagText = hashtagBox.querySelector('h3')
+    const hashtagWidth = hashtagText.clientWidth + 14
 
-    document.querySelector('.HashtagBox').style.width = `${hashtagWidth}px`
+    hashtagBox.style.width = `${hashtagWidth}px`
 }
 
 window.addEventListener('load', adjustHashtagBoxSize)
