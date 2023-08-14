@@ -204,6 +204,7 @@ function moveToB() {
 
 document.getElementById('MoreButton').addEventListener('click', moveToB)
 
+/*
 // 리뷰 미리 보기 ajax
 const storeIdx = 123
 
@@ -269,3 +270,4 @@ function formatDate(isoDate) {
 }
 
 window.addEventListener('load', fetchAndDisplayReviews)
+*/

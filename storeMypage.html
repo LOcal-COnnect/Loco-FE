@@ -221,6 +221,7 @@
                                 <input
                                     type="file"
                                     id="photoInput"
+                                    onchange="handleImageSelection(event)"
                                     style="display: none"
                                 />
                             </div>
@@ -316,9 +317,12 @@
                                     </div>
                                     <div class="menus">
                                         <div class="menuShow">
-                                            <div class="pic">
+                                            <div
+                                                class="pic"
+                                                onchange="handleImageSelection(event)"
+                                            >
                                                 <label
-                                                    for="menuPhotoInput"
+                                                    for="menuPhotoInput1"
                                                     class="menuPhoto"
                                                 >
                                                     <h3 class="menuPhotoMent">
@@ -339,15 +343,19 @@
                                             </div>
                                             <input
                                                 type="file"
-                                                id="menuPhotoInput"
+                                                id="menuPhotoInput1"
+                                                class="menuPhotoInput"
                                                 style="display: none"
                                             />
                                         </div>
 
                                         <div class="menuShow">
-                                            <div class="pic">
+                                            <div
+                                                class="pic"
+                                                onchange="handleImageSelection(event)"
+                                            >
                                                 <label
-                                                    for="menuPhotoInput"
+                                                    for="menuPhotoInput2"
                                                     class="menuPhoto"
                                                 >
                                                     <h3 class="menuPhotoMent">
@@ -368,15 +376,19 @@
                                             </div>
                                             <input
                                                 type="file"
-                                                id="menuPhotoInput"
+                                                id="menuPhotoInput2"
+                                                class="menuPhotoInput"
                                                 style="display: none"
                                             />
                                         </div>
 
                                         <div class="menuShow">
-                                            <div class="pic">
+                                            <div
+                                                class="pic"
+                                                onchange="handleImageSelection(event)"
+                                            >
                                                 <label
-                                                    for="menuPhotoInput"
+                                                    for="menuPhotoInput3"
                                                     class="menuPhoto"
                                                 >
                                                     <h3 class="menuPhotoMent">
@@ -397,15 +409,19 @@
                                             </div>
                                             <input
                                                 type="file"
-                                                id="menuPhotoInput"
+                                                id="menuPhotoInput3"
+                                                class="menuPhotoInput"
                                                 style="display: none"
                                             />
                                         </div>
 
                                         <div class="menuShow">
-                                            <div class="pic">
+                                            <div
+                                                class="pic"
+                                                onchange="handleImageSelection(event)"
+                                            >
                                                 <label
-                                                    for="menuPhotoInput"
+                                                    for="menuPhotoInput4"
                                                     class="menuPhoto"
                                                 >
                                                     <h3 class="menuPhotoMent">
@@ -426,15 +442,19 @@
                                             </div>
                                             <input
                                                 type="file"
-                                                id="menuPhotoInput"
+                                                id="menuPhotoInput4"
+                                                class="menuPhotoInput"
                                                 style="display: none"
                                             />
                                         </div>
 
                                         <div class="menuShow">
-                                            <div class="pic">
+                                            <div
+                                                class="pic"
+                                                onchange="handleImageSelection(event)"
+                                            >
                                                 <label
-                                                    for="menuPhotoInput"
+                                                    for="menuPhotoInput5"
                                                     class="menuPhoto"
                                                 >
                                                     <h3 class="menuPhotoMent">
@@ -455,7 +475,8 @@
                                             </div>
                                             <input
                                                 type="file"
-                                                id="menuPhotoInput"
+                                                id="menuPhotoInput5"
+                                                class="menuPhotoInput"
                                                 style="display: none"
                                             />
                                         </div>
@@ -488,7 +509,7 @@
             <div class="tap2Next"></div>
         </div>
 
-        <!--<script src="js\index.js"></script>-->
+        <script src="js\index.js"></script>
         <script src="js\storeMypage.js"></script>
     </body>
 </html>

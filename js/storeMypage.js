@@ -167,3 +167,59 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     })
 })
+
+// 사진 등록
+function handleImageSelection(event) {
+    const photoInput = event.target
+    const picBox = photoInput.closest('.menuShow').querySelector('.pic')
+
+    if (photoInput.files && photoInput.files[0]) {
+        const selectedPhoto = photoInput.files[0]
+        const reader = new FileReader()
+
+        reader.onload = function (e) {
+            picBox.innerHTML = '' // Clear existing content
+
+            const photoElement = document.createElement('img')
+            photoElement.src = e.target.result
+            photoElement.alt = 'Uploaded Photo'
+            photoElement.classList.add('uploaded-photo')
+
+            picBox.appendChild(photoElement)
+        }
+
+        reader.readAsDataURL(selectedPhoto)
+    }
+}
+
+// 각 메뉴의 input 요소에 onchange 이벤트 핸들러 설정
+const menuPhotoInputs = document.querySelectorAll('.menuPhotoInput')
+menuPhotoInputs.forEach((input, index) => {
+    input.addEventListener('change', function (event) {
+        handleImageSelection(event, index + 1)
+    })
+})
+
+function handleImageSelection(event, index) {
+    const photoInput = event.target
+    const picBox = document
+        .querySelector(`#menuPhotoInput${index}`)
+        .closest('.pic')
+    const label = picBox.querySelector('.menuPhoto')
+    const imageMent = label.querySelector('.menuPhotoMent')
+
+    if (photoInput.files && photoInput.files[0]) {
+        const reader = new FileReader()
+
+        reader.onload = function (e) {
+            const img = document.createElement('img')
+            img.src = e.target.result
+            img.alt = 'Uploaded Photo'
+            picBox.innerHTML = '' // Clear existing content
+            picBox.appendChild(img)
+            imageMent.style.display = 'none'
+        }
+
+        reader.readAsDataURL(photoInput.files[0])
+    }
+}

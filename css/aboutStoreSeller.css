@@ -1,14 +1,14 @@
-.container {
-    padding: 0px;
-}
-
 .top {
     display: flex;
-    width: 65vw;
     margin: 0 auto;
     margin-top: 50px;
+    flex-wrap: wrap;
 }
 
+.container2 {
+    width: 65vw;
+    margin: 0 auto;
+}
 /*
 .parent-container {
     
@@ -18,26 +18,43 @@
     display: flex;
 }
 
+.info {
+    display: block;
+}
+
+#home {
+    flex: 1;
+}
+
 #home h3 {
     font-size: 20px;
 }
 
 #home img {
-    width: 25px;
+    max-width: 25px;
+    width: 100%;
     height: 25px;
     margin-right: 10px;
 }
-
-.storePhoto img {
-    max-width: 502;
-    width: 100%;
-    height: auto;
+.storePhoto {
+    flex: 1;
+}
+.storePhotoImg {
+    max-width: 100%;
+    max-height: 100%;
+    width: 500px;
+    height: 320px;
+    box-sizing: border-box;
+    object-fit: cover;
 }
 
 .heartOut {
     display: flex;
-    margin-left: 430px;
+    margin-left: auto; /* Moves the element to the right edge */
     margin-top: 10px;
+    align-items: flex-end;
+    justify-content: end;
+    align-items: center;
 }
 
 .heartOut h3 {
@@ -47,6 +64,13 @@
 }
 
 .infoBox {
+    display: flex;
+    flex-direction: column;
+    margin: 20px auto;
+    width: 20vw;
+    margin-left: 20px;
+    margin-top: 50px;
+    /*
     display: block;
     flex-direction: row;
     align-items: center;
@@ -55,6 +79,7 @@
     margin-top: 50px;
     width: 100%;
     height: 31px;
+    */
 }
 
 .boxin {
@@ -66,7 +91,8 @@
 }
 
 .boxin img {
-    width: 15px;
+    max-width: 15px;
+    width: 100%;
     height: 15px;
     margin-top: 0px;
     margin-left: 8px;
@@ -76,11 +102,9 @@
     font-size: 12px;
     margin-left: 10px;
     margin-top: 8px;
-    padding-left: 5px;
-    padding-right: 100px;
     white-space: nowrap;
-    overflow: hidden;
     text-overflow: ellipsis;
+    align-content: flex-start;
 }
 
 .infoTop {
@@ -89,7 +113,7 @@
 
 .rating {
     margin-top: 80px;
-    margin-left: 50px;
+    margin-left: 30px;
 }
 
 .heartStar {
@@ -125,7 +149,6 @@
 .introduction {
     max-width: 430px;
     width: 100%;
-    margin-top: 110px;
     margin-left: 30px;
 }
 
@@ -148,10 +171,10 @@
 }
 
 .middleLine {
-    margin: 0 auto;
     width: 65vw;
     height: 2px;
     background-color: #000000;
+    margin: 0 auto;
     margin-top: 20px;
 }
 
@@ -175,7 +198,6 @@
     margin: 0 auto;
     margin-top: 20px;
     display: flex;
-    width: 65vw;
 }
 
 .menu {
@@ -191,7 +213,7 @@
 .menuShow {
     display: flex;
     flex-wrap: wrap;
-    max-width: 800px;
+    max-width: 520px;
     margin: 0 auto;
     margin-left: 0px;
 }
@@ -220,6 +242,8 @@
 
 .reviews {
     margin-top: 10px;
+    max-width: 430px;
+    width: 100%;
 }
 
 .reviewsfont {
@@ -236,11 +260,14 @@
 .viewsMore {
     font-size: 10px;
     margin-top: 18px;
-    margin-left: 250px;
+    justify-content: end;
+    display: flex;
+    margin-left: 240px;
 }
 
 .review-box {
-    width: 430px;
+    max-width: 430px;
+    width: 100%;
     height: 530px;
     border: 1px solid #ffffff;
     padding: 10px;
@@ -248,13 +275,72 @@
 .review {
     border-bottom: 1px solid #ccc;
     padding-bottom: 10px;
-    width: 400px;
+    max-width: 400px;
+    width: 100%;
     height: 153px;
     margin: 20px;
 }
 
 .review:last-child {
     border-bottom: none;
+}
+
+.profile-picture {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+.nickname {
+    font-size: 16px;
+    font-weight: bold;
+    position: relative;
+    top: -30%;
+    left: 18%;
+}
+.star-rating {
+    font-size: 18px;
+    color: gold;
+    margin-right: 5px;
+    position: relative;
+    top: -35%;
+    left: 17%;
+}
+
+.date {
+    font-size: 10px;
+    color: #8f8f8f;
+    position: relative;
+    top: -82%;
+    left: 79%;
+}
+.comment {
+    font-size: 12px;
+    max-width: 230px;
+    position: relative;
+    top: -20px;
+    left: 18%;
+}
+
+.modify {
+    width: 110px;
+    height: 25px;
+    background-color: black;
+    border-radius: 20px;
+}
+
+.modify h3 {
+    color: white;
+    margin-right: 6px;
+    font-size: 14px;
+    margin-left: 6px;
+    margin-top: 2px;
+    padding-top: 5px;
+    padding-left: 20px;
+}
+
+.modify a:hover {
+    text-decoration: none;
 }
 
 .profile-picture {

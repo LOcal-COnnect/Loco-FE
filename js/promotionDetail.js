@@ -74,6 +74,7 @@ function getPromotionDetail(postId) {
 }
 
 // 작성한 댓글 하단에 불러오기
+
 document.addEventListener('DOMContentLoaded', function () {
     const commentInput = document.querySelector('.commentInput input')
     const commentList = document.querySelector('.commentList')
@@ -114,7 +115,14 @@ document.addEventListener('DOMContentLoaded', function () {
                 editButton.className = 'editButton'
                 editButton.textContent = '수정하기'
                 editButton.addEventListener('click', function () {
-                    // 댓글 수정 기능 구현 필요
+                    const updatedContent = inputField.value
+                    const commentIdx = commentItem.dataset.commentId
+                    commentText.textContent = updatedContent
+
+                    saveButton.style.display = 'none'
+
+                    editButton.style.display = 'block'
+                    deleteButton.style.display = 'block'
                 })
 
                 const deleteButton = document.createElement('button')
@@ -129,13 +137,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 commentInfoDiv.appendChild(commentTitle)
                 commentInfoDiv.appendChild(commentTime)
+
                 commentContentDiv.appendChild(commentInfoDiv)
                 commentContentDiv.appendChild(commentText)
-                commentContentDiv.appendChild(editButton)
-                commentContentDiv.appendChild(deleteButton)
 
                 commentItem.appendChild(commentProfile)
                 commentItem.appendChild(commentContentDiv)
+                commentItem.appendChild(buttonContainer) // 버튼 컨테이너를 commentItem의 맨 끝에 추가
 
                 commentList.appendChild(commentItem)
 
@@ -184,7 +192,16 @@ document.addEventListener('DOMContentLoaded', function () {
                         const editButton = document.createElement('button')
                         editButton.className = 'editButton'
                         editButton.textContent = '수정하기'
-                        editButton.addEventListener('click', function () {})
+                        editButton.addEventListener('click', function () {
+                            const updatedContent = inputField.value
+                            const commentIdx = commentItem.dataset.commentId
+                            commentText.textContent = updatedContent
+
+                            saveButton.style.display = 'none'
+
+                            editButton.style.display = 'block'
+                            deleteButton.style.display = 'block'
+                        })
 
                         const deleteButton = document.createElement('button')
                         deleteButton.className = 'deleteButton'
@@ -356,7 +373,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     commentList.removeChild(commentItem)
                 })
                 .catch((error) => {
-                    console.error('댓글 삭제 오류:', error)
+                    console.log('댓글 삭제 오류:', error)
                 })
         }
     })

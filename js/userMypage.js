@@ -169,7 +169,7 @@ window.addEventListener('load', function () {
             }
         },
         error: function (xhr, status, error) {
-            console.error('리뷰 목록 가져오기 오류:', error)
+            console.log('리뷰 목록 가져오기 오류:', error)
         },
     })
 })
@@ -199,7 +199,6 @@ function displayReviews(reviews) {
 }
 
 // 리뷰 삭제 ajax
-// 리뷰 삭제 버튼 클릭 이벤트 처리
 document.addEventListener('DOMContentLoaded', function () {
     const reviewListWrap = document.querySelector('.reviewListWrap')
 
@@ -214,7 +213,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     reviewCard.parentNode.removeChild(reviewCard)
                 })
                 .catch((error) => {
-                    console.error('리뷰 삭제 실패:', error)
+                    console.log('리뷰 삭제 실패:', error)
                 })
         }
     })
@@ -236,7 +235,7 @@ function deleteReview(reviewIdx) {
                 }
             },
             error: function (xhr, status, error) {
-                console.error('리뷰 삭제 오류:', error)
+                console.log('리뷰 삭제 오류:', error)
                 reject(error)
             },
         })
