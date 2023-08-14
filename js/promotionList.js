@@ -1,29 +1,26 @@
-var host = 'localhost:3000';
+var host = 'localhost:3000'
 
-window.onload = function(){
-    var urlParams = new URLSearchParams(window.location.search);
-    var postId = urlParams.get('id');
-    window.searchText = urlParams.get('search');
+window.onload = function () {
+    var urlParams = new URLSearchParams(window.location.search)
+    var postId = urlParams.get('id')
+    window.searchText = urlParams.get('search')
 
-    if(window.postId != null) {
-        console.log(window.postId);
-        showCategory(0, postId);
-
-    }
-    else if(window.searchText != null) {
-        console.log(window.searchText);
-        getSearchResult(0, searchText);
-    }else {
-        showData(0, 'createdAt,desc');
+    if (window.postId != null) {
+        console.log(window.postId)
+        showCategory(0, postId)
+    } else if (window.searchText != null) {
+        console.log(window.searchText)
+        getSearchResult(0, searchText)
+    } else {
+        showData(0, 'createdAt,desc')
     }
 }
 
 // 페이지가 언로드되기 전에 실행되는 이벤트
 window.onbeforeunload = function () {
-    var newUrl = window.location.href.split('?')[0];
-    history.replaceState({}, document.title, newUrl);
-};
-
+    var newUrl = window.location.href.split('?')[0]
+    history.replaceState({}, document.title, newUrl)
+}
 
 // 최신순, 조회수순, 좋아요순 버튼
 const sortButtons = Array.from(document.querySelectorAll('.sortButton'))
@@ -45,11 +42,11 @@ function handleSortButtonClick(event) {
     })
 
     if (clickedButton.id === 'recentSort') {
-        showData(0, 'createdAt,desc');
+        showData(0, 'createdAt,desc')
     } else if (clickedButton.id === 'likeSort') {
-        showData(0, 'like,desc');
+        showData(0, 'like,desc')
     } else if (clickedButton.id === 'viewSort') {
-        showData(0, 'viewCount,desc');
+        showData(0, 'viewCount,desc')
     }
 }
 
@@ -99,47 +96,52 @@ function showNearPlace() {
     }
 }
 
-function showCategory(pagenum, name){
-    var promotionSelectWrap = document.querySelector('.promotionSelectBtWrap');
-    var promotionSearchWrap = document.querySelector('.promotionSearchBtWrap');
-    var searchTitle = document.querySelector('.searchTitle');
-    var searchName = document.querySelector('.searchName');
+function showCategory(pagenum, name) {
+    var promotionSelectWrap = document.querySelector('.promotionSelectBtWrap')
+    var promotionSearchWrap = document.querySelector('.promotionSearchBtWrap')
+    var searchTitle = document.querySelector('.searchTitle')
+    var searchName = document.querySelector('.searchName')
 
-    promotionSelectWrap.style.display = 'none';
-    promotionSearchWrap.style.display = 'block';
+    promotionSelectWrap.style.display = 'none'
+    promotionSearchWrap.style.display = 'block'
 
-    searchTitle.innerText = '카테고리 >';
-    searchName.innerText = name;
+    searchTitle.innerText = '카테고리 >'
+    searchName.innerText = name
 
     var data = {
-        "storeList" : [
+        storeList: [
             {
-                "storeIdx" : "스토어아이디",
-                "storeName" :"가게명가게명가게명가게명가게명가게명가게명가게명가게명가게명가게명가게명가게명가게명가게명가게명",
-                "storeLocation":"서울시 한국구 한국동 12번지 한국구 한국동 12번지 한국 한국구 한국동 12번지구 한국동 12번지"
+                storeIdx: '스토어아이디',
+                storeName:
+                    '가게명가게명가게명가게명가게명가게명가게명가게명가게명가게명가게명가게명가게명가게명가게명가게명',
+                storeLocation:
+                    '서울시 한국구 한국동 12번지 한국구 한국동 12번지 한국 한국구 한국동 12번지구 한국동 12번지',
             },
             {
-                "storeIdx" : "스토어아이디",
-                "storeName" :"가게명",
-                "storeLocation":"서울시 한국구 한국동 12번지"
+                storeIdx: '스토어아이디',
+                storeName: '가게명',
+                storeLocation: '서울시 한국구 한국동 12번지',
             },
             {
-                "storeIdx" : "스토어아이디",
-                "storeName" :"가게명",
-                "storeLocation":"서울시 한국구 한국동 12번지"
-            }
-        ]
+                storeIdx: '스토어아이디',
+                storeName: '가게명',
+                storeLocation: '서울시 한국구 한국동 12번지',
+            },
+        ],
     }
 
-    var newcontainer = document.querySelector('.promotionListWrap');
-    var length = data.storeList.length;
+    var newcontainer = document.querySelector('.promotionListWrap')
+    var length = data.storeList.length
 
-    newcontainer.innerHTML = '';
+    newcontainer.innerHTML = ''
     for (var i = 0; i < length; i++) {
-        var card = document.createElement('div');
-        card.className = "promotionCard";
-        card.id = data.storeList[i].storeIdx;
-        card.setAttribute("onclick", "moveIntroDetail(" + data.storeList[i].storeIdx + ");");
+        var card = document.createElement('div')
+        card.className = 'promotionCard'
+        card.id = data.storeList[i].storeIdx
+        card.setAttribute(
+            'onclick',
+            'moveIntroDetail(' + data.storeList[i].storeIdx + ');'
+        )
 
         card.innerHTML = `
                     <img class="promotionImg" src="img/storeImgSample.svg"/>
@@ -147,81 +149,84 @@ function showCategory(pagenum, name){
                     <div class="storeIntro">
                         <p>${data.storeList[i].storeLocation}</p>
                     </div>
-                `;
-        newcontainer.appendChild(card);
-        console.log(card);
+                `
+        newcontainer.appendChild(card)
+        console.log(card)
     }
-    cardEffect();
+    cardEffect()
     $.ajax({
         url: host + '/stores/' + name + '/page=' + num + '&size=8',
         method: 'GET',
-        success: function (data) {
-        }, error: function() {
-            alert('카테고리에 해당하는 내용을 가져올 수 없습니다.');
-        }
+        success: function (data) {},
+        error: function () {
+            alert('카테고리에 해당하는 내용을 가져올 수 없습니다.')
+        },
     })
 }
 
-function showData(pagenum, sort){
-    localStorage.setItem('sort', sort);
+function showData(pagenum, sort) {
+    localStorage.setItem('sort', sort)
     $.ajax({
         url: host + '/stores?page=' + pagenum + '&size=8&sort=' + sort,
         method: 'GET',
-        success: function(data){
-
-        }
+        success: function (data) {},
     })
     var data = {
-        "promotionList":[
+        promotionList: [
             {
-                "promotionIdx":1,
-                "promotionTitle":"제목입니다.제목입니다제목입니다제목입니다제목입니다제목입니다제목입니다제목입니다제목입니다제목입니다제목입니다제목입니다제목입니다",
-                "promotionContent":"게시글내용입니다.제목입니다제목입니다제목입니다제목입니다제목입니다제목입니다제목입니다제목입니다제목입니다",
-                "viewCount":234
+                promotionIdx: 1,
+                promotionTitle:
+                    '제목입니다.제목입니다제목입니다제목입니다제목입니다제목입니다제목입니다제목입니다제목입니다제목입니다제목입니다제목입니다제목입니다',
+                promotionContent:
+                    '게시글내용입니다.제목입니다제목입니다제목입니다제목입니다제목입니다제목입니다제목입니다제목입니다제목입니다',
+                viewCount: 234,
             },
             {
-                "promotionIdx":2,
-                "promotionTitle":"제목입니다.",
-                "promotionContent":"게시글내용입니다.",
-                "viewCount":234
+                promotionIdx: 2,
+                promotionTitle: '제목입니다.',
+                promotionContent: '게시글내용입니다.',
+                viewCount: 234,
             },
             {
-                "promotionIdx":3,
-                "promotionTitle":"제목입니다.",
-                "promotionContent":"게시글내용입니다.",
-                "viewCount":234
+                promotionIdx: 3,
+                promotionTitle: '제목입니다.',
+                promotionContent: '게시글내용입니다.',
+                viewCount: 234,
             },
             {
-                "promotionIdx":3,
-                "promotionTitle":"제목입니다.",
-                "promotionContent":"게시글내용입니다.",
-                "viewCount":234
+                promotionIdx: 3,
+                promotionTitle: '제목입니다.',
+                promotionContent: '게시글내용입니다.',
+                viewCount: 234,
             },
             {
-                "promotionIdx":3,
-                "promotionTitle":"제목입니다.",
-                "promotionContent":"게시글내용입니다.",
-                "viewCount":234
+                promotionIdx: 3,
+                promotionTitle: '제목입니다.',
+                promotionContent: '게시글내용입니다.',
+                viewCount: 234,
             },
             {
-                "promotionIdx":3,
-                "promotionTitle":"제목입니다.",
-                "promotionContent":"게시글내용입니다.",
-                "viewCount":234
-            }
-        ]
+                promotionIdx: 3,
+                promotionTitle: '제목입니다.',
+                promotionContent: '게시글내용입니다.',
+                viewCount: 234,
+            },
+        ],
     }
 
-    var container = document.querySelector('.promotionListWrap');
-    var length = data.promotionList.length;
+    var container = document.querySelector('.promotionListWrap')
+    var length = data.promotionList.length
 
-    container.innerHTML = '';
+    container.innerHTML = ''
 
     for (var i = 0; i < length; i++) {
-        var card = document.createElement('div');
-        card.className = "promotionCard";
-        card.id = data.promotionList[i].promotionIdx;
-        card.setAttribute("onclick", "moveDetail(" + data.promotionList[i].promotionIdx + ");");
+        var card = document.createElement('div')
+        card.className = 'promotionCard'
+        card.id = data.promotionList[i].promotionIdx
+        card.setAttribute(
+            'onclick',
+            'moveDetail(' + data.promotionList[i].promotionIdx + ');'
+        )
 
         card.innerHTML = `
             <img class="promotionImg" src="img/storeImgSample.svg"/>
@@ -236,44 +241,44 @@ function showData(pagenum, sort){
                     <p class="storeName">도라메옹</p>
                 </div>
             </div>
-        `;
-        container.appendChild(card);
+        `
+        container.appendChild(card)
     }
-    cardEffect();
+    cardEffect()
 }
 
-function cardEffect(){
-    var promotionCards = document.querySelectorAll('.promotionCard');
+function cardEffect() {
+    var promotionCards = document.querySelectorAll('.promotionCard')
 
-    promotionCards.forEach(function(card) {
-        card.addEventListener('mouseenter', function() {
-            this.style.transform = 'scale(1.05)';
-            this.style.transition = 'transform 0.2s ease';
-        });
+    promotionCards.forEach(function (card) {
+        card.addEventListener('mouseenter', function () {
+            this.style.transform = 'scale(1.05)'
+            this.style.transition = 'transform 0.2s ease'
+        })
 
-        card.addEventListener('mouseleave', function() {
-            this.style.transform = 'scale(1)';
-            this.style.transition = 'transform 0.2s ease';
-        });
-    });
+        card.addEventListener('mouseleave', function () {
+            this.style.transform = 'scale(1)'
+            this.style.transition = 'transform 0.2s ease'
+        })
+    })
 }
 
 function moveDetail(num) {
-    localStorage.setItem('postNum', num);
-    window.location.href = 'promotionDetail.html?id=' + num;
+    localStorage.setItem('postNum', num)
+    window.location.href = 'promotionDetail.html?id=' + num
 }
 
-function moveIntroDetail(num){
-    localStorage.setItem('storeNum', num);
-    window.location.href = 'aboutStoreBuyer.html?id=' + num;
+function moveIntroDetail(num) {
+    localStorage.setItem('storeNum', num)
+    window.location.href = 'aboutStoreBuyer.html?id=' + num
 }
 
 window.addEventListener('DOMContentLoaded', (event) => {
-    var urlParams = new URLSearchParams(window.location.search);
-    window.postId = urlParams.get('id');
-    window.searchText = urlParams.get('search');
+    var urlParams = new URLSearchParams(window.location.search)
+    window.postId = urlParams.get('id')
+    window.searchText = urlParams.get('search')
 
-    console.log('포스트아이디' + postId);
+    console.log('포스트아이디' + postId)
     const buttonContainer = document.getElementById('buttonContainer')
 
     // buttonCount는 추후 백엔드에서 넘겨주는 페이지 수
@@ -304,15 +309,32 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
         for (let i = startButton; i < endButton; i++) {
             const button = createButton(i + 1)
-            if(window.postId != null){
+            if (window.postId != null) {
                 console.log('postId 페이지네이션 실행')
-                button.setAttribute('onclick', 'showCategory(' + (i+1) + ',' + window.postId + ')')
-            } else if (window.searchText != null){
+                button.setAttribute(
+                    'onclick',
+                    'showCategory(' + (i + 1) + ',' + window.postId + ')'
+                )
+            } else if (window.searchText != null) {
                 console.log('검색어 페이지네이션 실행')
-                button.setAttribute('onclick', 'getSearchResult(' + (i+1) + ',' + window.searchText + ')')
-            }else{
-                console.log(window.postId, window.searchText, '그냥 페이지네이션 실행')
-                button.setAttribute('onclick', 'showData(' + (i+1) + ',' + localStorage.getItem('sort') + ')')
+                button.setAttribute(
+                    'onclick',
+                    'getSearchResult(' + (i + 1) + ',' + window.searchText + ')'
+                )
+            } else {
+                console.log(
+                    window.postId,
+                    window.searchText,
+                    '그냥 페이지네이션 실행'
+                )
+                button.setAttribute(
+                    'onclick',
+                    'showData(' +
+                        (i + 1) +
+                        ',' +
+                        localStorage.getItem('sort') +
+                        ')'
+                )
             }
             buttonContainer.appendChild(button)
         }
@@ -342,57 +364,58 @@ window.addEventListener('DOMContentLoaded', (event) => {
     renderButton()
 })
 
+function getSearchResult(num, name) {
+    var promotionSelectWrap = document.querySelector('.promotionSelectBtWrap')
+    var promotionSearchWrap = document.querySelector('.promotionSearchBtWrap')
+    var searchTitle = document.querySelector('.searchTitle')
+    var searchName = document.querySelector('.searchName')
 
-function getSearchResult(num, name){
-    var promotionSelectWrap = document.querySelector('.promotionSelectBtWrap');
-    var promotionSearchWrap = document.querySelector('.promotionSearchBtWrap');
-    var searchTitle = document.querySelector('.searchTitle');
-    var searchName = document.querySelector('.searchName');
+    promotionSelectWrap.style.display = 'none'
+    promotionSearchWrap.style.display = 'block'
 
-    promotionSelectWrap.style.display = 'none';
-    promotionSearchWrap.style.display = 'block';
-
-    searchTitle.innerText = '검색어';
-    searchName.innerText = name;
+    searchTitle.innerText = '검색어'
+    searchName.innerText = name
 
     $.ajax({
         url: host + '/stores/' + name + '/page=' + num + '&size=8',
         method: 'GET',
-        success:function(data){
-
-        },error: function(){
-            alert('검색 결과 못가져왔지롱 ㅋㅋ');
-        }
+        success: function (data) {},
+        error: function () {
+            alert('검색 결과 못가져왔지롱 ㅋㅋ')
+        },
     })
     var data = {
-        "storeList" : [
+        storeList: [
             {
-                "storeIdx" : "스토어아이디",
-                "storeName" :"가게명검색결과",
-                "storeLocation":"서울시 한국구 한국동 12번지"
+                storeIdx: '스토어아이디',
+                storeName: '가게명검색결과',
+                storeLocation: '서울시 한국구 한국동 12번지',
             },
             {
-                "storeIdx" : "스토어아이디",
-                "storeName" :"가게명검색결과",
-                "storeLocation":"서울시 한국구 한국동 12번지"
+                storeIdx: '스토어아이디',
+                storeName: '가게명검색결과',
+                storeLocation: '서울시 한국구 한국동 12번지',
             },
             {
-                "storeIdx" : "스토어아이디",
-                "storeName" :"가게명검색결과",
-                "storeLocation":"서울시 한국구 한국동 12번지"
-            }
-        ]
+                storeIdx: '스토어아이디',
+                storeName: '가게명검색결과',
+                storeLocation: '서울시 한국구 한국동 12번지',
+            },
+        ],
     }
 
-    var container = document.querySelector('.promotionListWrap');
-    var length = data.storeList.length;
+    var container = document.querySelector('.promotionListWrap')
+    var length = data.storeList.length
 
-    container.innerHTML = '';
+    container.innerHTML = ''
     for (var i = 0; i < length; i++) {
-        var card = document.createElement('div');
-        card.className = "promotionCard";
-        card.id = data.storeList[i].storeIdx;
-        card.setAttribute("onclick", "moveIntroDetail(" + data.storeList[i].storeIdx + ");");
+        var card = document.createElement('div')
+        card.className = 'promotionCard'
+        card.id = data.storeList[i].storeIdx
+        card.setAttribute(
+            'onclick',
+            'moveIntroDetail(' + data.storeList[i].storeIdx + ');'
+        )
 
         card.innerHTML = `
                     <img class="promotionImg" src="img/storeImgSample.svg"/>
@@ -400,8 +423,8 @@ function getSearchResult(num, name){
                     <div class="storeIntro">
                         ${data.storeList[i].storeLocation}
                     </div>
-                `;
-        container.appendChild(card);
+                `
+        container.appendChild(card)
     }
-    cardEffect();
+    cardEffect()
 }
