@@ -162,7 +162,10 @@
 
 #goodnum {
     cursor: pointer;
+    width: 15px;
+    height: 15px;
 }
+
 .active {
     background-color: red;
 }
@@ -173,20 +176,4 @@
 
 .deleteButton {
     width: 100px;
-}
-
-.buttonTwo {
-    display: flex;
-    justify-content: flex-end;
-    gap: 5px;
-}
-
-.saveButton {
-    float: right;
-    margin-left: 10px;
-    padding: 0 5px;
-}
-
-.comment input[type='text'] {
-    width: 100%;
 }
