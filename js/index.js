@@ -93,8 +93,8 @@ function logout(){
 }
 
 const logoImages = [
-    "img/mainlogo1.svg",
-    "img/mainlogo2.svg"
+    "img/loco1.svg",
+    "img/loco2.svg"
 ]
 const footerLogo = document.getElementById("footerLogo");
 let imageIndex = 0;
