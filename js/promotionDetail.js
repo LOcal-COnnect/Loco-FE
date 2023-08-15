@@ -65,7 +65,7 @@ $('#goodnum').click(function () {
                 });
             } else {
                 $.ajax({
-                    url: host + '/like/{likeidx}' + window.postId,
+                    url: host + `/like/${likeidx}` + window.postId,
                     method: 'DELETE',
                     contentType: 'application/json',
                     data: JSON.stringify({

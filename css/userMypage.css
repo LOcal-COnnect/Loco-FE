@@ -63,6 +63,14 @@
     margin: 0 auto;
 }
 
+.myInfo input{
+    background-color: #f4f4f4;
+    border: 0;
+    float: left;
+    height: 100%;
+    font-size: 15px;
+}
+
 .myBtWrap {
     display: flex;
     justify-content: center;
@@ -228,29 +236,15 @@
 }
 
 .buttonReview {
-    align-items: flex-end;
+    display: flex;
+    justify-content: flex-end;
 }
 
-.modify {
-    font-size: 10px;
-    margin-top: 20px;
-    background-color: #f2f2f2;
-    color: #333;
-    text-decoration: none;
-}
-
-.modify h2 {
-    font-size: 12px;
-}
-
-.delete {
-    font-size: 10px;
-    margin-top: 20px;
-    background-color: #f2f2f2;
-    color: #333;
-    text-decoration: none;
-}
-
-.delete h2 {
-    font-size: 12px;
+.buttonReview > button{
+    margin: 0 5px;
+    cursor: pointer;
+    background-color: black;
+    border-radius: 5px;
+    color: white;
+    padding: 5px 15px;
 }
