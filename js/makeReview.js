@@ -8,7 +8,7 @@ function handleImageSelection(event) {
             const imgDataUrl = reader.result
             const pictureWrap = event.target.parentElement.parentElement // .pictureInputWrap
             pictureWrap.style.backgroundImage = `url(${imgDataUrl})`
-            pictureWrap.textContent = '' // 내용 비우기
+            pictureWrap.textContent = ''
         }
 
         reader.readAsDataURL(selectedFile)
@@ -49,14 +49,10 @@ function updateRatingValue() {
     ratingValue.textContent = selectedRating
 }
 
-// 페이지 이동 (수정 완료 버튼)
-function completeCreatePromotion() {
-    window.location.href = 'aboutStoreMore.html'
-}
-
 // 리뷰 작성 ajax
 function completeCreateReview(storeIdx, userIdx) {
     const content = document.querySelector('.contentInput').value
+    console.log(content)
     const rating = parseFloat(
         document.querySelector('.rating-value').textContent
     )
@@ -108,3 +104,10 @@ const userIdx = 456
 document.querySelector('.completeBt').addEventListener('click', function () {
     completeCreateReview(storeIdx, userIdx)
 })
+
+/*
+// 페이지 이동 (수정 완료 버튼)
+function completeCreatePromotion() {
+    window.location.href = 'aboutStoreMore.html'
+}
+*/
