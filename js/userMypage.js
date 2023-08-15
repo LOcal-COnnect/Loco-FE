@@ -80,6 +80,7 @@ function searchAddress() {
 
 // 내 정보를 수정할 수 있는 input으로 변경
 document.addEventListener('DOMContentLoaded', function () {
+    getMine();
     const moveEditMyBt = document.querySelector('.moveEditMyBt')
     const tab1 = document.querySelector('#tab1')
     const myInfo = document.querySelector('.myInfo')
@@ -136,6 +137,13 @@ document.addEventListener('DOMContentLoaded', function () {
 })
 
 function editMyInfo(){
+    let myInfos = document.querySelector('.myInfo')
+    let myInfo = myInfos.querySelectorAll('div')
+    myInfo = [...myInfo]
+    console.log(myInfo)
+    myInfo.forEach((item, index) => {
+        console.log(item)
+    })
     $.ajax({
         url: host + '/users/' + userIdx,
         method: 'PATCH',
@@ -150,7 +158,7 @@ function editMyInfo(){
         }), success: function(){
             alert('수정되었습니다.');
         }, error: function(){
-            console.log('수정 실패');
+            alert('정보가 수정되지 않았습니다.');
         }
     })
 }
@@ -230,4 +238,91 @@ function deleteReview(reviewIdx) {
             console.log('리뷰 삭제 오류:', error);
         },
     })
+}
+
+function getMine(){
+    var data = {
+        mineList : [
+            {
+                "createdAt": "2023-08-15T10:00:00",
+                "updatedAt": "2023-08-15T10:30:00",
+                "storeIdx": 2,
+                "category": {
+                    "categoryIdx": 1,
+                    "categoryName": "음식점"
+                },
+                "storeName": "맛있는 음식 가게",
+                "storePhone": "010-1234-5678",
+                "storeTel": "02-123-4567",
+                "storeDesc": "가게 설명",
+                "storeLocation": "서울시 강남구",
+                "businessNumber": 1234567890
+            },
+            {
+                "createdAt": "2023-08-16T10:00:00",
+                "updatedAt": "2023-08-15T10:30:00",
+                "storeIdx": 2,
+                "category": {
+                    "categoryIdx": 1,
+                    "categoryName": "음식점"
+                },
+                "storeName": "맛있는 음식 가게",
+                "storePhone": "010-1234-5678",
+                "storeTel": "02-123-4567",
+                "storeDesc": "가게 설명",
+                "storeLocation": "서울시 강남구",
+                "businessNumber": 1234567890
+            },
+            {
+                "createdAt": "2023-08-15T10:00:00",
+                "updatedAt": "2023-08-15T10:30:00",
+                "storeIdx": 2,
+                "category": {
+                    "categoryIdx": 1,
+                    "categoryName": "음식점"
+                },
+                "storeName": "맛있는 음식 가게",
+                "storePhone": "010-1234-5678",
+                "storeTel": "02-123-4567",
+                "storeDesc": "가게 설명",
+                "storeLocation": "서울시 강남구",
+                "businessNumber": 1234567890
+            }]
+    }
+
+    var mineWrap = document.querySelector('.storesListWrap');
+    var length = data.mineList.length;
+    for(var i = 0; i < length; i++){
+        var storeCard = document.createElement('div');
+        storeCard.className = 'storeCard';
+        storeCard.setAttribute('onClick', 'moveIntroDetail(' + data.mineList[i].storeIdx + ')')
+        storeCard.innerHTML = `
+            <img src="img/heartStore.svg" />
+            <div class="storeInfo">
+                <h3>${data.mineList[i].storeName}</h3>
+                <div class="storeInfoNumber">
+                    <img src="img/storeCalling.svg" />
+                    <div>${data.mineList[i].storeTel}</div>
+                </div>
+                <div class="storeInfoDate">${data.mineList[i].createdAt.substring(0,10)}</div>
+                <div class="storeInfoHeart">
+                    <img src="img/orangeHeart.svg" />
+                </div>
+            </div>
+        `
+        mineWrap.appendChild(storeCard)
+    }
+
+
+    // $.ajax({
+    //     url: host + '/mine/users/' + userIdx,
+    //     method: 'GET',
+    //     success: function(data){
+    //
+    //     }
+    // })
+}
+
+function moveIntroDetail(idx){
+    window.location.href = 'aboutStoreBuyer.html?id=' + idx;
 }
