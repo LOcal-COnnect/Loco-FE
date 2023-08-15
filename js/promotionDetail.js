@@ -7,50 +7,85 @@ window.onload = function () {
     console.log(postId)
 }
 
-const image = document.getElementById('goodnum')
-let isClicked = false
+const image = document.getElementById('goodnum');
+let isClicked = false;
 
-var imgElement = document.getElementById('goodnum')
+var imgElement = document.getElementById("goodnum");
 
 image.addEventListener('click', () => {
     if (isClicked) {
-        image.classList.remove('active')
+        image.classList.remove('active');
+        imgElement.src = "img/goodinversion.svg";
     } else {
-        image.classList.add('active')
+        image.classList.add('active');
+        imgElement.src = "img/good.svg";
     }
-    isClicked = !isClicked
-})
+    isClicked = !isClicked;
+
+    // 좋아요 여부 서버 요청 (GET 요청 등)
+    $.ajax({
+        url: host + '/like/{userIdx}/promotion/{promotionIdx}' + window.postId,
+        method: 'GET',
+        success: function (data) {
+            // 서버에서 받아온 좋아요 여부 값으로 isClicked 업데이트
+            isClicked = data.isLiked;
+        },
+        error: function () {
+            // 에러 처리
+            console.error('좋아요 여부를 불러오는 데 실패했습니다.');
+        },
+    });
+});
 
 $('#goodnum').click(function () {
     const likeCountElement = $('#likeCount')
-    let isClicked = false
 
-    if (!isClicked) {
-        $.ajax({
-            url: host + '/like/{userIdx}/promotion/' + window.postId,
-            method: 'POST',
-            contentType: 'application/json',
-            data: JSON.stringify({
-                postid: 1, // 게시물 ID
-                goodnum: $('#goodnum').val(),
-            }),
-            success: function (data) {
-                likeCountElement.text(data.likeCount) // 서버에서 받은 좋아요 수로 업데이트
-            },
-            error: function () {
-                alert('좋아요 수가 입력되지 않았습니다.')
-            },
-        })
-    }
+    // 좋아요 여부 서버 요청 (GET 요청 등)
+    $.ajax({
+        url: host + '/like/{userIdx}/promotion/{promotionIdx}' + window.postId,
+        method: 'GET',
+        success: function (data) {
+            isClicked = data.isLiked; // 서버에서 받아온 좋아요 여부 값으로 업데이트
 
-    if (isClicked) {
-        $('#goodnum').removeClass('active')
-    } else {
-        $('#goodnum').addClass('active')
-    }
-
-    isClicked = !isClicked
-})
+            if (!isClicked) {
+                $.ajax({
+                    url: host + '/like/{userIdx}/promotion/' + window.postId,
+                    method: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify({
+                        postid: 1, // 게시물 ID
+                        goodnum: $('#goodnum').val(),
+                    }),
+                    success: function (data) {
+                        likeCountElement.text(data.likeCount); // 서버에서 받은 좋아요 수로 업데이트
+                    },
+                    error: function () {
+                        alert('좋아요가 입력되지 않았습니다.');
+                    },
+                });
+            } else {
+                $.ajax({
+                    url: host + '/like/{likeidx}' + window.postId,
+                    method: 'DELETE',
+                    contentType: 'application/json',
+                    data: JSON.stringify({
+                        postid: 1, // 게시물 ID
+                        goodnum: $('#goodnum').val(),
+                    }),
+                    success: function (data) {
+                        likeCountElement.text(data.likeCount); // 서버에서 받은 좋아요 수로 화면 업데이트
+                    },
+                    error: function () {
+                        alert('좋아요 삭제에 실패했습니다.');
+                    },
+                });
+            }
+        },
+        error: function () {
+            console.error('좋아요 여부를 불러오는 데 실패했습니다.');
+        },
+    });
+});
 
 function getPromotionDetail(postId) {
     $.ajax({
