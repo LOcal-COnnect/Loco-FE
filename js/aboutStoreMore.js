@@ -36,8 +36,8 @@ window.addEventListener('resize', adjustIntroBoxHeight)
 window.addEventListener('load', function () {
     const heartOutIcon = document.querySelector('.heartOut img')
 
-    const fullHeart = '../svg/🦆 icon _heart_.svg'
-    const originHeart = '../svg/🦆 icon _heart outline_.svg'
+    const fullHeart = 'svg/icon _heart_.svg'
+    const originHeart = 'svg/icon _heart outline_.svg'
 
     let isFullHeart = false
 
@@ -52,7 +52,72 @@ window.addEventListener('load', function () {
 
         isFullHeart = !isFullHeart
     })
+
+    $.ajax({
+        url: host + '/mine/{useridx}/store/{storeIdx}' + window.postId,
+        method: 'GET',
+        success: function (data) {
+            // 서버에서 받아온 좋아요 여부 값으로 isFullHeart 업데이트
+            isFullHeart = data.isFullHeart;
+        },
+        error: function () {
+            // 에러 처리
+            console.error('찜하기 여부를 불러오는 데 실패했습니다.');
+        },
+    });
 })
+
+$('#Heart').click(function () {
+    const likeCountElement = $('#HeartCount')
+
+    // 찜하기 여부 서버 요청 (GET 요청 등)
+    $.ajax({
+        url: host + '/like/{userIdx}/promotion/{promotionIdx}' + window.postId,
+        method: 'GET',
+        success: function (data) {
+            isFullHeart = data.isFullHeart; // 서버에서 받아온 찜하기 여부 값으로 업데이트
+
+            if (!isFullHeart) {
+                $.ajax({
+                    url: host + '/mine/{userIdx}/store/{storeIdx}' + window.postId,
+                    method: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify({
+                        postid: 1, // 게시물 ID
+                        goodnum: $('#Heart').val(),
+                    }),
+                    success: function (data) {
+                        //찜하기는 찜하기 여부만 표시
+                    },
+                    error: function () {
+                        alert('찜하기가 입력되지 않았습니다.');
+                    },
+                });
+            } else {
+                $.ajax({
+                    url: host + '/mine/{mineidx}' + window.postId,
+                    method: 'DELETE',
+                    contentType: 'application/json',
+                    data: JSON.stringify({
+                        postid: 1, // 게시물 ID
+                        goodnum: $('#Heart').val(),
+                    }),
+                    success: function (data) {
+                        //찜하기는 찜하기 여부만 표시
+                    },
+                    error: function () {
+                        alert('찜하기 삭제에 실패했습니다.');
+                    },
+                });
+            }
+        },
+        error: function () {
+            console.error('찜하기 여부를 불러오는 데 실패했습니다.');
+        },
+    });
+});
+
+
 
 // 해시태그 길이 조정
 function adjustHashtagBoxSize() {
@@ -69,41 +134,41 @@ window.addEventListener('resize', adjustHashtagBoxSize)
 // 리뷰 확인
 const reviews = [
     {
-        profilePictureUrl: '../svg/profile.svg',
+        profilePictureUrl: 'svg/profile.svg',
         nickname: 'User4',
         rating: 5,
         date: '2023.07.15',
         comment: '맛있다 \n A+',
-        photo: '../svg/storePhoto.svg',
+        photo: 'svg/storePhoto.svg',
     },
     {
-        profilePictureUrl: '../svg/profile.svg',
+        profilePictureUrl: 'svg/profile.svg',
         nickname: 'User3',
         rating: 3,
         date: '2023.07.15',
         comment: '그냥그랬다 \n B+',
-        photo: '../svg/storePhoto.svg',
+        photo: 'svg/storePhoto.svg',
     },
     {
-        profilePictureUrl: '../svg/profile.svg',
+        profilePictureUrl: 'svg/profile.svg',
         nickname: 'User2',
         rating: 1,
         date: '2023.07.15',
         comment: '별로다 \n C+',
-        photo: '../svg/storePhoto.svg',
+        photo: 'svg/storePhoto.svg',
     },
     {
-        profilePictureUrl: '../svg/profile.svg',
+        profilePictureUrl: 'svg/profile.svg',
         nickname: 'User1',
         rating: 5,
         date: '2023.07.15',
         comment: '맛있다 \n A+',
-        photo: '../svg/storePhoto.svg',
+        photo: 'svg/storePhoto.svg',
     },
 ]
 
 function generateStarRating(rating) {
-    const fullStarIcon = '../svg/🦆 icon _star_.svg'
+    const fullStarIcon = 'svg/icon _star_.svg'
 
     const starRatingContainer = document.createElement('div')
     starRatingContainer.classList.add('star-rating')
