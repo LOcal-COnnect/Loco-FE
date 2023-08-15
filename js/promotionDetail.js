@@ -7,20 +7,20 @@ window.onload = function () {
     console.log(postId)
 }
 
-const image = document.getElementById('goodnum');
-let isClicked = false;
+const image = document.getElementById('goodnum')
+let isClicked = false
 
-var imgElement = document.getElementById("goodnum");
+var imgElement = document.getElementById('goodnum')
 
 image.addEventListener('click', () => {
     if (isClicked) {
-        image.classList.remove('active');
-        imgElement.src = "img/goodinversion.svg";
+        image.classList.remove('active')
+        imgElement.src = 'img/goodinversion.svg'
     } else {
-        image.classList.add('active');
-        imgElement.src = "img/good.svg";
+        image.classList.add('active')
+        imgElement.src = 'img/good.svg'
     }
-    isClicked = !isClicked;
+    isClicked = !isClicked
 
     // 좋아요 여부 서버 요청 (GET 요청 등)
     $.ajax({
@@ -28,14 +28,14 @@ image.addEventListener('click', () => {
         method: 'GET',
         success: function (data) {
             // 서버에서 받아온 좋아요 여부 값으로 isClicked 업데이트
-            isClicked = data.isLiked;
+            isClicked = data.isLiked
         },
         error: function () {
             // 에러 처리
-            console.error('좋아요 여부를 불러오는 데 실패했습니다.');
+            console.error('좋아요 여부를 불러오는 데 실패했습니다.')
         },
-    });
-});
+    })
+})
 
 $('#goodnum').click(function () {
     const likeCountElement = $('#likeCount')
@@ -45,7 +45,7 @@ $('#goodnum').click(function () {
         url: host + '/like/{userIdx}/promotion/{promotionIdx}' + window.postId,
         method: 'GET',
         success: function (data) {
-            isClicked = data.isLiked; // 서버에서 받아온 좋아요 여부 값으로 업데이트
+            isClicked = data.isLiked // 서버에서 받아온 좋아요 여부 값으로 업데이트
 
             if (!isClicked) {
                 $.ajax({
@@ -57,12 +57,12 @@ $('#goodnum').click(function () {
                         goodnum: $('#goodnum').val(),
                     }),
                     success: function (data) {
-                        likeCountElement.text(data.likeCount); // 서버에서 받은 좋아요 수로 업데이트
+                        likeCountElement.text(data.likeCount) // 서버에서 받은 좋아요 수로 업데이트
                     },
                     error: function () {
-                        alert('좋아요가 입력되지 않았습니다.');
+                        alert('좋아요가 입력되지 않았습니다.')
                     },
-                });
+                })
             } else {
                 $.ajax({
                     url: host + '/like/{likeidx}' + window.postId,
@@ -73,19 +73,19 @@ $('#goodnum').click(function () {
                         goodnum: $('#goodnum').val(),
                     }),
                     success: function (data) {
-                        likeCountElement.text(data.likeCount); // 서버에서 받은 좋아요 수로 화면 업데이트
+                        likeCountElement.text(data.likeCount) // 서버에서 받은 좋아요 수로 화면 업데이트
                     },
                     error: function () {
-                        alert('좋아요 삭제에 실패했습니다.');
+                        alert('좋아요 삭제에 실패했습니다.')
                     },
-                });
+                })
             }
         },
         error: function () {
-            console.error('좋아요 여부를 불러오는 데 실패했습니다.');
+            console.error('좋아요 여부를 불러오는 데 실패했습니다.')
         },
-    });
-});
+    })
+})
 
 function getPromotionDetail(postId) {
     $.ajax({
@@ -106,8 +106,7 @@ function getPromotionDetail(postId) {
     content.innerText = data.promotionContent
 }
 
-// 작성한 댓글 하단에 불러오기
-
+// 작성한 댓글 하단에 불러오기 (ajax - X)
 document.addEventListener('DOMContentLoaded', function () {
     const commentInput = document.querySelector('.commentInput input')
     const commentList = document.querySelector('.commentList')
@@ -153,7 +152,6 @@ document.addEventListener('DOMContentLoaded', function () {
                     commentText.textContent = updatedContent
 
                     saveButton.style.display = 'none'
-
                     editButton.style.display = 'block'
                     deleteButton.style.display = 'block'
                 })
@@ -176,7 +174,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 commentItem.appendChild(commentProfile)
                 commentItem.appendChild(commentContentDiv)
-                commentItem.appendChild(buttonContainer) // 버튼 컨테이너를 commentItem의 맨 끝에 추가
+                commentItem.appendChild(buttonContainer)
 
                 commentList.appendChild(commentItem)
 
@@ -206,61 +204,78 @@ document.addEventListener('DOMContentLoaded', function () {
                     contentType: 'application/json',
                     data: JSON.stringify(requestData),
                     success: function (data) {
-                        const commentItem = document.createElement('div')
-                        commentItem.className = 'commentItem'
+                        if (commentContent.trim() !== '') {
+                            const commentItem = document.createElement('div')
+                            commentItem.className = 'commentItem'
 
-                        const commentContentDiv = document.createElement('div')
-                        commentContentDiv.className = 'commentContent'
+                            const commentProfile = document.createElement('img')
+                            commentProfile.src = 'img/commentProfile.svg'
+                            commentProfile.className = 'commentProfile'
 
-                        const commentInfoDiv = document.createElement('div')
-                        commentInfoDiv.className = 'commentInfo'
+                            const commentContentDiv =
+                                document.createElement('div')
+                            commentContentDiv.className = 'commentContent'
 
-                        const commentText = document.createElement('div')
-                        commentText.className = 'comment'
-                        commentText.textContent = commentContent
+                            const commentInfoDiv = document.createElement('div')
+                            commentInfoDiv.className = 'commentInfo'
 
-                        const buttonContainer = document.createElement('div')
-                        buttonContainer.className = 'buttonTwo'
+                            const commentTitle = document.createElement('div')
+                            commentTitle.className = 'commentTitle'
+                            commentTitle.textContent = '요를레히호'
 
-                        const editButton = document.createElement('button')
-                        editButton.className = 'editButton'
-                        editButton.textContent = '수정하기'
-                        editButton.addEventListener('click', function () {
-                            const updatedContent = inputField.value
-                            const commentIdx = commentItem.dataset.commentId
-                            commentText.textContent = updatedContent
+                            const commentTime = document.createElement('div')
+                            commentTime.className = 'commentTime'
+                            commentTime.textContent = '방금'
 
-                            saveButton.style.display = 'none'
+                            const commentText = document.createElement('div')
+                            commentText.className = 'comment'
+                            commentText.textContent = commentContent
 
-                            editButton.style.display = 'block'
-                            deleteButton.style.display = 'block'
-                        })
+                            const buttonContainer =
+                                document.createElement('div')
+                            buttonContainer.className = 'buttonTwo'
 
-                        const deleteButton = document.createElement('button')
-                        deleteButton.className = 'deleteButton'
-                        deleteButton.textContent = '삭제하기'
-                        deleteButton.addEventListener('click', function () {
-                            commentList.removeChild(commentItem)
-                        })
+                            const editButton = document.createElement('button')
+                            editButton.className = 'editButton'
+                            editButton.textContent = '수정하기'
+                            editButton.addEventListener('click', function () {
+                                const updatedContent = inputField.value
+                                const commentIdx = commentItem.dataset.commentId
+                                commentText.textContent = updatedContent
 
-                        buttonContainer.appendChild(editButton)
-                        buttonContainer.appendChild(deleteButton)
+                                saveButton.style.display = 'none'
+                                editButton.style.display = 'block'
+                                deleteButton.style.display = 'block'
+                            })
 
-                        commentInfoDiv.appendChild(commentTitle)
-                        commentInfoDiv.appendChild(commentTime)
-                        commentContentDiv.appendChild(commentInfoDiv)
-                        commentContentDiv.appendChild(commentText)
-                        commentContentDiv.appendChild(buttonContainer)
+                            const deleteButton =
+                                document.createElement('button')
+                            deleteButton.className = 'deleteButton'
+                            deleteButton.textContent = '삭제하기'
+                            deleteButton.addEventListener('click', function () {
+                                commentList.removeChild(commentItem)
+                            })
 
-                        commentItem.appendChild(commentProfile)
-                        commentItem.appendChild(commentContentDiv)
+                            buttonContainer.appendChild(editButton)
+                            buttonContainer.appendChild(deleteButton)
 
-                        commentList.appendChild(commentItem)
+                            commentInfoDiv.appendChild(commentTitle)
+                            commentInfoDiv.appendChild(commentTime)
 
-                        commentInput.value = ''
+                            commentContentDiv.appendChild(commentInfoDiv)
+                            commentContentDiv.appendChild(commentText)
+
+                            commentItem.appendChild(commentProfile)
+                            commentItem.appendChild(commentContentDiv)
+                            commentItem.appendChild(buttonContainer)
+
+                            commentList.appendChild(commentItem)
+
+                            commentInput.value = ''
+                        }
                     },
                     error: function (error) {
-                        console.error('댓글 등록 오류:', error)
+                        console.log('댓글 등록 오류:', error)
                     },
                 })
             }
@@ -289,6 +304,7 @@ function getComments(promotionIdx) {
 document.addEventListener('DOMContentLoaded', function () {})
 
 // 댓글 수정 ajax
+
 function updateComment(commentIdx, content) {
     return new Promise((resolve, reject) => {
         const url = `/comment/${commentIdx}`
@@ -358,6 +374,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     })
 })
+
 /*
 // 댓글 수정 API 호출 함수 (가정)
 function updateComment(commentId, content) {
@@ -402,11 +419,16 @@ document.addEventListener('DOMContentLoaded', function () {
             const commentIdx = commentItem.dataset.commentId
 
             deleteComment(commentIdx)
-                .then(() => {
-                    commentList.removeChild(commentItem)
+                .then((response) => response.json())
+                .then((data) => {
+                    if (data.success) {
+                        reply.remove()
+                    } else {
+                        console.log('댓글 삭제 실패')
+                    }
                 })
                 .catch((error) => {
-                    console.log('댓글 삭제 오류:', error)
+                    console.log('댓글 삭제 실패:', error)
                 })
         }
     })
