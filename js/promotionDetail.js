@@ -1,4 +1,5 @@
 var host = 'localhost:3000'
+var userIdx = 1
 
 window.onload = function () {
     var urlParams = new URLSearchParams(window.location.search)
@@ -65,7 +66,7 @@ $('#goodnum').click(function () {
                 })
             } else {
                 $.ajax({
-                    url: host + `/like/${likeidx}` + window.postId,
+                    url: host + '/like/{likeidx}' + window.postId,
                     method: 'DELETE',
                     contentType: 'application/json',
                     data: JSON.stringify({
@@ -106,7 +107,7 @@ function getPromotionDetail(postId) {
     content.innerText = data.promotionContent
 }
 
-// 작성한 댓글 하단에 불러오기 (ajax - X)
+// 작성한 댓글 하단에 불러오기
 document.addEventListener('DOMContentLoaded', function () {
     const commentInput = document.querySelector('.commentInput input')
     const commentList = document.querySelector('.commentList')
@@ -152,6 +153,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     commentText.textContent = updatedContent
 
                     saveButton.style.display = 'none'
+
                     editButton.style.display = 'block'
                     deleteButton.style.display = 'block'
                 })
@@ -186,14 +188,18 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // 댓글 등록 ajax
 document.addEventListener('DOMContentLoaded', function () {
-    const commentInput = document.querySelector('.commentInput input')
+    const commentInput = document.querySelector('#commentInput')
     const commentList = document.querySelector('.commentList')
 
-    commentInput.addEventListener('keypress', function (event) {
+    console.log(commentInput)
+
+    commentInput.addEventListener('keydown', function (event) {
         if (event.key === 'Enter') {
+            console.log('enter')
             const commentContent = commentInput.value
+            console.log(commentContent)
             if (commentContent.trim() !== '') {
-                const url = `/comment/${window.postId}/users/{userIdx}`
+                const url = `/comment/${window.postId}/users/${userIdx}`
                 const requestData = {
                     content: commentContent,
                 }
@@ -204,78 +210,62 @@ document.addEventListener('DOMContentLoaded', function () {
                     contentType: 'application/json',
                     data: JSON.stringify(requestData),
                     success: function (data) {
-                        if (commentContent.trim() !== '') {
-                            const commentItem = document.createElement('div')
-                            commentItem.className = 'commentItem'
+                        const commentItem = document.createElement('div')
+                        commentItem.className = 'commentItem'
 
-                            const commentProfile = document.createElement('img')
-                            commentProfile.src = 'img/commentProfile.svg'
-                            commentProfile.className = 'commentProfile'
+                        const commentContentDiv = document.createElement('div')
+                        commentContentDiv.className = 'commentContent'
 
-                            const commentContentDiv =
-                                document.createElement('div')
-                            commentContentDiv.className = 'commentContent'
+                        const commentInfoDiv = document.createElement('div')
+                        commentInfoDiv.className = 'commentInfo'
 
-                            const commentInfoDiv = document.createElement('div')
-                            commentInfoDiv.className = 'commentInfo'
+                        const commentText = document.createElement('div')
+                        commentText.className = 'comment'
+                        commentText.textContent = commentContent
 
-                            const commentTitle = document.createElement('div')
-                            commentTitle.className = 'commentTitle'
-                            commentTitle.textContent = '요를레히호'
+                        const buttonContainer = document.createElement('div')
+                        buttonContainer.className = 'buttonTwo'
 
-                            const commentTime = document.createElement('div')
-                            commentTime.className = 'commentTime'
-                            commentTime.textContent = '방금'
+                        const editButton = document.createElement('button')
+                        editButton.className = 'editButton'
+                        editButton.textContent = '수정하기'
+                        editButton.addEventListener('click', function () {
+                            const updatedContent = inputField.value
+                            const commentIdx = commentItem.dataset.commentId
+                            commentText.textContent = updatedContent
 
-                            const commentText = document.createElement('div')
-                            commentText.className = 'comment'
-                            commentText.textContent = commentContent
+                            saveButton.style.display = 'none'
 
-                            const buttonContainer =
-                                document.createElement('div')
-                            buttonContainer.className = 'buttonTwo'
+                            editButton.style.display = 'block'
+                            deleteButton.style.display = 'block'
+                        })
 
-                            const editButton = document.createElement('button')
-                            editButton.className = 'editButton'
-                            editButton.textContent = '수정하기'
-                            editButton.addEventListener('click', function () {
-                                const updatedContent = inputField.value
-                                const commentIdx = commentItem.dataset.commentId
-                                commentText.textContent = updatedContent
+                        const deleteButton = document.createElement('button')
+                        deleteButton.className = 'deleteButton'
+                        deleteButton.textContent = '삭제하기'
+                        deleteButton.addEventListener('click', function () {
+                            commentList.removeChild(commentItem)
+                        })
 
-                                saveButton.style.display = 'none'
-                                editButton.style.display = 'block'
-                                deleteButton.style.display = 'block'
-                            })
+                        buttonContainer.appendChild(editButton)
+                        buttonContainer.appendChild(deleteButton)
 
-                            const deleteButton =
-                                document.createElement('button')
-                            deleteButton.className = 'deleteButton'
-                            deleteButton.textContent = '삭제하기'
-                            deleteButton.addEventListener('click', function () {
-                                commentList.removeChild(commentItem)
-                            })
+                        commentInfoDiv.appendChild(commentTitle)
+                        commentInfoDiv.appendChild(commentTime)
+                        commentContentDiv.appendChild(commentInfoDiv)
+                        commentContentDiv.appendChild(commentText)
+                        commentContentDiv.appendChild(buttonContainer)
 
-                            buttonContainer.appendChild(editButton)
-                            buttonContainer.appendChild(deleteButton)
+                        commentItem.appendChild(commentProfile)
+                        commentItem.appendChild(commentContentDiv)
 
-                            commentInfoDiv.appendChild(commentTitle)
-                            commentInfoDiv.appendChild(commentTime)
+                        commentList.appendChild(commentItem)
 
-                            commentContentDiv.appendChild(commentInfoDiv)
-                            commentContentDiv.appendChild(commentText)
-
-                            commentItem.appendChild(commentProfile)
-                            commentItem.appendChild(commentContentDiv)
-                            commentItem.appendChild(buttonContainer)
-
-                            commentList.appendChild(commentItem)
-
-                            commentInput.value = ''
-                        }
+                        commentInput.value = ''
                     },
-                    error: function (error) {
-                        console.log('댓글 등록 오류:', error)
+                    error: function (xhr, status, error) {
+                        console.error('댓글 등록 오류:', error)
+                        console.log(xhr.responseText)
                     },
                 })
             }
@@ -284,27 +274,49 @@ document.addEventListener('DOMContentLoaded', function () {
 })
 
 // 댓글 조회 ajax
-function getComments(promotionIdx) {
-    return new Promise((resolve, reject) => {
-        const url = `/comment/promotion/${promotionIdx}`
+document.addEventListener('DOMContentLoaded', function () {
+    const promotionIdx = 123
 
-        $.ajax({
-            url: url,
-            method: 'GET',
-            success: function (data) {
-                resolve(data)
-            },
-            error: function (error) {
-                reject(error)
-            },
+    function getComments(promotionIdx) {
+        return new Promise((resolve, reject) => {
+            const url = `/comment/promotion/${promotionIdx}`
+
+            $.ajax({
+                url: url,
+                method: 'GET',
+                success: function (data) {
+                    resolve(data)
+                },
+                error: function (error) {
+                    reject(error)
+                },
+            })
         })
-    })
-}
+    }
 
-document.addEventListener('DOMContentLoaded', function () {})
+    getComments(promotionIdx)
+        .then(function (commentList) {
+            console.log(commentList)
+
+            const commentContainer = document.querySelector('.commentContainer')
+            commentList.forEach(function (comment) {
+                const commentItem = document.createElement('div')
+                commentItem.className = 'commentItem'
+
+                const createdAt = new Date(comment.createdAt).toLocaleString()
+                const commentContent = comment.commentContent
+
+                commentItem.innerHTML = `<p>${createdAt} - ${commentContent}</p>`
+
+                commentContainer.appendChild(commentItem)
+            })
+        })
+        .catch(function (error) {
+            console.log('Error fetching comments:', error)
+        })
+})
 
 // 댓글 수정 ajax
-
 function updateComment(commentIdx, content) {
     return new Promise((resolve, reject) => {
         const url = `/comment/${commentIdx}`
@@ -374,7 +386,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     })
 })
-
 /*
 // 댓글 수정 API 호출 함수 (가정)
 function updateComment(commentId, content) {
@@ -419,16 +430,11 @@ document.addEventListener('DOMContentLoaded', function () {
             const commentIdx = commentItem.dataset.commentId
 
             deleteComment(commentIdx)
-                .then((response) => response.json())
-                .then((data) => {
-                    if (data.success) {
-                        reply.remove()
-                    } else {
-                        console.log('댓글 삭제 실패')
-                    }
+                .then(() => {
+                    commentList.removeChild(commentItem)
                 })
                 .catch((error) => {
-                    console.log('댓글 삭제 실패:', error)
+                    console.log('댓글 삭제 오류:', error)
                 })
         }
     })
