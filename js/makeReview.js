@@ -38,7 +38,7 @@ stars.forEach((star) => {
 function updateStars() {
     stars.forEach((star, index) => {
         if (index < selectedRating) {
-            star.src = 'svg/🦆 icon _star_.svg'
+            star.src = 'svg/icon _star_.svg'
         } else {
             star.src = 'svg/starOut.svg'
         }
