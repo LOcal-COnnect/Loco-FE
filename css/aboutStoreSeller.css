@@ -40,10 +40,6 @@
     flex: 1;
 }
 .storePhotoImg {
-    max-width: 100%;
-    max-height: 100%;
-    width: 500px;
-    height: 320px;
     box-sizing: border-box;
     object-fit: cover;
 }
@@ -67,7 +63,7 @@
     display: flex;
     flex-direction: column;
     margin: 20px auto;
-    width: 20vw;
+    width: 100%;
     margin-left: 20px;
     margin-top: 50px;
     /*
@@ -148,9 +144,9 @@
 }
 
 .introduction {
-    max-width: 430px;
     width: 100%;
     margin-left: 30px;
+    padding-right: 30px;
 }
 
 .introduction h2 {
@@ -214,7 +210,6 @@
 .menuShow {
     display: flex;
     flex-wrap: wrap;
-    max-width: 520px;
     margin: 0 auto;
     margin-left: 0px;
 }
@@ -342,43 +337,6 @@
 
 .modify a:hover {
     text-decoration: none;
-}
-
-.profile-picture {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    margin-right: 10px;
-}
-.nickname {
-    font-size: 16px;
-    font-weight: bold;
-    position: relative;
-    top: -30%;
-    left: 18%;
-}
-.star-rating {
-    font-size: 18px;
-    color: gold;
-    margin-right: 5px;
-    position: relative;
-    top: -35%;
-    left: 17%;
-}
-
-.date {
-    font-size: 10px;
-    color: #8f8f8f;
-    position: relative;
-    top: -82%;
-    left: 79%;
-}
-.comment {
-    font-size: 12px;
-    max-width: 230px;
-    position: relative;
-    top: -20px;
-    left: 18%;
 }
 
 .modify {
