@@ -245,6 +245,7 @@
 .reviewsfont {
     display: flex;
     margin-bottom: 6px;
+    justify-content: space-between;
 }
 
 .reviews h2 {
@@ -256,9 +257,10 @@
 .viewsMore {
     font-size: 10px;
     margin-top: 18px;
-    justify-content: end;
     display: flex;
-    margin-left: 240px;
+    /*
+    margin-left: 240px; */
+    float: right;
 }
 
 .review-box {
