@@ -67,6 +67,8 @@ function handleImageSelection(event) {
     }
 }
 // 리뷰 작성 ajax
+var token = localStorage.getItem('token')
+
 function completeCreateReview(storeIdx, userIdx) {
     const content = document.querySelector('.contentInput').value
     console.log(content)
@@ -101,6 +103,9 @@ function completeCreateReview(storeIdx, userIdx) {
         data: formData,
         processData: false,
         contentType: false,
+        headers: {
+            Authorization: 'Bearer ' + token,
+        },
         success: function (response) {
             if (response.code === 200) {
                 console.log('리뷰 등록 성공:', response.message)

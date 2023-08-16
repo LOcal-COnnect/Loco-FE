@@ -75,6 +75,8 @@ function handleImageSelection(event) {
 }
 
 // 리뷰 수정 ajax
+var token = localStorage.getItem('token')
+
 document.querySelector('.completeBt').addEventListener('click', function () {
     completeUpdateReview()
 })
@@ -123,6 +125,9 @@ function completeUpdateReview() {
         data: formData,
         processData: false,
         contentType: false,
+        headers: {
+            Authorization: 'Bearer ' + token,
+        },
         success: function (response) {
             if (response.code === 200) {
                 console.log('리뷰 수정 성공:', response.message)
