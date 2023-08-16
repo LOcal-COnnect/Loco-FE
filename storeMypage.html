@@ -210,20 +210,21 @@
                                     <h3>031-031-031</h3>
                                 </div>
                             </div>
-
                             <div class="registPhoto">
                                 <h2>가게 사진 등록하기</h2>
                                 <label for="photoInput" class="photo">
+                                    <input
+                                        type="file"
+                                        accept="image/*"
+                                        id="photoInput"
+                                        onchange="handleImageSelection2(event)"
+                                        style="display: none"
+                                    />
                                     <h3 class="photoMent">
                                         사진 첨부를 위해 클릭해주세요.
                                     </h3>
+                                    <img id="photoPreview" src="" alt="" />
                                 </label>
-                                <input
-                                    type="file"
-                                    id="photoInput"
-                                    onchange="handleImageSelection(event)"
-                                    style="display: none"
-                                />
                             </div>
 
                             <div class="category-container">
@@ -317,19 +318,18 @@
                                     </div>
                                     <div class="menus">
                                         <div class="menuShow">
-                                            <div
-                                                class="pic"
-                                                onchange="handleImageSelection(event)"
-                                            >
-                                                <label
-                                                    for="menuPhotoInput1"
-                                                    class="menuPhoto"
-                                                >
-                                                    <h3 class="menuPhotoMent">
-                                                        사진첨부를 위해
+                                            <div class="pictureInputWrap">
+                                                <div class="pictureInputBox">
+                                                    <input
+                                                        type="file"
+                                                        accept="image/*"
+                                                        onchange="handleImageSelection(event)"
+                                                    />
+                                                    <div>
+                                                        사진 첨부를 위해
                                                         클릭해주세요.
-                                                    </h3>
-                                                </label>
+                                                    </div>
+                                                </div>
                                             </div>
                                             <div class="product-info">
                                                 <input
@@ -350,19 +350,18 @@
                                         </div>
 
                                         <div class="menuShow">
-                                            <div
-                                                class="pic"
-                                                onchange="handleImageSelection(event)"
-                                            >
-                                                <label
-                                                    for="menuPhotoInput2"
-                                                    class="menuPhoto"
-                                                >
-                                                    <h3 class="menuPhotoMent">
-                                                        사진첨부를 위해
+                                            <div class="pictureInputWrap">
+                                                <div class="pictureInputBox">
+                                                    <input
+                                                        type="file"
+                                                        accept="image/*"
+                                                        onclick="handleImageSelection(event)"
+                                                    />
+                                                    <div>
+                                                        사진 첨부를 위해
                                                         클릭해주세요.
-                                                    </h3>
-                                                </label>
+                                                    </div>
+                                                </div>
                                             </div>
                                             <div class="product-info">
                                                 <input
@@ -383,19 +382,18 @@
                                         </div>
 
                                         <div class="menuShow">
-                                            <div
-                                                class="pic"
-                                                onchange="handleImageSelection(event)"
-                                            >
-                                                <label
-                                                    for="menuPhotoInput3"
-                                                    class="menuPhoto"
-                                                >
-                                                    <h3 class="menuPhotoMent">
-                                                        사진첨부를 위해
+                                            <div class="pictureInputWrap">
+                                                <div class="pictureInputBox">
+                                                    <input
+                                                        type="file"
+                                                        accept="image/*"
+                                                        onchange="handleImageSelection(event)"
+                                                    />
+                                                    <div>
+                                                        사진 첨부를 위해
                                                         클릭해주세요.
-                                                    </h3>
-                                                </label>
+                                                    </div>
+                                                </div>
                                             </div>
                                             <div class="product-info">
                                                 <input
@@ -416,19 +414,18 @@
                                         </div>
 
                                         <div class="menuShow">
-                                            <div
-                                                class="pic"
-                                                onchange="handleImageSelection(event)"
-                                            >
-                                                <label
-                                                    for="menuPhotoInput4"
-                                                    class="menuPhoto"
-                                                >
-                                                    <h3 class="menuPhotoMent">
-                                                        사진첨부를 위해
+                                            <div class="pictureInputWrap">
+                                                <div class="pictureInputBox">
+                                                    <input
+                                                        type="file"
+                                                        accept="image/*"
+                                                        onchange="handleImageSelection(event)"
+                                                    />
+                                                    <div>
+                                                        사진 첨부를 위해
                                                         클릭해주세요.
-                                                    </h3>
-                                                </label>
+                                                    </div>
+                                                </div>
                                             </div>
                                             <div class="product-info">
                                                 <input
@@ -449,19 +446,18 @@
                                         </div>
 
                                         <div class="menuShow">
-                                            <div
-                                                class="pic"
-                                                onchange="handleImageSelection(event)"
-                                            >
-                                                <label
-                                                    for="menuPhotoInput5"
-                                                    class="menuPhoto"
-                                                >
-                                                    <h3 class="menuPhotoMent">
-                                                        사진첨부를 위해
+                                            <div class="pictureInputWrap">
+                                                <div class="pictureInputBox">
+                                                    <input
+                                                        type="file"
+                                                        accept="image/*"
+                                                        onchange="handleImageSelection(event)"
+                                                    />
+                                                    <div>
+                                                        사진 첨부를 위해
                                                         클릭해주세요.
-                                                    </h3>
-                                                </label>
+                                                    </div>
+                                                </div>
                                             </div>
                                             <div class="product-info">
                                                 <input
