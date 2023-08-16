@@ -187,6 +187,7 @@ document.addEventListener('DOMContentLoaded', function () {
 })
 
 // 댓글 등록 ajax
+var token = localStorage.getItem('token')
 document.addEventListener('DOMContentLoaded', function () {
     const commentInput = document.querySelector('#commentInput')
     const commentList = document.querySelector('.commentList')
@@ -194,7 +195,6 @@ document.addEventListener('DOMContentLoaded', function () {
     console.log(commentInput)
 
     commentInput.addEventListener('keydown', function (event) {
-
         if (event.key === 'Enter') {
             console.log('enter')
             const commentContent = commentInput.value
@@ -210,6 +210,9 @@ document.addEventListener('DOMContentLoaded', function () {
                     method: 'POST',
                     contentType: 'application/json',
                     data: JSON.stringify(requestData),
+                    headers: {
+                        Authorization: 'Bearer ' + token,
+                    },
                     success: function (data) {
                         const commentItem = document.createElement('div')
                         commentItem.className = 'commentItem'
@@ -275,6 +278,7 @@ document.addEventListener('DOMContentLoaded', function () {
 })
 
 // 댓글 조회 ajax
+var token = localStorage.getItem('token')
 document.addEventListener('DOMContentLoaded', function () {
     const promotionIdx = 123
 
@@ -285,6 +289,9 @@ document.addEventListener('DOMContentLoaded', function () {
             $.ajax({
                 url: url,
                 method: 'GET',
+                headers: {
+                    Authorization: 'Bearer ' + token,
+                },
                 success: function (data) {
                     resolve(data)
                 },
@@ -318,8 +325,17 @@ document.addEventListener('DOMContentLoaded', function () {
 })
 
 // 댓글 수정 ajax
+var token = localStorage.getItem('token')
 function updateComment(commentIdx, content) {
     return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            const isSuccess = true
+            if (isSuccess) {
+                resolve()
+            } else {
+                reject(new Error('댓글 수정 실패'))
+            }
+        }, 1000)
         const url = `/comment/${commentIdx}`
         const requestData = {
             content: content,
@@ -330,6 +346,10 @@ function updateComment(commentIdx, content) {
             method: 'PATCH',
             contentType: 'application/json',
             data: JSON.stringify(requestData),
+            dataType: 'json',
+            headers: {
+                Authorization: 'Bearer ' + token,
+            },
             success: function () {
                 resolve()
             },
@@ -369,16 +389,21 @@ document.addEventListener('DOMContentLoaded', function () {
 
             saveButton.addEventListener('click', function () {
                 const updatedContent = inputField.value
-                const commentIdx = commentItem.dataset.commentId
+                /*
+                const commentIdx = commentItem.dataset.commentId*/
+                const commentIdx = 1
+
+                console.log(updatedContent)
+                console.log(commentIdx)
 
                 updateComment(commentIdx, updatedContent)
                     .then(() => {
                         commentText.textContent = updatedContent
 
-                        saveButton.style.display = 'none'
-
                         editButton.style.display = 'block'
                         deleteButton.style.display = 'block'
+
+                        commentItem.removeChild(saveButton)
                     })
                     .catch((error) => {
                         console.log('댓글 수정 실패:', error)
@@ -387,6 +412,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     })
 })
+
 /*
 // 댓글 수정 API 호출 함수 (가정)
 function updateComment(commentId, content) {
@@ -400,10 +426,10 @@ function updateComment(commentId, content) {
             }
         }, 1000)
     })
-}
-*/
+} */
 
 // 댓글 삭제 ajax
+var token = localStorage.getItem('token')
 function deleteComment(commentIdx) {
     return new Promise((resolve, reject) => {
         const url = `/comment/${commentIdx}`
@@ -411,6 +437,9 @@ function deleteComment(commentIdx) {
         $.ajax({
             url: url,
             method: 'DELETE',
+            headers: {
+                Authorization: 'Bearer ' + token,
+            },
             success: function () {
                 resolve()
             },
@@ -428,7 +457,9 @@ document.addEventListener('DOMContentLoaded', function () {
         const deleteButton = event.target.closest('.deleteButton')
         if (deleteButton) {
             const commentItem = deleteButton.closest('.commentItem')
-            const commentIdx = commentItem.dataset.commentId
+            /*
+            const commentIdx = commentItem.dataset.commentId */
+            const commentIdx = 1
 
             deleteComment(commentIdx)
                 .then(() => {
@@ -440,4 +471,3 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     })
 })
-

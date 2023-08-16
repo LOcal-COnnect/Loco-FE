@@ -56,13 +56,13 @@ window.addEventListener('load', function () {
         method: 'GET',
         success: function (data) {
             // 서버에서 받아온 좋아요 여부 값으로 isFullHeart 업데이트
-            isFullHeart = data.isFullHeart;
+            isFullHeart = data.isFullHeart
         },
         error: function () {
             // 에러 처리
-            console.error('찜하기 여부를 불러오는 데 실패했습니다.');
+            console.error('찜하기 여부를 불러오는 데 실패했습니다.')
         },
-    });
+    })
 })
 
 $('#Heart').click(function () {
@@ -73,11 +73,14 @@ $('#Heart').click(function () {
         url: host + '/like/{userIdx}/promotion/{promotionIdx}' + window.postId,
         method: 'GET',
         success: function (data) {
-            isFullHeart = data.isFullHeart; // 서버에서 받아온 찜하기 여부 값으로 업데이트
+            isFullHeart = data.isFullHeart // 서버에서 받아온 찜하기 여부 값으로 업데이트
 
             if (!isFullHeart) {
                 $.ajax({
-                    url: host + '/mine/{userIdx}/store/{storeIdx}' + window.postId,
+                    url:
+                        host +
+                        '/mine/{userIdx}/store/{storeIdx}' +
+                        window.postId,
                     method: 'POST',
                     contentType: 'application/json',
                     data: JSON.stringify({
@@ -88,9 +91,9 @@ $('#Heart').click(function () {
                         //찜하기는 찜하기 여부만 표시
                     },
                     error: function () {
-                        alert('찜하기가 입력되지 않았습니다.');
+                        alert('찜하기가 입력되지 않았습니다.')
                     },
-                });
+                })
             } else {
                 $.ajax({
                     url: host + '/mine/{mineidx}' + window.postId,
@@ -104,16 +107,16 @@ $('#Heart').click(function () {
                         //찜하기는 찜하기 여부만 표시
                     },
                     error: function () {
-                        alert('찜하기 삭제에 실패했습니다.');
+                        alert('찜하기 삭제에 실패했습니다.')
                     },
-                });
+                })
             }
         },
         error: function () {
-            console.error('찜하기 여부를 불러오는 데 실패했습니다.');
+            console.error('찜하기 여부를 불러오는 데 실패했습니다.')
         },
-    });
-});
+    })
+})
 
 // 해시태그 길이 조정
 const hashtagBox = document.querySelector('.HashtagBox h3')
@@ -267,70 +270,73 @@ function moveToB() {
 
 document.getElementById('MoreButton').addEventListener('click', moveToB)
 
-/*
 // 리뷰 미리 보기 ajax
-const storeIdx = 123
+const storeIdx = 1
 
-function fetchAndDisplayReviews() {
-    const reviewBox = document.querySelector('.review-box')
-
-    reviewBox.innerHTML = ''
-
+var token = localStorage.getItem('token')
+function fetchReviews(storeIdx) {
     $.ajax({
         url: `/reviews/stores/${storeIdx}`,
         type: 'GET',
+        headers: {
+            Authorization: 'Bearer ' + token,
+        },
         success: function (response) {
             if (response.code === 200) {
-                const reviewList = response.reviewList
-
-                reviewList.forEach((review) => {
-                    const reviewElement = document.createElement('div')
-                    reviewElement.classList.add('review')
-
-                    const profilePicture = document.createElement('img')
-                    profilePicture.src = review.profilePictureUrl
-                    profilePicture.alt = 'Profile Picture'
-                    profilePicture.classList.add('profile-picture')
-
-                    const nicknameElement = document.createElement('h3')
-                    nicknameElement.textContent = review.nickname
-                    nicknameElement.classList.add('nickname')
-
-                    const ratingElement = generateStarRating(review.reviewStar)
-                    ratingElement.classList.add('star-rating')
-
-                    const commentElement = document.createElement('p')
-                    commentElement.textContent = review.reviewContent
-                    commentElement.classList.add('comment')
-
-                    const dateElement = document.createElement('span')
-                    dateElement.textContent = formatDate(review.createdAt)
-                    dateElement.classList.add('date')
-
-                    reviewElement.appendChild(profilePicture)
-                    reviewElement.appendChild(nicknameElement)
-                    reviewElement.appendChild(ratingElement)
-                    reviewElement.appendChild(commentElement)
-                    reviewElement.appendChild(dateElement)
-
-                    reviewBox.appendChild(reviewElement)
-                })
+                const reviews = response.data
+                displayReviews(reviews)
             } else {
-                console.error('Failed to fetch reviews:', response.message)
+                console.error('리뷰 목록 가져오기 실패:', response.message)
             }
         },
         error: function (xhr, status, error) {
-            console.error('Failed to fetch reviews:', error)
+            console.log('리뷰 목록 가져오기 오류:', error)
         },
     })
 }
 
-function generateStarRating(rating) {}
+// 리뷰 목록 표시 함수
+function displayReviews(reviews) {
+    const reviewBox = document.querySelector('.review-box')
 
-function formatDate(isoDate) {
-    const date = new Date(isoDate)
-    return `${date.getFullYear()}.${date.getMonth() + 1}.${date.getDate()}`
+    reviews.forEach((review) => {
+        const reviewElement = document.createElement('div')
+        reviewElement.classList.add('review')
+
+        const profilePicture = document.createElement('img')
+        profilePicture.src = review.profilePictureUrl
+        profilePicture.alt = 'Profile Picture'
+        profilePicture.classList.add('profile-picture')
+
+        const nicknameElement = document.createElement('h3')
+        nicknameElement.textContent = review.nickname
+        nicknameElement.classList.add('nickname')
+
+        const ratingElement = generateStarRating(review.rating)
+        ratingElement.classList.add('star-rating')
+
+        const commentElement = document.createElement('p')
+        commentElement.innerHTML = review.comment.replace(/\n/g, '<br>')
+        commentElement.classList.add('comment')
+
+        const dateElement = document.createElement('span')
+        dateElement.textContent = review.date
+        dateElement.classList.add('date')
+
+        reviewElement.appendChild(profilePicture)
+        reviewElement.appendChild(nicknameElement)
+        reviewElement.appendChild(ratingElement)
+        reviewElement.appendChild(commentElement)
+        reviewElement.appendChild(dateElement)
+
+        reviewBox.appendChild(reviewElement)
+    })
 }
 
-window.addEventListener('load', fetchAndDisplayReviews)
-*/
+// 초기화 함수
+function initialize() {
+    fetchReviews(storeIdx)
+}
+
+// 페이지 로드 시 초기화 함수 실행
+window.addEventListener('load', initialize)
