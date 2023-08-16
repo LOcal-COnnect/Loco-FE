@@ -64,21 +64,6 @@ introductionText.addEventListener('input', function () {
 })
 */
 
-const photoInput = document.getElementById('photoInput')
-const photoLabel = document.querySelector('.photo')
-
-photoLabel.addEventListener('click', function () {
-    photoInput.click()
-})
-
-photoInput.addEventListener('change', function () {
-    const files = photoInput.files
-    if (files.length > 0) {
-        const fileName = files[0].name
-        photoLabel.textContent = fileName
-    }
-})
-
 function toggleOptions() {
     var options = document.getElementById('categoryOptions')
     options.style.display = options.style.display === 'block' ? 'none' : 'block'
@@ -170,56 +155,62 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // 사진 등록
 function handleImageSelection(event) {
-    const photoInput = event.target
-    const picBox = photoInput.closest('.menuShow').querySelector('.pic')
+    const selectedFile = event.target.files[0]
 
-    if (photoInput.files && photoInput.files[0]) {
-        const selectedPhoto = photoInput.files[0]
+    if (selectedFile) {
         const reader = new FileReader()
 
-        reader.onload = function (e) {
-            picBox.innerHTML = '' // Clear existing content
+        reader.onload = function () {
+            const imgDataUrl = reader.result
+            const pictureWrap = event.target.parentElement.parentElement // .pictureInputWrap
+            pictureWrap.style.backgroundImage = `url(${imgDataUrl})`
 
-            const photoElement = document.createElement('img')
-            photoElement.src = e.target.result
-            photoElement.alt = 'Uploaded Photo'
-            photoElement.classList.add('uploaded-photo')
-
-            picBox.appendChild(photoElement)
+            const pictureInputBox = event.target.parentElement
+            pictureInputBox.style.display = 'none'
         }
 
-        reader.readAsDataURL(selectedPhoto)
+        reader.readAsDataURL(selectedFile)
     }
 }
 
-// 각 메뉴의 input 요소에 onchange 이벤트 핸들러 설정
-const menuPhotoInputs = document.querySelectorAll('.menuPhotoInput')
-menuPhotoInputs.forEach((input, index) => {
-    input.addEventListener('change', function (event) {
-        handleImageSelection(event, index + 1)
-    })
-})
+function handleImageSelection2(event) {
+    const selectedFile = event.target.files[0]
+    const photoPreview = document.getElementById('photoPreview')
 
-function handleImageSelection(event, index) {
-    const photoInput = event.target
-    const picBox = document
-        .querySelector(`#menuPhotoInput${index}`)
-        .closest('.pic')
-    const label = picBox.querySelector('.menuPhoto')
-    const imageMent = label.querySelector('.menuPhotoMent')
-
-    if (photoInput.files && photoInput.files[0]) {
+    if (selectedFile) {
         const reader = new FileReader()
 
-        reader.onload = function (e) {
-            const img = document.createElement('img')
-            img.src = e.target.result
-            img.alt = 'Uploaded Photo'
-            picBox.innerHTML = '' // Clear existing content
-            picBox.appendChild(img)
-            imageMent.style.display = 'none'
+        reader.onload = function () {
+            const imgDataUrl = reader.result
+            photoPreview.src = imgDataUrl
+            photoPreview.style.display = 'block'
+
+            // Hide the photoMent
+            const photoMent = document.querySelector('.photoMent')
+            photoMent.style.display = 'none'
         }
 
-        reader.readAsDataURL(photoInput.files[0])
+        reader.readAsDataURL(selectedFile)
+    }
+}
+
+function handleImageSelection2(event) {
+    const selectedFile = event.target.files[0]
+    const photoPreview = document.getElementById('photoPreview')
+
+    if (selectedFile) {
+        const reader = new FileReader()
+
+        reader.onload = function () {
+            const imgDataUrl = reader.result
+            photoPreview.style.backgroundImage = `url(${imgDataUrl})`
+            photoPreview.style.display = 'block'
+
+            // Hide the photoMent
+            const photoMent = document.querySelector('.photoMent')
+            photoMent.style.display = 'none'
+        }
+
+        reader.readAsDataURL(selectedFile)
     }
 }

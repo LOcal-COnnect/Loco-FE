@@ -1,6 +1,6 @@
 const tabList = Array.from(document.querySelectorAll('.tab'))
-const userIdx = 1;
-const newInfoArray = [];
+const userIdx = 1
+const newInfoArray = []
 
 tabList.forEach((button) => {
     button.addEventListener('click', handleSortButtonClick)
@@ -35,7 +35,6 @@ function handleSortButtonClick(event) {
         tab3.style.display = 'block'
     }
 }
-
 
 // URL에서 쿼리 파라미터 추출하는 함수
 function getQueryParam(name) {
@@ -77,7 +76,6 @@ function searchAddress() {
     }).open()
 }
 
-
 // 내 정보를 수정할 수 있는 input으로 변경
 document.addEventListener('DOMContentLoaded', function () {
     const moveEditMyBt = document.querySelector('.moveEditMyBt')
@@ -97,9 +95,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 input.type = 'text'
                 input.value = text
 
-                if(index === 0){
+                if (index === 0) {
                     input.id = 'roadAddress'
-                    input.setAttribute('readonly', 'true');
+                    input.setAttribute('readonly', 'true')
                     input.setAttribute('onclick', 'searchAddress()')
                 }
                 item.innerHTML = ''
@@ -114,47 +112,49 @@ document.addEventListener('DOMContentLoaded', function () {
 
             let infoItems = myInfo.querySelectorAll('div')
             infoItems = [...infoItems]
-            infoItems.forEach((item,index, originArr) => {
+            infoItems.forEach((item, index, originArr) => {
                 const img = item.querySelector('img')
                 const input = item.querySelector('input')
                 const text = input.value
 
-                newInfoArray.push(input.value);
+                newInfoArray.push(input.value)
                 item.innerHTML = ''
                 item.append(img)
                 item.appendChild(document.createTextNode(text))
-
             })
 
-            editMyInfo();
+            editMyInfo()
             moveEditMyBt.textContent = '내 정보 수정하기'
             moveEditMyBt.removeAttribute('onClick')
             editing = false
-            console.log(newInfoArray);
+            console.log(newInfoArray)
         }
     })
 })
 
-function editMyInfo(){
+function editMyInfo() {
     $.ajax({
         url: host + '/users/' + userIdx,
         method: 'PATCH',
         data: JSON.stringify({
-            'userId' : newInfoArray[3],
-            'userName' : newInfoArray[2],
-            'userPassword' : newInfoArray[4],
-            'userEmail' : newInfoArray[5],
-            'userPhone' : newInfoArray[6],
-            'userAddress' : newInfoArray[0],
-            'userDetailAddress' : newInfoArray[1]
-        }), success: function(){
-            alert('수정되었습니다.');
-        }, error: function(){
-            console.log('수정 실패');
-        }
+            userId: newInfoArray[3],
+            userName: newInfoArray[2],
+            userPassword: newInfoArray[4],
+            userEmail: newInfoArray[5],
+            userPhone: newInfoArray[6],
+            userAddress: newInfoArray[0],
+            userDetailAddress: newInfoArray[1],
+        }),
+        success: function () {
+            alert('수정되었습니다.')
+        },
+        error: function () {
+            console.log('수정 실패')
+        },
     })
 }
 
+/*
 // 리뷰 목록 ajax
 window.addEventListener('load', function () {
     $.ajax({
@@ -211,6 +211,7 @@ function displayReviews(reviews) {
         reviewListWrap.appendChild(reviewCard)
     }
 }
+*/
 
 // 리뷰 삭제 ajax
 function deleteReview(reviewIdx) {
@@ -219,15 +220,32 @@ function deleteReview(reviewIdx) {
         type: 'DELETE',
         success: function (response) {
             if (response.code === 200) {
-                alert('리뷰가 삭제되었습니다.');
-                console.log('리뷰 삭제 성공:', response.message);
-                window.reload();
+                alert('리뷰가 삭제되었습니다.')
+                console.log('리뷰 삭제 성공:', response.message)
+                window.reload()
             } else {
-                console.error('리뷰 삭제 실패:', response.message);
+                console.error('리뷰 삭제 실패:', response.message)
             }
         },
         error: function (xhr, status, error) {
-            console.log('리뷰 삭제 오류:', error);
+            console.log('리뷰 삭제 오류:', error)
         },
     })
+}
+
+function handleImageSelection(event) {
+    const selectedFile = event.target.files[0]
+
+    if (selectedFile) {
+        const reader = new FileReader()
+
+        reader.onload = function () {
+            const imgDataUrl = reader.result
+            const pictureWrap = event.target.parentElement.parentElement // .pictureInputWrap
+            pictureWrap.style.backgroundImage = `url(${imgDataUrl})`
+            pictureWrap.textContent = ''
+        }
+
+        reader.readAsDataURL(selectedFile)
+    }
 }

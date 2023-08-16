@@ -63,7 +63,7 @@
     margin: 0 auto;
 }
 
-.myInfo input{
+.myInfo input {
     background-color: #f4f4f4;
     border: 0;
     float: left;
@@ -240,11 +240,19 @@
     justify-content: flex-end;
 }
 
-.buttonReview > button{
+.buttonReview > button {
     margin: 0 5px;
     cursor: pointer;
     background-color: black;
     border-radius: 5px;
     color: white;
     padding: 5px 15px;
+}
+
+.reviewLeft {
+    display: block;
+}
+
+.reviewInTop {
+    display: flex;
 }

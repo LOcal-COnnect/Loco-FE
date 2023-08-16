@@ -49,6 +49,13 @@ function updateRatingValue() {
     ratingValue.textContent = selectedRating
 }
 
+/*
+// 페이지 이동 (수정 완료 버튼)
+function completeCreatePromotion() {
+    window.location.href = 'aboutStoreMore.html'
+}
+*/
+
 function handleImageSelection(event) {
     const selectedFile = event.target.files[0]
 
@@ -66,21 +73,35 @@ function handleImageSelection(event) {
         reader.readAsDataURL(selectedFile)
     }
 }
-// 리뷰 작성 ajax
-function completeCreateReview(storeIdx, userIdx) {
+
+// 리뷰 수정 ajax
+document.querySelector('.completeBt').addEventListener('click', function () {
+    completeUpdateReview()
+})
+
+function completeUpdateReview() {
+    const reviewIdx = 1
+    const storeIdx = 789
+    const userIdx = 456
+
     const content = document.querySelector('.contentInput').value
-    console.log(content)
     const rating = parseFloat(
         document.querySelector('.rating-value').textContent
     )
+    /*
+    const selectedFileInput = document.querySelector(
+        '.pictureInputBox input[type="file"]'
+    ) */
     const selectedFileInput = document.querySelector('#pictureInput')
+
+    console.log(content)
+    console.log(rating)
+    console.log(selectedFileInput)
 
     if (!content || !rating) {
         console.error('내용과 별점을 모두 입력해주세요.')
         return
     }
-    console.log(rating)
-    console.log(selectedFileInput)
 
     const formData = new FormData()
     formData.append('reviewContent', content)
@@ -95,35 +116,35 @@ function completeCreateReview(storeIdx, userIdx) {
         formData.append('reviewImage', selectedFile)
     }
 
+    // 여기서 AJAX 요청 수행
     $.ajax({
-        url: `/reviews/${storeIdx}/users/${userIdx}`,
+        url: `/reviews/${reviewIdx}`,
         type: 'POST',
         data: formData,
         processData: false,
         contentType: false,
         success: function (response) {
             if (response.code === 200) {
-                console.log('리뷰 등록 성공:', response.message)
+                console.log('리뷰 수정 성공:', response.message)
+                handleReviewUpdateSuccess()
             } else {
-                console.error('리뷰 등록 실패:', response.message)
+                console.error('리뷰 수정 실패:', response.message)
             }
         },
         error: function (xhr, status, error) {
-            console.error('리뷰 등록 오류:', error)
+            console.error('리뷰 수정 오류:', error)
         },
     })
 }
 
-const storeIdx = 789
-const userIdx = 456
+// 리뷰 수정 성공 시 처리 로직
+function handleReviewUpdateSuccess() {
+    const successPopup = document.createElement('div')
+    successPopup.className = 'successPopup'
+    successPopup.textContent = '리뷰가 성공적으로 수정되었습니다.'
 
-document.querySelector('.completeBt').addEventListener('click', function () {
-    completeCreateReview(storeIdx, userIdx)
-})
-
-/*
-// 페이지 이동 (수정 완료 버튼)
-function completeCreatePromotion() {
-    window.location.href = 'aboutStoreMore.html'
+    document.body.appendChild(successPopup)
+    setTimeout(() => {
+        document.body.removeChild(successPopup)
+    }, 3000)
 }
-*/
