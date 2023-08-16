@@ -162,9 +162,10 @@
 
 #goodnum {
     cursor: pointer;
+    width: 14px;
 }
 .active {
-    background-color: red;
+    width: 14px;
 }
 
 .editButton {
