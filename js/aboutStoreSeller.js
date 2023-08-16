@@ -47,7 +47,7 @@ image.addEventListener('click', () => {
     isFullHeart = !isFullHeart
 
     $.ajax({
-        url: host + `/mine/${useridx}/store/${window.postId}`,
+        url: host + `/mine/${window.userid}/store/${window.postId}`,
         method: 'GET',
         success: function (data) {
             // 서버에서 받아온 좋아요 여부 값으로 isFullHeart 업데이트
@@ -101,7 +101,7 @@ $('#Heartnum').click(function () {
 
     // 찜하기 여부 서버 요청 (GET 요청 등)
     $.ajax({
-        url: host + `/mine/${userIdx}/store/${window.postId}`,
+        url: host + `/mine/${window.userId}/store/${window.postId}`,
         method: 'GET',
         success: function (data) {
             isFullHeart = data.isFullHeart // 서버에서 받아온 찜하기 여부 값으로 업데이트
@@ -110,8 +110,7 @@ $('#Heartnum').click(function () {
                 $.ajax({
                     url:
                         host +
-                        '/mine/{userIdx}/store/{storeIdx}' +
-                        window.postId,
+                        `/mine/${window.userId}/store/${window.storeId}`,
                     method: 'POST',
                     contentType: 'application/json',
                     data: JSON.stringify({
@@ -141,7 +140,7 @@ $('#Heartnum').click(function () {
                 })
             } else {
                 $.ajax({
-                    url: host + `/mine/${userIdx}/store/${window.postId}`,
+                    url: host + `/mine/${window.userId}/store/${window.postId}`,
                     method: 'DELETE',
                     contentType: 'application/json',
                     data: JSON.stringify({
