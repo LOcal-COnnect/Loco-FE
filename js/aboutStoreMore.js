@@ -33,28 +33,23 @@ window.addEventListener('load', adjustIntroBoxHeight)
 window.addEventListener('resize', adjustIntroBoxHeight)
 
 // 가게 사진 하단 찜하기
-window.addEventListener('load', function () {
-    const heartOutIcon = document.querySelector('.heartOut img')
+const image = document.getElementById('heartnum')
+let isFullHeart = false
 
-    const fullHeart = 'svg/icon _heart_.svg'
-    const originHeart = 'svg/icon _heart outline_.svg'
+var imgElement = document.getElementById('heartnum')
 
-    let isFullHeart = false
-
-    heartOutIcon.addEventListener('click', function () {
-        if (isFullHeart) {
-            heartOutIcon.src = originHeart
-            heartOutIcon.alt = 'Heart Outline Image'
-        } else {
-            heartOutIcon.src = fullHeart
-            heartOutIcon.alt = 'Heart Image'
-        }
-
-        isFullHeart = !isFullHeart
-    })
+image.addEventListener('click', () => {
+    if (isFullHeart) {
+        image.classList.remove('active')
+        imgElement.src = 'svg/icon _heart_.svg'
+    } else {
+        image.classList.add('active')
+        imgElement.src = 'svg/icon _heart outline_.svg'
+    }
+    isFullHeart = !isFullHeart
 
     $.ajax({
-        url: host + '/mine/{useridx}/store/{storeIdx}' + window.postId,
+        url: host + `/mine/${useridx}/store/${window.postId}`,
         method: 'GET',
         success: function (data) {
             // 서버에서 받아온 좋아요 여부 값으로 isFullHeart 업데이트
@@ -67,12 +62,48 @@ window.addEventListener('load', function () {
     })
 })
 
-$('#Heart').click(function () {
-    const likeCountElement = $('#HeartCount')
+// // 가게 사진 하단 찜하기
+// window.addEventListener('load', function () {
+//     const heartOutIcon = document.querySelector('.heartOut img')
+
+//     const fullHeart = 'svg/icon _heart_.svg'
+//     const originHeart = 'svg/icon _heart outline_.svg'
+
+//     let isFullHeart = false
+
+//     heartOutIcon.addEventListener('click', function () {
+//         if (isFullHeart) {
+//             heartOutIcon.src = originHeart
+//             heartOutIcon.alt = 'Heart Outline Image'
+//         } else {
+//             heartOutIcon.src = fullHeart
+//             heartOutIcon.alt = 'Heart Image'
+//         }
+
+//         isFullHeart = !isFullHeart
+//     })
+
+//     $.ajax({
+//         url: host + `/mine/${useridx}/store/${storeIdx}` + window.postId,
+//         method: 'GET',
+//         success: function (data) {
+//             // 서버에서 받아온 찜하기 여부 값으로 isFullHeart 업데이트
+//             isFullHeart = data.isFullHeart;
+//             //True,False값
+//         },
+//         error: function () {
+//             // 에러 처리
+//             console.error('찜하기 여부를 불러오는 데 실패했습니다.');
+//         },
+//     });
+// })
+
+$('#Heartnum').click(function () {
+    const heartCountElement = $('#HeartCount')
 
     // 찜하기 여부 서버 요청 (GET 요청 등)
     $.ajax({
-        url: host + '/like/{userIdx}/promotion/{promotionIdx}' + window.postId,
+        url: host + `/mine/${userIdx}/store/${window.postId}`,
         method: 'GET',
         success: function (data) {
             isFullHeart = data.isFullHeart // 서버에서 받아온 찜하기 여부 값으로 업데이트
@@ -87,10 +118,24 @@ $('#Heart').click(function () {
                     contentType: 'application/json',
                     data: JSON.stringify({
                         postid: 1, // 게시물 ID
-                        goodnum: $('#Heart').val(),
+                        haartnum: $('#Heartnum').val(),
                     }),
                     success: function (data) {
-                        //찜하기는 찜하기 여부만 표시
+                        $.ajax({
+                            url: host + `/mine/store/${window.postId}`,
+                            method: 'POST',
+                            contentType: 'application/json',
+                            data: JSON.stringify({
+                                postid: 1, // 게시물 ID
+                                heartnum: $('#heartnum').val(),
+                            }),
+                            success: function (data) {
+                                heartCountElement.text(data.heartCount) // 서버에서 받은 찜하기 수로 화면 업데이트
+                            },
+                            error: function () {
+                                alert('찜하기 수를 받아오지 않았습니다.')
+                            },
+                        })
                     },
                     error: function () {
                         alert('찜하기가 입력되지 않았습니다.')
@@ -98,15 +143,29 @@ $('#Heart').click(function () {
                 })
             } else {
                 $.ajax({
-                    url: host + '/mine/{mineidx}' + window.postId,
+                    url: host + `/mine/${userIdx}/store/${window.postId}`,
                     method: 'DELETE',
                     contentType: 'application/json',
                     data: JSON.stringify({
                         postid: 1, // 게시물 ID
-                        goodnum: $('#Heart').val(),
+                        goodnum: $('#Heartnum').val(),
                     }),
                     success: function (data) {
-                        //찜하기는 찜하기 여부만 표시
+                        $.ajax({
+                            url: host + `/mine/store/${window.postId}`,
+                            method: 'POST',
+                            contentType: 'application/json',
+                            data: JSON.stringify({
+                                postid: 1, // 게시물 ID
+                                heartnum: $('#heartnum').val(),
+                            }),
+                            success: function (data) {
+                                heartCountElement.text(data.heartCount) // 서버에서 받은 찜하기 수로 화면 업데이트
+                            },
+                            error: function () {
+                                alert('찜하기 수를 받아오지 않았습니다.')
+                            },
+                        })
                     },
                     error: function () {
                         alert('찜하기 삭제에 실패했습니다.')
