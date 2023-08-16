@@ -1,9 +1,13 @@
 var host = 'http://localhost:8080'
+var token = localStorage.getItem('token');
 
 window.onload = function() {
     $.ajax({
         url: host + '/stores/promotion?page=0&size=8&sort=like,desc',
         method: 'GET',
+        headers: {
+            'Authorization': 'Bearer ' + token
+        },
 
     })
     var data = {

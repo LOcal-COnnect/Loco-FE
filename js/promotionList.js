@@ -1,20 +1,59 @@
-var host = 'localhost:3000'
+var host = 'localhost:3000';
+var token = localStorage.getItem('token');
 
-window.onload = function () {
-    var urlParams = new URLSearchParams(window.location.search)
-    var postId = urlParams.get('id')
-    window.searchText = urlParams.get('search')
+var changeWord; // 전역 변수로 선언
 
-    if (window.postId != null) {
-        console.log(window.postId)
-        showCategory(0, postId)
-    } else if (window.searchText != null) {
-        console.log(window.searchText)
-        getSearchResult(0, searchText)
-    } else {
-        showData(0, 'createdAt,desc')
+function changeCategory(word){
+    if(word === 'food1'){
+        changeWord = '곡물류';
+    } else if(word === 'food2'){
+        changeWord = '김치류';
+    } else if(word === 'food3'){
+        changeWord = '발효식품';
+    } else if(word === 'food4'){
+        changeWord = '면류';
+    } else if(word === 'food5'){
+        changeWord = '떡류';
+    } else if(word === 'food6'){
+        changeWord = '생선과 해산물';
+    } else if(word === 'food7'){
+        changeWord = '과일';
+    } else if(word === 'food8'){
+        changeWord = '차류';
+    } else if(word === 'food9'){
+        changeWord = '과자류';
+    } else if(word === 'food10'){
+        changeWord = '한약류';
+    } else if(word === 'nonfood1'){
+        changeWord = '의류와 직물';
+    } else if(word === 'nonfood2'){
+        changeWord = '도자기와 세라믹';
+    } else if(word === 'nonfood3'){
+        changeWord = '목공예품';
+    } else if(word === 'nonfood4'){
+        changeWord = '기타 공예품';
+    } else if(word === 'nonfood5'){
+        changeWord = '화장품';
+    } else{
+        changeWord= '금속 공예품'
     }
 }
+
+window.onload = function () {
+    var urlParams = new URLSearchParams(window.location.search);
+    window.postId = urlParams.get('id');
+    window.searchText = urlParams.get('search');
+
+    if (window.postId != null) {
+        changeCategory(window.postId);
+        showCategory(0, changeWord, window.postId);
+    } else if (window.searchText != null) {
+        getSearchResult(0, searchText);
+    } else {
+        showData(0, 'createdAt,desc');
+    }
+};
+
 
 // 페이지가 언로드되기 전에 실행되는 이벤트
 window.onbeforeunload = function () {
@@ -96,7 +135,7 @@ function showNearPlace() {
     }
 }
 
-function showCategory(pagenum, name) {
+function showCategory(pagenum, changeName, name) {
     var promotionSelectWrap = document.querySelector('.promotionSelectBtWrap')
     var promotionSearchWrap = document.querySelector('.promotionSearchBtWrap')
     var searchTitle = document.querySelector('.searchTitle')
@@ -106,24 +145,24 @@ function showCategory(pagenum, name) {
     promotionSearchWrap.style.display = 'block'
 
     searchTitle.innerText = '카테고리 >'
-    searchName.innerText = name
+    searchName.innerText = changeName
 
     var data = {
         storeList: [
             {
-                storeIdx: '스토어아이디',
+                storeIdx: 1,
                 storeName:
                     '가게명가게명가게명가게명가게명가게명가게명가게명가게명가게명가게명가게명가게명가게명가게명가게명',
                 storeLocation:
                     '서울시 한국구 한국동 12번지 한국구 한국동 12번지 한국 한국구 한국동 12번지구 한국동 12번지',
             },
             {
-                storeIdx: '스토어아이디',
+                storeIdx: 2,
                 storeName: '가게명',
                 storeLocation: '서울시 한국구 한국동 12번지',
             },
             {
-                storeIdx: '스토어아이디',
+                storeIdx: 3,
                 storeName: '가게명',
                 storeLocation: '서울시 한국구 한국동 12번지',
             },
@@ -151,12 +190,14 @@ function showCategory(pagenum, name) {
                     </div>
                 `
         newcontainer.appendChild(card)
-        console.log(card)
     }
     cardEffect()
     $.ajax({
-        url: host + '/stores/' + name + '/page=' + num + '&size=8',
+        url: host + '/stores/' + name + '/page=' + pagenum + '&size=8',
         method: 'GET',
+        headers: {
+            'Authorization': 'Bearer ' + token
+        },
         success: function (data) {},
         error: function () {
             alert('카테고리에 해당하는 내용을 가져올 수 없습니다.')
@@ -169,6 +210,9 @@ function showData(pagenum, sort) {
     $.ajax({
         url: host + '/stores?page=' + pagenum + '&size=8&sort=' + sort,
         method: 'GET',
+        headers: {
+            'Authorization': 'Bearer ' + token
+        },
         success: function (data) {},
     })
     var data = {
@@ -179,37 +223,37 @@ function showData(pagenum, sort) {
                     '제목입니다.제목입니다제목입니다제목입니다제목입니다제목입니다제목입니다제목입니다제목입니다제목입니다제목입니다제목입니다제목입니다',
                 promotionContent:
                     '게시글내용입니다.제목입니다제목입니다제목입니다제목입니다제목입니다제목입니다제목입니다제목입니다제목입니다',
-                viewCount: 234,
+                storeName: '도라메옹1'
             },
             {
                 promotionIdx: 2,
                 promotionTitle: '제목입니다.',
                 promotionContent: '게시글내용입니다.',
-                viewCount: 234,
+                storeName: '도라메2옹'
             },
             {
                 promotionIdx: 3,
                 promotionTitle: '제목입니다.',
                 promotionContent: '게시글내용입니다.',
-                viewCount: 234,
+                storeName: '도라메3옹'
             },
             {
                 promotionIdx: 3,
                 promotionTitle: '제목입니다.',
                 promotionContent: '게시글내용입니다.',
-                viewCount: 234,
+                storeName: '도라4메옹'
             },
             {
                 promotionIdx: 3,
                 promotionTitle: '제목입니다.',
                 promotionContent: '게시글내용입니다.',
-                viewCount: 234,
+                storeName: '도라메옹'
             },
             {
                 promotionIdx: 3,
                 promotionTitle: '제목입니다.',
                 promotionContent: '게시글내용입니다.',
-                viewCount: 234,
+                storeName: '도라메옹'
             },
         ],
     }
@@ -238,7 +282,7 @@ function showData(pagenum, sort) {
                 <img src="img/good.svg"/>
                 <div class="storeInfo">
                     <img src="img/store.svg"/>
-                    <p class="storeName">도라메옹</p>
+                    <p class="storeName">${data.promotionList[i].storeName}</p>
                 </div>
             </div>
         `
@@ -278,7 +322,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
     window.postId = urlParams.get('id')
     window.searchText = urlParams.get('search')
 
-    console.log('포스트아이디' + postId)
     const buttonContainer = document.getElementById('buttonContainer')
 
     // buttonCount는 추후 백엔드에서 넘겨주는 페이지 수
@@ -310,23 +353,16 @@ window.addEventListener('DOMContentLoaded', (event) => {
         for (let i = startButton; i < endButton; i++) {
             const button = createButton(i + 1)
             if (window.postId != null) {
-                console.log('postId 페이지네이션 실행')
                 button.setAttribute(
                     'onclick',
                     'showCategory(' + (i + 1) + ',' + window.postId + ')'
                 )
             } else if (window.searchText != null) {
-                console.log('검색어 페이지네이션 실행')
                 button.setAttribute(
                     'onclick',
                     'getSearchResult(' + (i + 1) + ',' + window.searchText + ')'
                 )
             } else {
-                console.log(
-                    window.postId,
-                    window.searchText,
-                    '그냥 페이지네이션 실행'
-                )
                 button.setAttribute(
                     'onclick',
                     'showData(' +
@@ -379,6 +415,9 @@ function getSearchResult(num, name) {
     $.ajax({
         url: host + '/stores/' + name + '/page=' + num + '&size=8',
         method: 'GET',
+        headers: {
+            'Authorization': 'Bearer ' + token
+        },
         success: function (data) {},
         error: function () {
             alert('검색 결과 못가져왔지롱 ㅋㅋ')

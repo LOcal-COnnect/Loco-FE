@@ -194,6 +194,7 @@ document.addEventListener('DOMContentLoaded', function () {
     console.log(commentInput)
 
     commentInput.addEventListener('keydown', function (event) {
+
         if (event.key === 'Enter') {
             console.log('enter')
             const commentContent = commentInput.value
@@ -439,3 +440,4 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     })
 })
+
