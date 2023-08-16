@@ -25,11 +25,12 @@ image.addEventListener('click', () => {
 
     // 좋아요 여부 서버 요청 (GET 요청 등)
     $.ajax({
-        url: host + '/like/{userIdx}/promotion/{promotionIdx}' + window.postId,
+        url: host + `/like/${userIdx}/promotion/${window.postId}`,
         method: 'GET',
         success: function (data) {
             // 서버에서 받아온 좋아요 여부 값으로 isClicked 업데이트
             isClicked = data.isLiked
+            //True,False값
         },
         error: function () {
             // 에러 처리
@@ -43,14 +44,14 @@ $('#goodnum').click(function () {
 
     // 좋아요 여부 서버 요청 (GET 요청 등)
     $.ajax({
-        url: host + '/like/{userIdx}/promotion/{promotionIdx}' + window.postId,
+        url: host + `/like/${userIdx}/promotion/${window.postId}`,
         method: 'GET',
         success: function (data) {
             isClicked = data.isLiked // 서버에서 받아온 좋아요 여부 값으로 업데이트
 
             if (!isClicked) {
                 $.ajax({
-                    url: host + '/like/{userIdx}/promotion/' + window.postId,
+                    url: host + `/like/${userIdx}/promotion/${window.postId}`,
                     method: 'POST',
                     contentType: 'application/json',
                     data: JSON.stringify({
@@ -58,7 +59,21 @@ $('#goodnum').click(function () {
                         goodnum: $('#goodnum').val(),
                     }),
                     success: function (data) {
-                        likeCountElement.text(data.likeCount) // 서버에서 받은 좋아요 수로 업데이트
+                        $.ajax({
+                            url: host + `/like/promotion/${window.postId}`,
+                            method: 'POST',
+                            contentType: 'application/json',
+                            data: JSON.stringify({
+                                postid: 1, // 게시물 ID
+                                goodnum: $('#goodnum').val(),
+                            }),
+                            success: function (data) {
+                            likeCountElement.text(data.likeCount) // 서버에서 받은 좋아요 수로 화면 업데이트
+                            },
+                            error: function () {
+                                alert('좋아요 수를 받아오지 않았습니다.')
+                            },
+                        })
                     },
                     error: function () {
                         alert('좋아요가 입력되지 않았습니다.')
@@ -66,7 +81,7 @@ $('#goodnum').click(function () {
                 })
             } else {
                 $.ajax({
-                    url: host + '/like/{likeidx}' + window.postId,
+                    url: host + `/like/${userIdx}/promotion/${window.postId}`,
                     method: 'DELETE',
                     contentType: 'application/json',
                     data: JSON.stringify({
@@ -74,7 +89,21 @@ $('#goodnum').click(function () {
                         goodnum: $('#goodnum').val(),
                     }),
                     success: function (data) {
-                        likeCountElement.text(data.likeCount) // 서버에서 받은 좋아요 수로 화면 업데이트
+                        $.ajax({
+                            url: host + `/like/promotion/${window.postId}`,
+                            method: 'POST',
+                            contentType: 'application/json',
+                            data: JSON.stringify({
+                                postid: 1, // 게시물 ID
+                                goodnum: $('#goodnum').val(),
+                            }),
+                            success: function (data) {
+                            likeCountElement.text(data.likeCount) // 서버에서 받은 좋아요 수로 화면 업데이트
+                            },
+                            error: function () {
+                                alert('좋아요 수를 받아오지 않았습니다.')
+                            },
+                        })
                     },
                     error: function () {
                         alert('좋아요 삭제에 실패했습니다.')
