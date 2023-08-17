@@ -354,40 +354,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
     renderButton()
 })
 
-/*
-// 리뷰 불러오기 ajax
-const storeIdx = 123
-let currentPage = 1 // 현재 페이지 번호
-const reviewsPerPage = 3 // 한 페이지당 보여줄 리뷰 개수
-
-function fetchAndDisplayReviews() {
-    const reviewBox = document.querySelector('.review-box')
-
-    reviewBox.innerHTML = ''
-
-    $.ajax({
-        url: `/reviews/stores/${storeIdx}?page=${currentPage}&limit=${reviewsPerPage}`,
-        type: 'GET',
-        success: function (response) {
-            if (response.code === 200) {
-                const reviewList = response.reviewList
-
-                reviewList.forEach((review) => {
-                    reviewBox.appendChild(reviewElement)
-                })
-
-                updatePagination(response.totalPages)
-            } else {
-                console.error('Failed to fetch reviews:', response.message)
-            }
-        },
-        error: function (xhr, status, error) {
-            console.error('Failed to fetch reviews:', error)
-        },
-    })
-}
-*/
-
 // 게시판 페이지 번호 업데이트 함수
 function updatePagination(totalPages) {
     const buttonContainer = document.getElementById('buttonContainer')
@@ -418,84 +384,6 @@ window.addEventListener('load', function () {
     fetchAndDisplayReviews()
 })
 
-/*
-// 리뷰 전체 보기 ajax
-var token = localStorage.getItem('token');
-
-const storeIdx = 123
-
-function fetchAndDisplayReviews() {
-    const reviewBox = document.querySelector('.review-box')
-
-    reviewBox.innerHTML = ''
-
-    $.ajax({
-        url: `/reviews/stores/${storeIdx}`,
-        type: 'GET',
-         'Authorization': 'Bearer ' + token
-        },
-        success: function (response) {
-            if (response.code === 200) {
-                const reviewList = response.reviewList
-
-                reviewList.forEach((review) => {
-                    const reviewElement = document.createElement('div')
-                    reviewElement.classList.add('review')
-
-                    const profilePicture = document.createElement('img')
-                    profilePicture.src = review.profilePictureUrl
-                    profilePicture.alt = 'Profile Picture'
-                    profilePicture.classList.add('profile-picture')
-
-                    const nicknameElement = document.createElement('h3')
-                    nicknameElement.textContent = review.nickname
-                    nicknameElement.classList.add('nickname')
-
-                    const ratingElement = generateStarRating(review.reviewStar)
-                    ratingElement.classList.add('star-rating')
-
-                    const commentElement = document.createElement('p')
-                    commentElement.textContent = review.reviewContent
-                    commentElement.classList.add('comment')
-
-                    const dateElement = document.createElement('span')
-                    dateElement.textContent = formatDate(review.createdAt)
-                    dateElement.classList.add('date')
-
-                    const photoElement = document.createElement('img')
-                    photoElement.src = review.photo
-                    photoElement.alt = 'Review Photo'
-                    photoElement.classList.add('photo')
-
-                    reviewElement.appendChild(profilePicture)
-                    reviewElement.appendChild(nicknameElement)
-                    reviewElement.appendChild(ratingElement)
-                    reviewElement.appendChild(commentElement)
-                    reviewElement.appendChild(dateElement)
-                    reviewElement.appendChild(photoElement)
-
-                    reviewBox.appendChild(reviewElement)
-                })
-            } else {
-                console.error('Failed to fetch reviews:', response.message)
-            }
-        },
-        error: function (xhr, status, error) {
-            console.error('Failed to fetch reviews:', error)
-        },
-    })
-}
-
-function generateStarRating(rating) {}
-
-function formatDate(isoDate) {
-    const date = new Date(isoDate)
-    return `${date.getFullYear()}.${date.getMonth() + 1}.${date.getDate()}`
-}
-
-window.addEventListener('load', fetchAndDisplayReviews)
-*/
-
 // 페이지 이동
 function modifyButton() {
     window.location.href = 'makeReivew.html'
@@ -510,6 +398,7 @@ function fetchReviews(storeIdx) {
         url: `/reviews/stores/${storeIdx}`,
         type: 'GET',
         headers: {
+            'Content-Type': 'application/json',
             Authorization: 'Bearer ' + token,
         },
         success: function (response) {

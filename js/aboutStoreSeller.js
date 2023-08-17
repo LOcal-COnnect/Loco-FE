@@ -338,6 +338,7 @@ function fetchReviews(storeIdx) {
         url: `/reviews/stores/${storeIdx}`,
         type: 'GET',
         headers: {
+            'Content-Type': 'application/json',
             Authorization: 'Bearer ' + token,
         },
         success: function (response) {

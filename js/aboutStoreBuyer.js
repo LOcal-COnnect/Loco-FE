@@ -326,74 +326,6 @@ function moveToB() {
 
 document.getElementById('MoreButton').addEventListener('click', moveToB)
 
-/*
-// 리뷰 미리 보기 ajax
-const storeIdx = 123
-
-function fetchAndDisplayReviews() {
-    const reviewBox = document.querySelector('.review-box')
-
-    reviewBox.innerHTML = ''
-
-    $.ajax({
-        url: `/reviews/stores/${storeIdx}`,
-        type: 'GET',
-        success: function (response) {
-            if (response.code === 200) {
-                const reviewList = response.reviewList
-
-                reviewList.forEach((review) => {
-                    const reviewElement = document.createElement('div')
-                    reviewElement.classList.add('review')
-
-                    const profilePicture = document.createElement('img')
-                    profilePicture.src = review.profilePictureUrl
-                    profilePicture.alt = 'Profile Picture'
-                    profilePicture.classList.add('profile-picture')
-
-                    const nicknameElement = document.createElement('h3')
-                    nicknameElement.textContent = review.nickname
-                    nicknameElement.classList.add('nickname')
-
-                    const ratingElement = generateStarRating(review.reviewStar)
-                    ratingElement.classList.add('star-rating')
-
-                    const commentElement = document.createElement('p')
-                    commentElement.textContent = review.reviewContent
-                    commentElement.classList.add('comment')
-
-                    const dateElement = document.createElement('span')
-                    dateElement.textContent = formatDate(review.createdAt)
-                    dateElement.classList.add('date')
-
-                    reviewElement.appendChild(profilePicture)
-                    reviewElement.appendChild(nicknameElement)
-                    reviewElement.appendChild(ratingElement)
-                    reviewElement.appendChild(commentElement)
-                    reviewElement.appendChild(dateElement)
-
-                    reviewBox.appendChild(reviewElement)
-                })
-            } else {
-                console.error('Failed to fetch reviews:', response.message)
-            }
-        },
-        error: function (xhr, status, error) {
-            console.error('Failed to fetch reviews:', error)
-        },
-    })
-}
-
-function generateStarRating(rating) {}
-
-function formatDate(isoDate) {
-    const date = new Date(isoDate)
-    return `${date.getFullYear()}.${date.getMonth() + 1}.${date.getDate()}`
-}
-
-window.addEventListener('load', fetchAndDisplayReviews)
-*/
-
 // 리뷰 미리 보기 ajax
 const storeIdx = 1
 
@@ -403,6 +335,7 @@ function fetchReviews(storeIdx) {
         url: `/reviews/stores/${storeIdx}`,
         type: 'GET',
         headers: {
+            'Content-Type': 'application/json',
             Authorization: 'Bearer ' + token,
         },
         success: function (response) {
@@ -446,6 +379,13 @@ function displayReviews(reviews) {
         const dateElement = document.createElement('span')
         dateElement.textContent = review.date
         dateElement.classList.add('date')
+
+        console.log(reviewElement)
+        console.log(profilePicture)
+        console.log(nicknameElement)
+        console.log(ratingElement)
+        console.log(commentElement)
+        console.log(dateElement)
 
         reviewElement.appendChild(profilePicture)
         reviewElement.appendChild(nicknameElement)
