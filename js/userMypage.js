@@ -162,6 +162,7 @@ function deleteReview(reviewIdx) {
         url: `/reviews/${reviewIdx}`,
         type: 'DELETE',
         headers: {
+            'Content-Type': 'application/json',
             Authorization: 'Bearer ' + token,
         },
         success: function (response) {
@@ -198,70 +199,89 @@ function handleImageSelection(event) {
 
 // 리뷰 목록 조회 ajax
 var token = localStorage.getItem('token')
-function fetchMyReviews() {
+function fetchAndDisplayReviews() {
     $.ajax({
         url: `/reviews/users/${userIdx}`,
         type: 'GET',
         headers: {
+            'Content-Type': 'application/json',
             Authorization: 'Bearer ' + token,
         },
         success: function (response) {
-            if (response.code === 200) {
-                const reviewsData = response.data
-                displayMyReviews(reviewsData)
+            if (response && response.length > 0) {
+                const reviewListWrap = $('.reviewListWrap')
+
+                response.forEach((review) => {
+                    const reviewCard = $('<div class="noReviewCard"></div>')
+                    const reviewCardTop = $('<div class="reviewCardTop"></div>')
+
+                    const reviewStoreName = $(
+                        '<div class="reviewStoreName"></div>'
+                    )
+                    reviewStoreName.append(
+                        `<h3>${review.storeName}</h3><img src="img/titleMore.svg" />`
+                    )
+
+                    const reviewPhotoNReview = $(
+                        '<div class="reviewPhotoNReview"></div>'
+                    )
+                    const reviewStarWrap = $(
+                        '<div class="reviewStarWrap"></div>'
+                    )
+                    const reviewStar = $('<div class="reviewStar"></div>')
+
+                    for (let i = 0; i < 5; i++) {
+                        const starImg = $('<img />')
+                        if (i < review.review.reviewStar) {
+                            starImg.attr('src', 'img/yesStar.svg')
+                        } else {
+                            starImg.attr('src', 'img/notStar.svg')
+                        }
+                        reviewStar.append(starImg)
+                    }
+
+                    const reviewStarDate = $(
+                        '<div class="reviewStarDate"></div>'
+                    )
+                    reviewStarDate.text(
+                        review.review.createdAt.substring(0, 10)
+                    )
+
+                    const reviewContent = $('<div class="reviewContent"></div>')
+                    reviewContent.text(review.review.reviewContent)
+
+                    const buttonReview = $('<div class="buttonReview"></div>')
+                    const modifyButton = $(
+                        `<button class="modifyBt" onclick="window.location.href='makeReviewmodify.html'">수정하기</button>`
+                    )
+                    const deleteButton = $(
+                        '<button class="deleteBt">삭제하기</button>'
+                    )
+
+                    // 리뷰 카드에 요소 추가
+                    reviewStarWrap.append(reviewStar)
+                    reviewPhotoNReview.append(reviewStarWrap)
+                    reviewPhotoNReview.append(reviewContent)
+                    buttonReview.append(modifyButton)
+                    buttonReview.append(deleteButton)
+
+                    reviewCardTop.append(reviewStoreName)
+                    reviewCardTop.append(reviewPhotoNReview)
+                    reviewCardTop.append(buttonReview)
+
+                    reviewCard.append(reviewCardTop)
+                    reviewListWrap.append(reviewCard)
+                })
             } else {
-                console.error(
-                    '작성한 리뷰 목록 가져오기 실패:',
-                    response.message
-                )
+                console.log('리뷰 목록이 없습니다.')
             }
         },
         error: function (xhr, status, error) {
-            console.log('작성한 리뷰 목록 가져오기 오류:', error)
+            console.log('리뷰 목록을 가져오는 중에 오류가 발생했습니다:', error)
         },
     })
 }
 
-function displayMyReviews(reviewsData) {
-    const reviewList = document.querySelector('#myReviewList')
-
-    reviewsData.forEach((storeReview) => {
-        const storeContainer = document.createElement('div')
-        storeContainer.className = 'storeContainer'
-
-        const storeName = document.createElement('h2')
-        storeName.textContent = storeReview.storeName
-
-        const reviewListContainer = document.createElement('div')
-        reviewListContainer.className = 'reviewListContainer'
-
-        storeReview.reviewList.forEach((review) => {
-            const reviewItem = document.createElement('div')
-            reviewItem.className = 'reviewItem'
-
-            const reviewContent = document.createElement('p')
-            reviewContent.textContent = review.reviewContent
-
-            const reviewStar = document.createElement('div')
-            reviewStar.className = 'reviewStar'
-
-            for (let i = 0; i < review.reviewStar; i++) {
-                const starIcon = document.createElement('img')
-                starIcon.src = 'img/yesStar.svg'
-                reviewStar.appendChild(starIcon)
-            }
-
-            reviewItem.appendChild(reviewContent)
-            reviewItem.appendChild(reviewStar)
-            reviewListContainer.appendChild(reviewItem)
-        })
-
-        storeContainer.appendChild(storeName)
-        storeContainer.appendChild(reviewListContainer)
-        reviewList.appendChild(storeContainer)
-    })
-}
-
-window.addEventListener('load', function () {
-    fetchMyReviews()
+$(document).ready(function () {
+    fetchAndDisplayReviews()
 })

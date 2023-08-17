@@ -68,7 +68,7 @@ $('#goodnum').click(function () {
                                 goodnum: $('#goodnum').val(),
                             }),
                             success: function (data) {
-                            likeCountElement.text(data.likeCount) // 서버에서 받은 좋아요 수로 화면 업데이트
+                                likeCountElement.text(data.likeCount) // 서버에서 받은 좋아요 수로 화면 업데이트
                             },
                             error: function () {
                                 alert('좋아요 수를 받아오지 않았습니다.')
@@ -98,7 +98,7 @@ $('#goodnum').click(function () {
                                 goodnum: $('#goodnum').val(),
                             }),
                             success: function (data) {
-                            likeCountElement.text(data.likeCount) // 서버에서 받은 좋아요 수로 화면 업데이트
+                                likeCountElement.text(data.likeCount) // 서버에서 받은 좋아요 수로 화면 업데이트
                             },
                             error: function () {
                                 alert('좋아요 수를 받아오지 않았습니다.')
@@ -240,6 +240,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     contentType: 'application/json',
                     data: JSON.stringify(requestData),
                     headers: {
+                        'Content-Type': 'application/json',
                         Authorization: 'Bearer ' + token,
                     },
                     success: function (data) {
@@ -319,6 +320,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 url: url,
                 method: 'GET',
                 headers: {
+                    'Content-Type': 'application/json',
                     Authorization: 'Bearer ' + token,
                 },
                 success: function (data) {
@@ -354,17 +356,8 @@ document.addEventListener('DOMContentLoaded', function () {
 })
 
 // 댓글 수정 ajax
-var token = localStorage.getItem('token')
 function updateComment(commentIdx, content) {
     return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            const isSuccess = true
-            if (isSuccess) {
-                resolve()
-            } else {
-                reject(new Error('댓글 수정 실패'))
-            }
-        }, 1000)
         const url = `/comment/${commentIdx}`
         const requestData = {
             content: content,
@@ -377,6 +370,7 @@ function updateComment(commentIdx, content) {
             data: JSON.stringify(requestData),
             dataType: 'json',
             headers: {
+                'Content-Type': 'application/json',
                 Authorization: 'Bearer ' + token,
             },
             success: function () {
@@ -418,8 +412,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
             saveButton.addEventListener('click', function () {
                 const updatedContent = inputField.value
-                /*
-                const commentIdx = commentItem.dataset.commentId*/
                 const commentIdx = 1
 
                 console.log(updatedContent)
@@ -467,6 +459,7 @@ function deleteComment(commentIdx) {
             url: url,
             method: 'DELETE',
             headers: {
+                'Content-Type': 'application/json',
                 Authorization: 'Bearer ' + token,
             },
             success: function () {
