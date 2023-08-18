@@ -36,13 +36,11 @@ function handleSortButtonClick(event) {
     }
 }
 
-// URL에서 쿼리 파라미터 추출하는 함수
 function getQueryParam(name) {
     const urlSearchParams = new URLSearchParams(window.location.search)
     return urlSearchParams.get(name)
 }
 
-// 페이지가 로드될 때 실행되는 이벤트 리스너
 window.addEventListener('load', function () {
     const sourcePage = getQueryParam('source')
 
@@ -285,3 +283,78 @@ function fetchAndDisplayReviews() {
 $(document).ready(function () {
     fetchAndDisplayReviews()
 })
+
+/*
+// 더미 데이터로 확인
+function fetchAndDisplayReviews() {
+    const dummyReviews = [
+        {
+            storeIdx: 1,
+            storeName: '강남구고기짱',
+            reviewer: 'asd',
+            review: {
+                createdAt: '2023-08-17T01:30:45.856244',
+                updatedAt: null,
+                reviewIdx: 3,
+                reviewContent: '별로',
+                reviewStar: 1,
+            },
+        },
+    ]
+
+    const reviewListWrap = $('.reviewListWrap')
+
+    dummyReviews.forEach((review) => {
+        const reviewCard = $('<div class="noReviewCard"></div>')
+        const reviewCardTop = $('<div class="reviewCardTop"></div>')
+
+        const reviewStoreName = $('<div class="reviewStoreName"></div>')
+        reviewStoreName.append(
+            `<h3>${review.storeName}</h3><img src="img/titleMore.svg" />`
+        )
+
+        const reviewPhotoNReview = $('<div class="reviewPhotoNReview"></div>')
+        const reviewStarWrap = $('<div class="reviewStarWrap"></div>')
+        const reviewStar = $('<div class="reviewStar"></div>')
+
+        for (let i = 0; i < 5; i++) {
+            const starImg = $('<img />')
+            if (i < review.review.reviewStar) {
+                starImg.attr('src', 'img/yesStar.svg')
+            } else {
+                starImg.attr('src', 'img/notStar.svg')
+            }
+            reviewStar.append(starImg)
+        }
+
+        const reviewStarDate = $('<div class="reviewStarDate"></div>')
+        reviewStarDate.text(review.review.createdAt.substring(0, 10))
+
+        const reviewContent = $('<div class="reviewContent"></div>')
+        reviewContent.text(review.review.reviewContent)
+
+        const buttonReview = $('<div class="buttonReview"></div>')
+        const modifyButton = $(
+            `<button class="modifyBt" onclick="window.location.href='makeReviewmodify.html'">수정하기</button>`
+        )
+        const deleteButton = $('<button class="deleteBt">삭제하기</button>')
+
+        reviewStarWrap.append(reviewStar)
+        reviewPhotoNReview.append(reviewStarWrap)
+        reviewPhotoNReview.append(reviewContent)
+        buttonReview.append(modifyButton)
+        buttonReview.append(deleteButton)
+
+        reviewCardTop.append(reviewStoreName)
+        reviewCardTop.append(reviewPhotoNReview)
+        reviewCardTop.append(buttonReview)
+
+        reviewCard.append(reviewCardTop)
+        reviewListWrap.append(reviewCard)
+    })
+}
+
+$(document).ready(function () {
+    fetchAndDisplayReviews()
+})
+*/

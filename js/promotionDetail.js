@@ -51,7 +51,9 @@ $('#goodnum').click(function () {
 
             if (!isClicked) {
                 $.ajax({
-                    url: host + `/like/${window.userId}/promotion/${window.postId}`,
+                    url:
+                        host +
+                        `/like/${window.userId}/promotion/${window.postId}`,
                     method: 'POST',
                     contentType: 'application/json',
                     data: JSON.stringify({
@@ -81,7 +83,9 @@ $('#goodnum').click(function () {
                 })
             } else {
                 $.ajax({
-                    url: host + `/like/${window.userId}/promotion/${window.postId}`,
+                    url:
+                        host +
+                        `/like/${window.userId}/promotion/${window.postId}`,
                     method: 'DELETE',
                     contentType: 'application/json',
                     data: JSON.stringify({
