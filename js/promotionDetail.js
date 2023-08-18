@@ -8,7 +8,6 @@ window.onload = function () {
     console.log(postId)
 }
 
-
 const image = document.getElementById('goodnum')
 let isClicked = false
 
@@ -24,7 +23,6 @@ image.addEventListener('click', () => {
     }
     isClicked = !isClicked
 
-
     // 좋아요 여부 서버 요청 (GET 요청 등)
     $.ajax({
         url: host + `/like/${userIdx}/promotion/${window.postId}`,
@@ -39,9 +37,7 @@ image.addEventListener('click', () => {
             console.error('좋아요 여부를 불러오는 데 실패했습니다.')
         },
     })
-
 })
-
 
 $('#goodnum').click(function () {
     const likeCountElement = $('#likeCount')
@@ -55,7 +51,9 @@ $('#goodnum').click(function () {
 
             if (!isClicked) {
                 $.ajax({
-                    url: host + `/like/${userIdx}/promotion/${window.postId}`,
+                    url:
+                        host +
+                        `/like/${window.userId}/promotion/${window.postId}`,
                     method: 'POST',
                     contentType: 'application/json',
                     data: JSON.stringify({
@@ -85,7 +83,9 @@ $('#goodnum').click(function () {
                 })
             } else {
                 $.ajax({
-                    url: host + `/like/${userIdx}/promotion/${window.postId}`,
+                    url:
+                        host +
+                        `/like/${window.userId}/promotion/${window.postId}`,
                     method: 'DELETE',
                     contentType: 'application/json',
                     data: JSON.stringify({

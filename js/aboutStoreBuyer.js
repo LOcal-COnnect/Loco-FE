@@ -49,7 +49,7 @@ image.addEventListener('click', () => {
     isFullHeart = !isFullHeart
 
     $.ajax({
-        url: host + `/mine/${userIdx}/store/${window.postId}`,
+        url: host + `/mine/${useridx}/store/${window.postId}`,
         method: 'GET',
         success: function (data) {
             // 서버에서 받아온 좋아요 여부 값으로 isFullHeart 업데이트
@@ -112,7 +112,8 @@ $('#Heartnum').click(function () {
                 $.ajax({
                     url:
                         host +
-                        `/mine/${userIdx}/store/${window.storeId}`,
+                        '/mine/{userIdx}/store/{storeIdx}' +
+                        window.postId,
                     method: 'POST',
                     contentType: 'application/json',
                     data: JSON.stringify({
@@ -385,8 +386,6 @@ function displayReviews(reviews) {
         console.log(profilePicture)
         console.log(nicknameElement)
         console.log(ratingElement)
-        console.log(commentElement)
-        console.log(dateElement)
 
         reviewElement.appendChild(profilePicture)
         reviewElement.appendChild(nicknameElement)

@@ -66,6 +66,7 @@ function handleImageSelection(event) {
         reader.readAsDataURL(selectedFile)
     }
 }
+
 // 리뷰 작성 ajax
 var token = localStorage.getItem('token')
 
@@ -126,9 +127,7 @@ document.querySelector('.completeBt').addEventListener('click', function () {
     completeCreateReview(storeIdx, userIdx)
 })
 
-/*
 // 페이지 이동 (수정 완료 버튼)
 function completeCreatePromotion() {
     window.location.href = 'aboutStoreMore.html'
 }
-*/

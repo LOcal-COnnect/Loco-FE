@@ -1,6 +1,3 @@
-var userIdx = 1
-
-/*
 // 가게 대표사진
 window.addEventListener('load', function () {
     const storePhotoElement = document.querySelector('#storePhoto img')
@@ -16,7 +13,6 @@ window.addEventListener('load', function () {
             console.error('Failed to fetch the image:', error)
         })
 })
-*/
 
 // 가게 소개 박스
 const introBox = document.querySelector('.introBox')
@@ -113,8 +109,7 @@ $('#Heartnum').click(function () {
             if (!isFullHeart) {
                 $.ajax({
                     url:
-                        host +
-                        `/mine/${userIdx}/store/${window.storeId}`,
+                        host + `/mine/${window.userId}/store/${window.storeId}`,
                     method: 'POST',
                     contentType: 'application/json',
                     data: JSON.stringify({
