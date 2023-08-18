@@ -120,7 +120,7 @@ $('#Heartnum').click(function () {
                     success: function (data) {
                         $.ajax({
                             url: host + `/mine/store/${window.postId}`,
-                            method: 'POST',
+                            method: 'GET',
                             contentType: 'application/json',
                             data: JSON.stringify({
                                 postid: 1, // 게시물 ID
@@ -150,7 +150,7 @@ $('#Heartnum').click(function () {
                     success: function (data) {
                         $.ajax({
                             url: host + `/mine/store/${window.postId}`,
-                            method: 'POST',
+                            method: 'GET',
                             contentType: 'application/json',
                             data: JSON.stringify({
                                 postid: 1, // 게시물 ID
