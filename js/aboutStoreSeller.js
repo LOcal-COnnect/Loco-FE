@@ -1,3 +1,5 @@
+var userIdx = 1
+
 // 가게 대표사진
 window.addEventListener('load', function () {
     const storePhotoElement = document.querySelector('#storePhoto img')
